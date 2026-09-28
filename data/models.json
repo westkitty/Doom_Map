@@ -1,0 +1,20 @@
+{
+  "schemaVersion": 1,
+  "records": [
+    {
+      "id": "earth-presentation",
+      "version": "1.0.0",
+      "kind": "model",
+      "title": "Illustrative WGS84 Earth presentation",
+      "fidelity": "D",
+      "sources": ["https://earth-info.nga.mil/index.php?dir=wgs84&action=wgs84"],
+      "timestamp": null,
+      "assumptions": ["WGS84 ellipsoid dimensions; mesh is a tessellated approximation.", "Fixed artistic light direction and atmosphere shell."],
+      "uncertainty": "No physical atmosphere, terrain or hazard result is calculated.",
+      "limitations": ["Not a terrain surface or measured illumination model.", "No disaster output is active."],
+      "attribution": "Doom Map authored presentation; ellipsoid constants from WGS84.",
+      "license": "Project-authored presentation; WGS84 defining constants.",
+      "coverage": "Global ellipsoid only; no regional terrain detail."
+    }
+  ]
+}

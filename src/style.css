@@ -117,3 +117,11 @@ h1 {
 @media (prefers-reduced-motion: reduce) {
   * { scroll-behavior: auto !important; }
 }
+
+.science-panel { position: absolute; z-index: 3; right: 1rem; bottom: 1rem; max-width: min(34rem, calc(100vw - 2rem)); background: #081219; border: 1px solid #405968; padding: 0.5rem; }
+.science-panel summary { min-height: 44px; display: flex; align-items: center; cursor: pointer; }
+#science-content { max-height: 50vh; overflow: auto; padding: 0.5rem; font-size: 0.85rem; }
+#science-content h2 { font-size: 1rem; }
+#science-content a { color: #b4e1f9; overflow-wrap: anywhere; }
+:focus-visible { outline: 2px solid #cbe9ff; outline-offset: 3px; }
+@media (max-width: 700px) { .source-note { bottom: 5rem; } }

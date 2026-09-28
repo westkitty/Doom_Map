@@ -1,4 +1,7 @@
 import './style.css'
+import models from '../data/models.json'
+import providers from '../data/providers.json'
+import { parseManifest } from './data/provenance'
 import { GlobeApp } from './globe/GlobeApp'
 
 const canvas = document.querySelector<HTMLCanvasElement>('#globe')
@@ -40,3 +43,21 @@ function mount(): void {
 mount()
 window.addEventListener('pagehide', () => { app?.dispose(); app = undefined })
 window.addEventListener('pageshow', (event) => { if (event.persisted) mount() })
+
+const records = [...parseManifest(models, 'model'), ...parseManifest(providers, 'provider')]
+const science = document.querySelector<HTMLElement>('#science-content')!
+for (const record of records) {
+  const heading = document.createElement('h2')
+  heading.textContent = `${record.title} · ${record.fidelity}`
+  const description = document.createElement('p')
+  description.textContent = `${record.id}@${record.version}. ${record.uncertainty} ${record.limitations.join(' ')} ${record.assumptions.join(' ')} Coverage: ${record.coverage} Timestamp: ${record.timestamp ?? 'not applicable / unknown'}. ${record.attribution} License: ${record.license}`
+  science.append(heading, description)
+  for (const source of record.sources) {
+    const link = document.createElement('a')
+    link.href = source
+    link.textContent = source
+    link.target = '_blank'
+    link.rel = 'noopener noreferrer'
+    science.append(link)
+  }
+}

@@ -72,3 +72,18 @@ test('emulated two-finger pinch changes camera distance', async ({ browser }) =>
   await expect(page.locator('#alt')).not.toHaveText(before!)
   await context.close()
 })
+
+test('unsupported WebGL reports an accessible failure instead of a blank canvas', async ({ page }) => {
+  await page.addInitScript(() => {
+    const original = HTMLCanvasElement.prototype.getContext
+    HTMLCanvasElement.prototype.getContext = function (this: HTMLCanvasElement, ...args: Parameters<typeof original>) {
+      if (String(args[0]).startsWith('webgl')) return null
+      return original.apply(this, args)
+    } as typeof original
+  })
+  await page.goto('./')
+  await expect(page.getByRole('alert')).toContainText('Unable to start WebGL2')
+  await page.getByText('Science / sources').click()
+  await expect(page.locator('#science-content')).toContainText('No geographic data provider is active')
+  await expect(page.locator('#science-content')).toContainText('earth-presentation@1.0.0')
+})

@@ -7,7 +7,7 @@
   "project_name": "Doom Map",
   "project_root": "westkitty/Doom_Map",
   "artifact_path": "",
-  "state_revision": 5,
+  "state_revision": 6,
   "last_updated": "2026-09-28T17:58:00Z",
   "current_baseline": {
     "identity": "commit 28dd723e5e504baeb36fbcd105a17e2a0cc00c13",
@@ -121,7 +121,7 @@ The final product must:
 
 ## 6. Known Not Working
 
-None currently recorded.
+Inherited development-tool dependency audit findings: Vite high, Vitest critical, @vitest/mocker moderate (npm audit, 2026-09-28). No runtime dependency findings. Do not expose dev/test servers; deliberate patching remains pending.
 
 ## 7. Implemented but Unverified
 
@@ -162,15 +162,16 @@ None currently recorded.
 - **Priority:** high
 
 ### PND-005 — Deterministic installation and browser harness
-- **State:** locally verified; branch CI pending
+- **State:** locally verified; CI 36465030525 passed on df36fcd
 - Real package-lock.json committed with pinned Playwright 1.63.0.
 - Clean npm ci passes; both workflows use npm ci and lockfile caching.
 - CI and Pages build gates include browser acceptance.
 
 ### PND-006 — Remaining Phase 0 spine
-- Provenance/model/data manifests and validation are next.
+- Versioned model/provider manifests, runtime validator and source panel implemented; 15 unit tests pass.
 - Baseline bounded frame statistics and renderer counts implemented.
-- Unsupported WebGL status and context-recovery status implemented; unsupported path needs test.
+- Unsupported WebGL and source panel paths now pass; total 4 local browser tests.
+- Updated spine revision still requires CI; Pages deployment remains main-only.
 
 ## 10. Active Decisions, Defaults, and Prohibitions
 
@@ -198,8 +199,7 @@ None currently recorded.
 ## 12. Current Change Scope and Impact Radius
 
 Phase 0/early Phase 1 on `arena/01a0e93e-doom-map`. Reproducible install and
-production-path browser acceptance now pass locally. Continue with provenance
-contracts, then complete Phase 1 before streaming/hazards. Public Pages still
+production-path browser acceptance now pass locally. Continue with Phase 1 coordinates/navigation before streaming/hazards. Public Pages still
 represents main, not this branch. No wrapper or hazard capability is claimed.
 
 ## 13. Compact Revision Log
@@ -210,3 +210,5 @@ represents main, not this branch. No wrapper or hazard capability is claimed.
 - r4 — 2026-09-28: Reconciled stale deployment/traceability/README state with the verified live Pages deployment; browser interaction proof and deterministic-install work remain pending.
 
 - r5 — Reproducible install, production-path browser harness, preview-base repair, bounded runtime metrics and context lifecycle evidence.
+
+- r6 — Governed manifests/source panel and unsupported-WebGL proof; prior branch CI green. Recorded inherited development-tool audit findings.

@@ -34,3 +34,17 @@ dependency is the rollback path. Core package versions were not changed.
 
 A production-preview base-path defect was discovered by these tests and fixed.
 The Vite preview server now uses the build's repository base, while dev stays `/`.
+
+## Follow-up spine evidence
+
+CI run 36465030525 passed on df36fcd using standard Playwright Chromium.
+Follow-up local validation: 15 unit tests and 4 browser tests pass, adding the
+unsupported-WebGL accessible error and source-panel path. Manifest validation is
+now active at startup and under unit tests; providers remain explicitly empty.
+
+Dependency audit found 3 dev-tool findings in the inherited pins (Vite high,
+Vitest critical, @vitest/mocker moderate). No runtime dependency finding was
+reported. These need a deliberate security update; do not expose the Vite dev
+server or Vitest UI publicly in the meantime. Production static files do not
+run those development servers. Core versions were intentionally not silently
+changed during browser/provenance work.

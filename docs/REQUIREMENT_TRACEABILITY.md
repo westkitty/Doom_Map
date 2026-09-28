@@ -19,9 +19,9 @@ This file maps the controlling request to current evidence. Planned work is not 
 | R13 | Source >=50 similar/relevant projects | docs/PRECEDENT_RESEARCH.md contains >50 external projects | PASS |
 | R14 | Learn from precedents rather than list them | deep-precedent lessons plus cross-project adopt/avoid patterns documented | PASS |
 | R15 | Git initialization/stage/commit/push workflow | Remote repo was already initialized; all created files committed directly to main; BUILD_PROMPT.md requires normal clone/add/commit/push in local execution | PASS with environment-specific implementation |
-| R16 | Honest scientific consequences | fidelity/provenance/uncertainty invariant locked in OPERATIONAL_STATE.md | PASS for contract |
+| R16 | Honest scientific consequences | Runtime-validated model/provider manifests and Science panel; rejection fixtures | PARTIAL; hazard science not implemented |
 | R17 | No false claim of uniform building accuracy | explicit building-truth contract in README/data matrix/state | PASS |
-| R18 | Validation | CI run 36447608037 passed typecheck, 3/3 tests, and production build | PASS for current source baseline |
+| R18 | Validation | CI 36465030525 passed initial browser slice; follow-up local 15 unit / 4 browser tests | PASS for tested scope |
 | R19 | Public live Pages URL verified | deploy run 36448035612 succeeded; public URL returned HTTP 200 with expected title | PASS |
 
 ## Current verdict
@@ -30,4 +30,4 @@ The requested planning/research/prompt package is complete and committed.
 
 The Phase-0/early-Phase-1 code seed has local production-path browser evidence; see docs/BROWSER_ACCEPTANCE.md.
 
-Public Pages delivery is verified. Remaining gaps include provenance contracts and Phase 1 spatial/navigation capabilities; physical-device and long-session evidence remain pending. Branch work is not yet deployed.
+Public Pages delivery is verified. Remaining gaps include Phase 1 spatial/navigation capabilities; physical-device and long-session evidence remain pending. Branch work is not yet deployed.

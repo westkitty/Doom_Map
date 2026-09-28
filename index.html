@@ -10,11 +10,11 @@
   <body>
     <main id="app" aria-label="Doom Map globe">
       <canvas id="globe" aria-label="Interactive three-dimensional Earth"></canvas>
-      <section class="hud" aria-live="polite">
+      <section class="hud">
         <div>
           <p class="eyebrow">DOOM MAP / FOUNDATION</p>
           <h1>Earth is the interface.</h1>
-          <p id="status">Three.js globe foundation · model systems pending</p>
+          <p id="status" role="status">Three.js globe foundation · model systems pending</p>
         </div>
         <div class="telemetry" aria-label="Globe telemetry">
           <span id="lat">LAT 0.000°</span>
@@ -22,6 +22,10 @@
           <span id="alt">ALT —</span>
         </div>
       </section>
+      <details class="science-panel">
+        <summary>Science / sources</summary>
+        <div id="science-content"><p>No geographic data provider is active. No hazard model is active.</p></div>
+      </details>
       <aside class="source-note">
         <strong>FOUNDATION BUILD</strong>
         <span>No disaster model is active. Scientific outputs are not yet implemented.</span>
