@@ -18,7 +18,7 @@ This file maps the controlling request to current evidence. Planned work is not 
 | R12 | Consult named westkitty projects | 9 readable named repositories reviewed; World_Set unavailable | PARTIAL with declared source gap |
 | R13 | Source >=50 similar/relevant projects | docs/PRECEDENT_RESEARCH.md contains >50 external projects | PASS |
 | R14 | Learn from precedents rather than list them | deep-precedent lessons plus cross-project adopt/avoid patterns documented | PASS |
-| R15 | Git initialization/stage/commit/push workflow | Remote repo was already initialized; all created files committed directly to main; BUILD_PROMPT.md requires normal clone/add/commit/push in local execution | PASS with environment-specific implementation |
+| R15 | Git initialization/stage/commit/push workflow | Existing repository continued on arena/01a0e93e-doom-map; scoped commits pushed, remote parity verified, PR #1 opened | PASS |
 | R16 | Honest scientific consequences | Runtime-validated model/provider manifests and Science panel; rejection fixtures | PARTIAL; hazard science not implemented |
 | R17 | No false claim of uniform building accuracy | explicit building-truth contract in README/data matrix/state | PASS |
 | R18 | Validation | CI 36467794054 passed latest implementation; 30 unit / 11 browser tests | PASS for tested scope |
@@ -28,12 +28,12 @@ This file maps the controlling request to current evidence. Planned work is not 
 
 The requested planning/research/prompt package is complete and committed.
 
-The Phase-0/early-Phase-1 code seed has local production-path browser evidence; see docs/BROWSER_ACCEPTANCE.md.
+The foundation and first Phase 2 coastline-streaming slice have production-path browser and CI evidence; see docs/BROWSER_ACCEPTANCE.md.
 
-Public Pages delivery is verified. Remaining gaps include Phase 1 spatial/navigation capabilities; physical-device and long-session evidence remain pending. Branch work is not yet deployed.
+Historical main Pages delivery is verified; this branch is not publicly deployed. Persistent provider caching and real local terrain/building sources are next. Physical-device, refined local surface and long-session evidence remain pending.
 
 Spatial/navigation evidence and limitations: docs/BROWSER_ACCEPTANCE.md. Quality tiers change DPR/grid/atmosphere only. The provider scheduler independently bounds tile residency; no particle system is implemented.
 
-Phase 2 evidence: common typed provider contract, bounded scheduler, static Natural Earth tiles, explicit regional failure/fallback; 30 unit / 10 browser tests locally. No buildings or higher-resolution source adapters yet.
+Phase 2 evidence: common typed provider contract, bounded scheduler, static Natural Earth tiles, explicit regional failure/fallback; 30 unit / 11 browser tests locally and in CI. No buildings or higher-resolution source adapters yet.
 
 Current continuation: docs/NEXT_HANDOFF.md. Public branch delivery requires PR #1 merge to main; no new public Pages deployment claimed.
