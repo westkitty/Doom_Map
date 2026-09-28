@@ -21,7 +21,7 @@ This file maps the controlling request to current evidence. Planned work is not 
 | R15 | Git initialization/stage/commit/push workflow | Remote repo was already initialized; all created files committed directly to main; BUILD_PROMPT.md requires normal clone/add/commit/push in local execution | PASS with environment-specific implementation |
 | R16 | Honest scientific consequences | Runtime-validated model/provider manifests and Science panel; rejection fixtures | PARTIAL; hazard science not implemented |
 | R17 | No false claim of uniform building accuracy | explicit building-truth contract in README/data matrix/state | PASS |
-| R18 | Validation | CI 36465030525 passed initial browser slice; follow-up local 15 unit / 4 browser tests | PASS for tested scope |
+| R18 | Validation | CI 36467794054 passed latest implementation; 30 unit / 11 browser tests | PASS for tested scope |
 | R19 | Public live Pages URL verified | deploy run 36448035612 succeeded; public URL returned HTTP 200 with expected title | PASS |
 
 ## Current verdict
@@ -32,6 +32,8 @@ The Phase-0/early-Phase-1 code seed has local production-path browser evidence; 
 
 Public Pages delivery is verified. Remaining gaps include Phase 1 spatial/navigation capabilities; physical-device and long-session evidence remain pending. Branch work is not yet deployed.
 
-Spatial/navigation evidence and limitations: docs/BROWSER_ACCEPTANCE.md. Quality tiers change DPR/grid/atmosphere only; no unimplemented tile/particle budgets are claimed.
+Spatial/navigation evidence and limitations: docs/BROWSER_ACCEPTANCE.md. Quality tiers change DPR/grid/atmosphere only. The provider scheduler independently bounds tile residency; no particle system is implemented.
 
 Phase 2 evidence: common typed provider contract, bounded scheduler, static Natural Earth tiles, explicit regional failure/fallback; 30 unit / 10 browser tests locally. No buildings or higher-resolution source adapters yet.
+
+Current continuation: docs/NEXT_HANDOFF.md. Public branch delivery requires PR #1 merge to main; no new public Pages deployment claimed.

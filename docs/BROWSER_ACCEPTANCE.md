@@ -106,3 +106,9 @@ also asserts that a two-finger gesture does not accidentally select/place a
 location. Multi-pointer/cancel tracking prevents that false click path. This
 remains emulation, not physical phone proof. Preview host allowance is limited to
 Arena's `.e2b.app` suffix; development hosting is not broadened.
+
+Final implementation CI run **36467794054** passed on **5dbe6a1**, including
+30 unit tests and all 11 browser tests using the standard Playwright Chromium.
+Local Chromium fallback and CI's standard installation therefore have separate
+positive evidence. This does not imply physical-device performance or Pages
+publication. Public Pages remains on main behind its main-only environment rule.
