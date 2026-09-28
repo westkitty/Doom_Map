@@ -35,7 +35,7 @@ Every visible consequence must be able to answer: **where did this number/shape 
 
 ## Current state
 
-The repository is in **architecture and implementation-planning phase**.
+The repository is in **active phased implementation**. The initial Three.js globe foundation builds and GitHub Pages is live; browser-level interaction proof and the remaining Phase 0/1 foundation are still in progress.
 
 Read these first:
 
