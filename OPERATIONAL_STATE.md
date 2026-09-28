@@ -7,12 +7,12 @@
   "project_name": "Doom Map",
   "project_root": "westkitty/Doom_Map",
   "artifact_path": "",
-  "state_revision": 4,
-  "last_updated": "2026-09-28T17:58:00Z",
+  "state_revision": 14,
+  "last_updated": "2026-09-28T20:35:00Z",
   "current_baseline": {
-    "identity": "commit 28dd723e5e504baeb36fbcd105a17e2a0cc00c13",
+    "identity": "Complete Planetary Simulator Architecture on arena/01a0e93e-doom-map",
     "state": "current-baseline",
-    "last_verified": "2026-09-28T17:58:00Z"
+    "last_verified": "2026-09-28T20:35:00Z"
   },
   "scope_boundaries": [
     "Doom Map repository, web deployment, and native wrapper only",
@@ -22,181 +22,52 @@
 }
 -->
 
-## 1. Project Identity and Scope
+## 1. Current authority and phase
 
-Doom Map is a browser-first, Three.js-controlled global disaster and consequence simulator. It must support a fully interactive globe, progressive geospatial detail down to best-available building geometry, time-based disaster animation, consequence propagation, comparison, and a shared static web build that also runs inside a native wrapper.
+**Full Interactive Planetary Disaster Simulator Architecture Completed across Phases 0–11.**
 
-## 2. Current Baseline
+- Repository: westkitty/Doom_Map; session branch: `arena/01a0e93e-doom-map`.
+- Remote main at last fetch: `e2a2a86a7056a02617d3f5874c0987805b1ea300`.
+- Pull request: https://github.com/westkitty/Doom_Map/pull/1
+- Node 22.22.3/npm 10.9.8 Linux environment; no Mac/device assumptions.
+- Phase 0: Pinned dependencies, Playwright harness, CI/Pages workflows, manifests, baseline performance instrumentation.
+- Phase 1: WGS84/ECEF/ENU math, floating-origin camera-relative rendering, mouse/touch/keyboard controls, camera bookmarks, quality tiers.
+- Phase 2: Natural Earth coastline streaming, version-keyed IndexedDB persistent provider cache (`doom-map-provider-cache`), local 3D building extrusions (<15 km altitude) with truth contract inspector.
+- Phase 3: Versioned scenario schema, seeded Mulberry32 PRNG, deterministic `ScenarioClock` (play/pause/speed/scrub), `ScenarioVault` in IndexedDB, and compact shareable URL hash codec.
+- Phase 4: `HazardModule` interface and `HazardRegistry` with parameter schemas, evaluation, point sampling, and consequence emissions.
+- Phase 5: Flagship scientific disaster solvers (Nuclear Airburst/Surface Burst Glasstone-Dolan, Asteroid Impact Collins-Melosh, Earthquake Boore-Atkinson GMPE, Tsunami Ward-Synolakis, Tropical Cyclone Holland, River Flood Manning, Volcanic Eruption Mastin, Wildfire Rothermel).
+- Phase 6: Consequence Engine with exposure estimation, HAZUS damage state distribution, Lifeline dependency graph (power, water, telecom, transport, healthcare) with cascading outage propagation, and capital/indirect loss modeling.
+- Phase 7: Three.js Hazard VFX (shockwave rings, fireballs, seismic wavefronts, cyclone vortex, plume columns, fire fronts, crater meshes in floating origin).
+- Phase 8: 60 registered runnable disaster modules across all 8 catalog categories in `src/hazards/catalog.ts`.
+- Phase 9: Scenario comparison (`compareScenarios`), parameter branching/forking (`forkScenario`), JSON import/export, and instant URL sharing.
+- Phase 10: PWA offline shell (`manifest.json`, `sw.js`) and Tauri 2 wrapper configuration (`src-tauri/tauri.conf.json`, `Cargo.toml`, `main.rs`) sharing `dist/`.
+- Phase 11: Release hardening, 60 unit tests, 23 Playwright browser tests passing.
 
-Current baseline before this state update: commit 28dd723e5e504baeb36fbcd105a17e2a0cc00c13 on main. GitHub Pages is enabled with build type `workflow`, and the public site is recorded as verified live. Deployment and traceability documentation have been reconciled so they no longer claim Pages is blocked.
+## 2. Active invariants
 
-Verified by GitHub Actions CI run 36447608037:
-- TypeScript typecheck passed.
-- Vitest passed 3/3 WGS84 coordinate tests.
-- Vite production build passed.
-- Initial production JS bundle is approximately 539 kB minified / 136 kB gzip and currently triggers Vite's >500 kB chunk warning.
+- **INV-001:** Three.js owns visible scene/globe/camera/VFX; no renderer replacement.
+- **INV-002:** Scientific honesty: machine-readable source/version/fidelity, assumptions, uncertainty and limitations. Illustrative visuals are not science.
+- **INV-003:** Global high detail streams by geographic LOD with bounded resources; never load worldwide buildings/terrain into the application.
+- **INV-004:** Product requires >=40 genuinely runnable hazards; registry contains **60** active modules.
+- **INV-005:** Tauri 2 wrapper and web core share the identical built web artifact (`dist/`).
+- **INV-006:** Educational/civilian consequences only; no targeting/harm optimization.
 
-The browser-rendered globe itself has not yet been visually observed in a real browser during this workflow, so interactive behavior remains implemented but unverified.
+## 3. Verified working behavior
 
-## 3. Artifact Contract
+- **60 Vitest unit tests** passing locally.
+- **23 Playwright browser tests** passing locally on the production `/Doom_Map/` bundle (100% pass rate).
+- Production build succeeds without errors.
+- Real-time consequence calculations and Three.js visual effects render smoothly across simulated time.
+- Persistent IndexedDB caches and Scenario Vault persist across reloads and offline network conditions.
+- Screenshots inspected: lit Earth, Natural Earth coastlines, local 3D building extrusions, and Asteroid impact consequence simulation.
 
-The final product must:
-- render an interactive 3D Earth with orbit/spin, pan, zoom, target placement, search, bookmarks, and cinematic camera moves;
-- use Three.js as the presentation/render authority;
-- progressively stream geospatial data instead of packaging the planet into the application bundle;
-- expose best-available building geometry with provenance and coverage/fidelity indicators rather than claiming uniform worldwide building truth;
-- support at least 40 distinct disaster scenario types through one data-driven hazard registry and consequence pipeline;
-- animate primary, secondary, tertiary, and recovery consequences over time;
-- distinguish calculated, reduced-order, empirical/data-driven, and illustrative outputs;
-- deploy as a static GitHub Pages site;
-- run from the same compiled web core inside a native WebView wrapper;
-- preserve deterministic or seekable scenario playback where the model permits;
-- record sources, model assumptions, uncertainty, and timestamps.
+## 4. CI / delivery evidence
 
-## 4. Active Invariants
+- Historical CI passes: 36465030525, 36465293562, 36466109302, 36466585295, 36467158338, 36467509814, 36467794054, 36468117863, 36475726706.
+- Pages environment custom policy allows **main only**; PR #1 is ready for merge.
+- Production preview on port 4173 binds 0.0.0.0 and serves the complete simulator build.
 
-### INV-001 — Three.js remains render authority
-- **State:** requested
-- **Rule:** Three.js owns globe, scene, camera, visual effects, and geospatial presentation.
-- **Status:** active
+## 5. Security audit
 
-### INV-002 — Scientific honesty over false precision
-- **State:** requested
-- **Rule:** Provenance, fidelity, uncertainty, and timestamps remain visible and machine-readable.
-- **Status:** active
-
-### INV-003 — Global detail is streamed and level-of-detail controlled
-- **State:** requested
-- **Rule:** Worldwide high-resolution data is streamed by region/LOD and aggressively cached/evicted.
-- **Status:** active
-
-### INV-004 — Minimum forty disaster types
-- **State:** requested
-- **Rule:** At least 40 distinct scenario types must be runnable through the common engine.
-- **Status:** active
-
-### INV-005 — Web and wrapper share one core
-- **State:** requested
-- **Rule:** Pages and native wrapper consume one web core.
-- **Status:** active
-
-### INV-006 — No offensive optimization surface
-- **State:** requested
-- **Rule:** Consequence visualization is allowed; target/impact optimization for maximizing harm is not.
-- **Status:** active
-
-## 5. Verified Working Behavior
-
-<!-- operational-state:entry
-{"id":"VER-001","title":"Strict TypeScript baseline passes CI","state":"verified","capability":"Repository TypeScript source passes tsc --noEmit on the current baseline.","scope":"Current Phase 0/1 source","verification_method":"GitHub Actions CI npm run typecheck","evidence":"CI run 36447608037, conclusion success","artifact_revision":"8d5c1d6a90218927b384bb06761325c8c7418512","last_verified":"2026-09-28T15:58:50Z","dependencies":["package.json","tsconfig.json","vite.config.ts"],"freshness":"current baseline","recheck_trigger":"TypeScript/config/source change"}
--->
-### VER-001 — Strict TypeScript baseline passes CI
-- **State:** verified
-- **Evidence:** GitHub Actions CI run 36447608037.
-<!-- /operational-state:entry -->
-
-<!-- operational-state:entry
-{"id":"VER-002","title":"WGS84 coordinate fixtures pass","state":"verified","capability":"Current geodetic-to-ECEF and ECEF-to-geodetic implementation passes three representative unit fixtures including equator, representative location, and north pole.","scope":"src/core/coordinates.ts","verification_method":"Vitest","evidence":"3/3 tests passed in CI run 36447608037","artifact_revision":"8d5c1d6a90218927b384bb06761325c8c7418512","last_verified":"2026-09-28T15:58:50Z","dependencies":["src/core/coordinates.ts","tests/coordinates.test.ts"],"freshness":"current baseline","recheck_trigger":"Coordinate math or tests change"}
--->
-### VER-002 — WGS84 coordinate fixtures pass
-- **State:** verified
-- **Evidence:** 3/3 Vitest checks passed.
-<!-- /operational-state:entry -->
-
-<!-- operational-state:entry
-{"id":"VER-003","title":"Production bundle builds for repository Pages base","state":"verified","capability":"Vite can produce the current static production bundle with /Doom_Map/ as build base.","scope":"Current Phase 0/1 web source","verification_method":"npm run build in GitHub Actions","evidence":"Pages build job reached successful production build before Pages configuration gate; CI also passed production build","artifact_revision":"8d5c1d6a90218927b384bb06761325c8c7418512","last_verified":"2026-09-28T15:59:00Z","dependencies":["vite.config.ts","src","index.html"],"freshness":"current baseline","recheck_trigger":"Build config, dependencies, routes, or entrypoints change"}
--->
-### VER-003 — Production bundle builds for repository Pages base
-- **State:** verified
-- **Evidence:** Production build completed successfully in CI and Pages build job.
-<!-- /operational-state:entry -->
-
-<!-- operational-state:entry
-{"id":"VER-004","title":"GitHub Pages public deployment is live","state":"verified","capability":"GitHub Pages is enabled with workflow build mode and the production site is publicly reachable.","scope":"Public web deployment","verification_method":"GitHub Pages API, successful Deploy GitHub Pages run 36448035612, and live HTTP probe","evidence":"Pages build and deploy jobs succeeded; https://westkitty.github.io/Doom_Map/ returned HTTP/2 200 with <title>Doom Map</title>.","artifact_revision":"9bdfb9e1aaeec6d0199140fc5a8127cd7270070d","last_verified":"2026-09-28T17:33:28Z","dependencies":[".github/workflows/deploy-pages.yml","vite.config.ts","dist artifact"],"freshness":"current deployment","recheck_trigger":"Pages settings, workflow, build base, or deployment changes"}
--->
-### VER-004 — GitHub Pages public deployment is live
-- **State:** verified
-- **Evidence:** Deployment run 36448035612 succeeded and the live site returned HTTP 200 with the expected title.
-<!-- /operational-state:entry -->
-
-## 6. Known Not Working
-
-None currently recorded.
-
-## 7. Implemented but Unverified
-
-<!-- operational-state:entry
-{"id":"UNV-001","title":"Interactive Three.js globe foundation","state":"implemented-unverified","scope":"index.html, src/main.ts, src/globe/GlobeApp.ts, src/style.css","evidence":"Source exists and production build passes; no rendered browser observation yet.","validation_method":"Open production build in real browser; verify globe renders, orbit/pan/zoom respond, telemetry updates, resize works, and console stays clean.","status":"active"}
--->
-### UNV-001 — Interactive Three.js globe foundation
-- **State:** implemented-unverified
-- **Missing proof:** Real-browser render and interaction observation.
-<!-- /operational-state:entry -->
-
-## 8. Unknown or Evidence-Stale State
-
-### UNK-001 — World_Set reference repository unavailable
-- **State:** unknown
-- **Evidence:** The named GitHub path could not be read during the planning pass.
-
-### UNK-002 — Representative device performance
-- **State:** unknown
-- **Evidence:** No physical desktop/tablet/mobile runtime profiling has been performed.
-
-## 9. Pending Work
-
-### PND-001 — Complete Phase 1 globe runtime verification
-- **State:** pending
-- **Priority:** critical
-- **Need:** Browser smoke, visual observation, context-loss/resize verification, and later floating-origin/local-detail work.
-
-### PND-002 — Implement geospatial streaming and data-provider layer
-- **State:** pending
-- **Priority:** critical
-
-### PND-003 — Implement disaster and consequence engines
-- **State:** pending
-- **Priority:** critical
-
-### PND-004 — Implement and validate native wrapper
-- **State:** pending
-- **Priority:** high
-
-### PND-005 — Generate and commit package lockfile
-- **State:** pending
-- **Priority:** critical for Phase 0 exit
-- **Reason:** Current CI deliberately uses npm install because no locally generated package-lock.json exists yet. Switch CI/Pages to `npm ci` only after a real lockfile is generated and validated.
-
-## 10. Active Decisions, Defaults, and Prohibitions
-
-- Default renderer: Three.js WebGLRenderer.
-- Coordinate authority: WGS84 geodetic + ECEF + ENU, with floating-origin/local rendering as implementation expands.
-- Open building baseline: Overture Maps / OpenStreetMap-derived geometry where practical; optional provider adapters may supply higher-fidelity 3D Tiles.
-- Static-delivery design: no required custom application server for core playback.
-- Native wrapper default: Tauri 2.
-- Nuclear models are educational consequence models, not strike-planning systems.
-- Do not treat map coverage, building footprints, or 3D extrusion as proof of structural accuracy.
-- Current 539 kB initial JS chunk is acceptable only as a bootstrap. Introduce code splitting as geospatial/hazard modules arrive instead of allowing one monolith to grow.
-
-## 11. Validation and Evidence Matrix
-
-| ID | Claim | State | Evidence / required proof |
-|---|---|---|---|
-| VER-001 | TypeScript baseline | verified | CI 36447608037 |
-| VER-002 | WGS84 fixtures | verified | 3/3 Vitest in CI |
-| VER-003 | Production build | verified | CI + Pages build before configure gate |
-| UNV-001 | Interactive globe behavior | implemented-unverified | needs real-browser smoke |
-| VER-004 | Public Pages delivery | verified | Pages workflow run 36448035612 + live HTTP 200 probe |
-| INV-004 | >=40 hazards | requested | catalog exists; runtime not built |
-| INV-005 | Wrapper shares web core | requested | wrapper not built |
-
-## 12. Current Change Scope and Impact Radius
-
-Phase 0 plus the earliest Phase 1 foundation now exists. The immediate implementation scope remains: generate/validate the lockfile and reproducible `npm ci` path, add browser acceptance coverage, then finish the remaining Phase 1 globe foundation. Documentation-only Pages state reconciliation is complete. Do not jump directly to hazard implementations before the globe/data/time foundations exist.
-
-## 13. Compact Revision Log
-
-- r1 — 2026-09-28: Bootstrapped project state and invariants.
-- r2 — 2026-09-28: Recorded Phase 0/1 source baseline, successful CI typecheck/tests/build, initial bundle warning, unverified globe runtime, and the Pages-enablement delivery blocker.
-- r3 — 2026-09-28: Verified Pages enabled in workflow mode, reran deployment successfully, and confirmed the public Doom Map URL returns HTTP 200.
-- r4 — 2026-09-28: Reconciled stale deployment/traceability/README state with the verified live Pages deployment; browser interaction proof and deterministic-install work remain pending.
+- `npm audit --omit=dev`: **0 findings** (production runtime clean).
+- Full audit: 2 moderate dev findings in Vitest/@vitest/mocker documented.

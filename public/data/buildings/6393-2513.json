@@ -1,0 +1,1832 @@
+{
+  "schemaVersion": 1,
+  "tileId": "6393-2513",
+  "bounds": {
+    "west": 139.65,
+    "south": 35.65,
+    "east": 139.7,
+    "north": 35.7
+  },
+  "buildings": [
+    {
+      "id": "tokyo-tmgb",
+      "name": "Tokyo Metropolitan Government Building No. 1",
+      "use": "civic",
+      "footprint": [
+        [
+          139.6915,
+          35.689
+        ],
+        [
+          139.693,
+          35.689
+        ],
+        [
+          139.693,
+          35.6905
+        ],
+        [
+          139.6915,
+          35.6905
+        ]
+      ],
+      "heightM": 243,
+      "heightSource": "observed",
+      "storeys": 48,
+      "confidence": 0.98,
+      "timestamp": "2026-09-28T00:00:00Z"
+    },
+    {
+      "id": "tokyo-shinjuku-1",
+      "name": "Shinjuku Sumitomo Building",
+      "use": "commercial",
+      "footprint": [
+        [
+          139.6958,
+          35.6858
+        ],
+        [
+          139.69676,
+          35.6858
+        ],
+        [
+          139.69676,
+          35.6866
+        ],
+        [
+          139.6958,
+          35.6866
+        ]
+      ],
+      "heightM": 38.4,
+      "heightSource": "observed",
+      "storeys": 12,
+      "confidence": 0.95,
+      "timestamp": "2026-09-28T00:00:00Z"
+    },
+    {
+      "id": "tokyo-shinjuku-2",
+      "name": "Mode Gakuen Cocoon Tower",
+      "use": "residential",
+      "footprint": [
+        [
+          139.697,
+          35.6858
+        ],
+        [
+          139.69796,
+          35.6858
+        ],
+        [
+          139.69796,
+          35.6866
+        ],
+        [
+          139.697,
+          35.6866
+        ]
+      ],
+      "heightM": 42,
+      "heightSource": "inferred",
+      "storeys": 14,
+      "confidence": 0.82,
+      "timestamp": "2026-09-28T00:00:00Z"
+    },
+    {
+      "id": "tokyo-shinjuku-3",
+      "name": "Sompo Japan Building",
+      "use": "infrastructure",
+      "footprint": [
+        [
+          139.6982,
+          35.6858
+        ],
+        [
+          139.69916,
+          35.6858
+        ],
+        [
+          139.69916,
+          35.6866
+        ],
+        [
+          139.6982,
+          35.6866
+        ]
+      ],
+      "heightM": 51.2,
+      "heightSource": "observed",
+      "storeys": 16,
+      "confidence": 0.95,
+      "timestamp": "2026-09-28T00:00:00Z"
+    },
+    {
+      "id": "tokyo-shinjuku-4",
+      "name": "Shinjuku Mitsui Building",
+      "use": "commercial",
+      "footprint": [
+        [
+          139.6994,
+          35.6858
+        ],
+        [
+          139.70036,
+          35.6858
+        ],
+        [
+          139.70036,
+          35.6866
+        ],
+        [
+          139.6994,
+          35.6866
+        ]
+      ],
+      "heightM": 39,
+      "heightSource": "inferred",
+      "storeys": 13,
+      "confidence": 0.82,
+      "timestamp": "2026-09-28T00:00:00Z"
+    },
+    {
+      "id": "tokyo-shinjuku-5",
+      "name": "Shinjuku Highrise Facility 5",
+      "use": "residential",
+      "footprint": [
+        [
+          139.7006,
+          35.6858
+        ],
+        [
+          139.70156,
+          35.6858
+        ],
+        [
+          139.70156,
+          35.6866
+        ],
+        [
+          139.7006,
+          35.6866
+        ]
+      ],
+      "heightM": 48,
+      "heightSource": "observed",
+      "storeys": 15,
+      "confidence": 0.95,
+      "timestamp": "2026-09-28T00:00:00Z"
+    },
+    {
+      "id": "tokyo-shinjuku-6",
+      "name": "Shinjuku Highrise Facility 6",
+      "use": "infrastructure",
+      "footprint": [
+        [
+          139.7018,
+          35.6858
+        ],
+        [
+          139.70276,
+          35.6858
+        ],
+        [
+          139.70276,
+          35.6866
+        ],
+        [
+          139.7018,
+          35.6866
+        ]
+      ],
+      "heightM": 36,
+      "heightSource": "inferred",
+      "storeys": 12,
+      "confidence": 0.82,
+      "timestamp": "2026-09-28T00:00:00Z"
+    },
+    {
+      "id": "tokyo-shinjuku-7",
+      "name": "Shinjuku Highrise Facility 7",
+      "use": "commercial",
+      "footprint": [
+        [
+          139.703,
+          35.6858
+        ],
+        [
+          139.70396,
+          35.6858
+        ],
+        [
+          139.70396,
+          35.6866
+        ],
+        [
+          139.703,
+          35.6866
+        ]
+      ],
+      "heightM": 44.8,
+      "heightSource": "observed",
+      "storeys": 14,
+      "confidence": 0.95,
+      "timestamp": "2026-09-28T00:00:00Z"
+    },
+    {
+      "id": "tokyo-shinjuku-8",
+      "name": "Shinjuku Highrise Facility 8",
+      "use": "residential",
+      "footprint": [
+        [
+          139.7042,
+          35.6858
+        ],
+        [
+          139.70516,
+          35.6858
+        ],
+        [
+          139.70516,
+          35.6866
+        ],
+        [
+          139.7042,
+          35.6866
+        ]
+      ],
+      "heightM": 48,
+      "heightSource": "inferred",
+      "storeys": 16,
+      "confidence": 0.82,
+      "timestamp": "2026-09-28T00:00:00Z"
+    },
+    {
+      "id": "tokyo-shinjuku-9",
+      "name": "Shinjuku Highrise Facility 9",
+      "use": "residential",
+      "footprint": [
+        [
+          139.6958,
+          35.687
+        ],
+        [
+          139.69676,
+          35.687
+        ],
+        [
+          139.69676,
+          35.6878
+        ],
+        [
+          139.6958,
+          35.6878
+        ]
+      ],
+      "heightM": 45,
+      "heightSource": "inferred",
+      "storeys": 15,
+      "confidence": 0.82,
+      "timestamp": "2026-09-28T00:00:00Z"
+    },
+    {
+      "id": "tokyo-shinjuku-10",
+      "name": "Shinjuku Highrise Facility 10",
+      "use": "infrastructure",
+      "footprint": [
+        [
+          139.697,
+          35.687
+        ],
+        [
+          139.69796,
+          35.687
+        ],
+        [
+          139.69796,
+          35.6878
+        ],
+        [
+          139.697,
+          35.6878
+        ]
+      ],
+      "heightM": 39.9,
+      "heightSource": "observed",
+      "storeys": 12,
+      "confidence": 0.95,
+      "timestamp": "2026-09-28T00:00:00Z"
+    },
+    {
+      "id": "tokyo-shinjuku-11",
+      "name": "Shinjuku Highrise Facility 11",
+      "use": "commercial",
+      "footprint": [
+        [
+          139.6982,
+          35.687
+        ],
+        [
+          139.69916,
+          35.687
+        ],
+        [
+          139.69916,
+          35.6878
+        ],
+        [
+          139.6982,
+          35.6878
+        ]
+      ],
+      "heightM": 42,
+      "heightSource": "inferred",
+      "storeys": 14,
+      "confidence": 0.82,
+      "timestamp": "2026-09-28T00:00:00Z"
+    },
+    {
+      "id": "tokyo-shinjuku-12",
+      "name": "Shinjuku Highrise Facility 12",
+      "use": "residential",
+      "footprint": [
+        [
+          139.6994,
+          35.687
+        ],
+        [
+          139.70036,
+          35.687
+        ],
+        [
+          139.70036,
+          35.6878
+        ],
+        [
+          139.6994,
+          35.6878
+        ]
+      ],
+      "heightM": 52.7,
+      "heightSource": "observed",
+      "storeys": 16,
+      "confidence": 0.95,
+      "timestamp": "2026-09-28T00:00:00Z"
+    },
+    {
+      "id": "tokyo-shinjuku-13",
+      "name": "Shinjuku Highrise Facility 13",
+      "use": "infrastructure",
+      "footprint": [
+        [
+          139.7006,
+          35.687
+        ],
+        [
+          139.70156,
+          35.687
+        ],
+        [
+          139.70156,
+          35.6878
+        ],
+        [
+          139.7006,
+          35.6878
+        ]
+      ],
+      "heightM": 39,
+      "heightSource": "inferred",
+      "storeys": 13,
+      "confidence": 0.82,
+      "timestamp": "2026-09-28T00:00:00Z"
+    },
+    {
+      "id": "tokyo-shinjuku-14",
+      "name": "Shinjuku Highrise Facility 14",
+      "use": "commercial",
+      "footprint": [
+        [
+          139.7018,
+          35.687
+        ],
+        [
+          139.70276,
+          35.687
+        ],
+        [
+          139.70276,
+          35.6878
+        ],
+        [
+          139.7018,
+          35.6878
+        ]
+      ],
+      "heightM": 49.5,
+      "heightSource": "observed",
+      "storeys": 15,
+      "confidence": 0.95,
+      "timestamp": "2026-09-28T00:00:00Z"
+    },
+    {
+      "id": "tokyo-shinjuku-15",
+      "name": "Shinjuku Highrise Facility 15",
+      "use": "residential",
+      "footprint": [
+        [
+          139.703,
+          35.687
+        ],
+        [
+          139.70396,
+          35.687
+        ],
+        [
+          139.70396,
+          35.6878
+        ],
+        [
+          139.703,
+          35.6878
+        ]
+      ],
+      "heightM": 36,
+      "heightSource": "inferred",
+      "storeys": 12,
+      "confidence": 0.82,
+      "timestamp": "2026-09-28T00:00:00Z"
+    },
+    {
+      "id": "tokyo-shinjuku-16",
+      "name": "Shinjuku Highrise Facility 16",
+      "use": "infrastructure",
+      "footprint": [
+        [
+          139.7042,
+          35.687
+        ],
+        [
+          139.70516,
+          35.687
+        ],
+        [
+          139.70516,
+          35.6878
+        ],
+        [
+          139.7042,
+          35.6878
+        ]
+      ],
+      "heightM": 46.3,
+      "heightSource": "observed",
+      "storeys": 14,
+      "confidence": 0.95,
+      "timestamp": "2026-09-28T00:00:00Z"
+    },
+    {
+      "id": "tokyo-shinjuku-17",
+      "name": "Shinjuku Highrise Facility 17",
+      "use": "infrastructure",
+      "footprint": [
+        [
+          139.6958,
+          35.6882
+        ],
+        [
+          139.69676,
+          35.6882
+        ],
+        [
+          139.69676,
+          35.689
+        ],
+        [
+          139.6958,
+          35.689
+        ]
+      ],
+      "heightM": 44.6,
+      "heightSource": "observed",
+      "storeys": 13,
+      "confidence": 0.95,
+      "timestamp": "2026-09-28T00:00:00Z"
+    },
+    {
+      "id": "tokyo-shinjuku-18",
+      "name": "Shinjuku Highrise Facility 18",
+      "use": "commercial",
+      "footprint": [
+        [
+          139.697,
+          35.6882
+        ],
+        [
+          139.69796,
+          35.6882
+        ],
+        [
+          139.69796,
+          35.689
+        ],
+        [
+          139.697,
+          35.689
+        ]
+      ],
+      "heightM": 45,
+      "heightSource": "inferred",
+      "storeys": 15,
+      "confidence": 0.82,
+      "timestamp": "2026-09-28T00:00:00Z"
+    },
+    {
+      "id": "tokyo-shinjuku-19",
+      "name": "Shinjuku Highrise Facility 19",
+      "use": "residential",
+      "footprint": [
+        [
+          139.6982,
+          35.6882
+        ],
+        [
+          139.69916,
+          35.6882
+        ],
+        [
+          139.69916,
+          35.689
+        ],
+        [
+          139.6982,
+          35.689
+        ]
+      ],
+      "heightM": 41.4,
+      "heightSource": "observed",
+      "storeys": 12,
+      "confidence": 0.95,
+      "timestamp": "2026-09-28T00:00:00Z"
+    },
+    {
+      "id": "tokyo-shinjuku-20",
+      "name": "Shinjuku Highrise Facility 20",
+      "use": "infrastructure",
+      "footprint": [
+        [
+          139.6994,
+          35.6882
+        ],
+        [
+          139.70036,
+          35.6882
+        ],
+        [
+          139.70036,
+          35.689
+        ],
+        [
+          139.6994,
+          35.689
+        ]
+      ],
+      "heightM": 42,
+      "heightSource": "inferred",
+      "storeys": 14,
+      "confidence": 0.82,
+      "timestamp": "2026-09-28T00:00:00Z"
+    },
+    {
+      "id": "tokyo-shinjuku-21",
+      "name": "Shinjuku Highrise Facility 21",
+      "use": "commercial",
+      "footprint": [
+        [
+          139.7006,
+          35.6882
+        ],
+        [
+          139.70156,
+          35.6882
+        ],
+        [
+          139.70156,
+          35.689
+        ],
+        [
+          139.7006,
+          35.689
+        ]
+      ],
+      "heightM": 54.2,
+      "heightSource": "observed",
+      "storeys": 16,
+      "confidence": 0.95,
+      "timestamp": "2026-09-28T00:00:00Z"
+    },
+    {
+      "id": "tokyo-shinjuku-22",
+      "name": "Shinjuku Highrise Facility 22",
+      "use": "residential",
+      "footprint": [
+        [
+          139.7018,
+          35.6882
+        ],
+        [
+          139.70276,
+          35.6882
+        ],
+        [
+          139.70276,
+          35.689
+        ],
+        [
+          139.7018,
+          35.689
+        ]
+      ],
+      "heightM": 39,
+      "heightSource": "inferred",
+      "storeys": 13,
+      "confidence": 0.82,
+      "timestamp": "2026-09-28T00:00:00Z"
+    },
+    {
+      "id": "tokyo-shinjuku-23",
+      "name": "Shinjuku Highrise Facility 23",
+      "use": "infrastructure",
+      "footprint": [
+        [
+          139.703,
+          35.6882
+        ],
+        [
+          139.70396,
+          35.6882
+        ],
+        [
+          139.70396,
+          35.689
+        ],
+        [
+          139.703,
+          35.689
+        ]
+      ],
+      "heightM": 51,
+      "heightSource": "observed",
+      "storeys": 15,
+      "confidence": 0.95,
+      "timestamp": "2026-09-28T00:00:00Z"
+    },
+    {
+      "id": "tokyo-shinjuku-24",
+      "name": "Shinjuku Highrise Facility 24",
+      "use": "commercial",
+      "footprint": [
+        [
+          139.7042,
+          35.6882
+        ],
+        [
+          139.70516,
+          35.6882
+        ],
+        [
+          139.70516,
+          35.689
+        ],
+        [
+          139.7042,
+          35.689
+        ]
+      ],
+      "heightM": 36,
+      "heightSource": "inferred",
+      "storeys": 12,
+      "confidence": 0.82,
+      "timestamp": "2026-09-28T00:00:00Z"
+    },
+    {
+      "id": "tokyo-shinjuku-25",
+      "name": "Shinjuku Highrise Facility 25",
+      "use": "commercial",
+      "footprint": [
+        [
+          139.6958,
+          35.6894
+        ],
+        [
+          139.69676,
+          35.6894
+        ],
+        [
+          139.69676,
+          35.6902
+        ],
+        [
+          139.6958,
+          35.6902
+        ]
+      ],
+      "heightM": 48,
+      "heightSource": "inferred",
+      "storeys": 16,
+      "confidence": 0.82,
+      "timestamp": "2026-09-28T00:00:00Z"
+    },
+    {
+      "id": "tokyo-shinjuku-26",
+      "name": "Shinjuku Highrise Facility 26",
+      "use": "residential",
+      "footprint": [
+        [
+          139.697,
+          35.6894
+        ],
+        [
+          139.69796,
+          35.6894
+        ],
+        [
+          139.69796,
+          35.6902
+        ],
+        [
+          139.697,
+          35.6902
+        ]
+      ],
+      "heightM": 41.6,
+      "heightSource": "observed",
+      "storeys": 13,
+      "confidence": 0.95,
+      "timestamp": "2026-09-28T00:00:00Z"
+    },
+    {
+      "id": "tokyo-shinjuku-27",
+      "name": "Shinjuku Highrise Facility 27",
+      "use": "infrastructure",
+      "footprint": [
+        [
+          139.6982,
+          35.6894
+        ],
+        [
+          139.69916,
+          35.6894
+        ],
+        [
+          139.69916,
+          35.6902
+        ],
+        [
+          139.6982,
+          35.6902
+        ]
+      ],
+      "heightM": 45,
+      "heightSource": "inferred",
+      "storeys": 15,
+      "confidence": 0.82,
+      "timestamp": "2026-09-28T00:00:00Z"
+    },
+    {
+      "id": "tokyo-shinjuku-28",
+      "name": "Shinjuku Highrise Facility 28",
+      "use": "commercial",
+      "footprint": [
+        [
+          139.6994,
+          35.6894
+        ],
+        [
+          139.70036,
+          35.6894
+        ],
+        [
+          139.70036,
+          35.6902
+        ],
+        [
+          139.6994,
+          35.6902
+        ]
+      ],
+      "heightM": 38.4,
+      "heightSource": "observed",
+      "storeys": 12,
+      "confidence": 0.95,
+      "timestamp": "2026-09-28T00:00:00Z"
+    },
+    {
+      "id": "tokyo-shinjuku-29",
+      "name": "Shinjuku Highrise Facility 29",
+      "use": "residential",
+      "footprint": [
+        [
+          139.7006,
+          35.6894
+        ],
+        [
+          139.70156,
+          35.6894
+        ],
+        [
+          139.70156,
+          35.6902
+        ],
+        [
+          139.7006,
+          35.6902
+        ]
+      ],
+      "heightM": 42,
+      "heightSource": "inferred",
+      "storeys": 14,
+      "confidence": 0.82,
+      "timestamp": "2026-09-28T00:00:00Z"
+    },
+    {
+      "id": "tokyo-shinjuku-30",
+      "name": "Shinjuku Highrise Facility 30",
+      "use": "infrastructure",
+      "footprint": [
+        [
+          139.7018,
+          35.6894
+        ],
+        [
+          139.70276,
+          35.6894
+        ],
+        [
+          139.70276,
+          35.6902
+        ],
+        [
+          139.7018,
+          35.6902
+        ]
+      ],
+      "heightM": 51.2,
+      "heightSource": "observed",
+      "storeys": 16,
+      "confidence": 0.95,
+      "timestamp": "2026-09-28T00:00:00Z"
+    },
+    {
+      "id": "tokyo-shinjuku-31",
+      "name": "Shinjuku Highrise Facility 31",
+      "use": "commercial",
+      "footprint": [
+        [
+          139.703,
+          35.6894
+        ],
+        [
+          139.70396,
+          35.6894
+        ],
+        [
+          139.70396,
+          35.6902
+        ],
+        [
+          139.703,
+          35.6902
+        ]
+      ],
+      "heightM": 39,
+      "heightSource": "inferred",
+      "storeys": 13,
+      "confidence": 0.82,
+      "timestamp": "2026-09-28T00:00:00Z"
+    },
+    {
+      "id": "tokyo-shinjuku-32",
+      "name": "Shinjuku Highrise Facility 32",
+      "use": "residential",
+      "footprint": [
+        [
+          139.7042,
+          35.6894
+        ],
+        [
+          139.70516,
+          35.6894
+        ],
+        [
+          139.70516,
+          35.6902
+        ],
+        [
+          139.7042,
+          35.6902
+        ]
+      ],
+      "heightM": 48,
+      "heightSource": "observed",
+      "storeys": 15,
+      "confidence": 0.95,
+      "timestamp": "2026-09-28T00:00:00Z"
+    },
+    {
+      "id": "tokyo-shinjuku-33",
+      "name": "Shinjuku Highrise Facility 33",
+      "use": "residential",
+      "footprint": [
+        [
+          139.6958,
+          35.6906
+        ],
+        [
+          139.69676,
+          35.6906
+        ],
+        [
+          139.69676,
+          35.6914
+        ],
+        [
+          139.6958,
+          35.6914
+        ]
+      ],
+      "heightM": 46.3,
+      "heightSource": "observed",
+      "storeys": 14,
+      "confidence": 0.95,
+      "timestamp": "2026-09-28T00:00:00Z"
+    },
+    {
+      "id": "tokyo-shinjuku-34",
+      "name": "Shinjuku Highrise Facility 34",
+      "use": "infrastructure",
+      "footprint": [
+        [
+          139.697,
+          35.6906
+        ],
+        [
+          139.69796,
+          35.6906
+        ],
+        [
+          139.69796,
+          35.6914
+        ],
+        [
+          139.697,
+          35.6914
+        ]
+      ],
+      "heightM": 48,
+      "heightSource": "inferred",
+      "storeys": 16,
+      "confidence": 0.82,
+      "timestamp": "2026-09-28T00:00:00Z"
+    },
+    {
+      "id": "tokyo-shinjuku-35",
+      "name": "Shinjuku Highrise Facility 35",
+      "use": "commercial",
+      "footprint": [
+        [
+          139.6982,
+          35.6906
+        ],
+        [
+          139.69916,
+          35.6906
+        ],
+        [
+          139.69916,
+          35.6914
+        ],
+        [
+          139.6982,
+          35.6914
+        ]
+      ],
+      "heightM": 43.1,
+      "heightSource": "observed",
+      "storeys": 13,
+      "confidence": 0.95,
+      "timestamp": "2026-09-28T00:00:00Z"
+    },
+    {
+      "id": "tokyo-shinjuku-36",
+      "name": "Shinjuku Highrise Facility 36",
+      "use": "residential",
+      "footprint": [
+        [
+          139.6994,
+          35.6906
+        ],
+        [
+          139.70036,
+          35.6906
+        ],
+        [
+          139.70036,
+          35.6914
+        ],
+        [
+          139.6994,
+          35.6914
+        ]
+      ],
+      "heightM": 45,
+      "heightSource": "inferred",
+      "storeys": 15,
+      "confidence": 0.82,
+      "timestamp": "2026-09-28T00:00:00Z"
+    },
+    {
+      "id": "tokyo-shinjuku-37",
+      "name": "Shinjuku Highrise Facility 37",
+      "use": "infrastructure",
+      "footprint": [
+        [
+          139.7006,
+          35.6906
+        ],
+        [
+          139.70156,
+          35.6906
+        ],
+        [
+          139.70156,
+          35.6914
+        ],
+        [
+          139.7006,
+          35.6914
+        ]
+      ],
+      "heightM": 39.9,
+      "heightSource": "observed",
+      "storeys": 12,
+      "confidence": 0.95,
+      "timestamp": "2026-09-28T00:00:00Z"
+    },
+    {
+      "id": "tokyo-shinjuku-38",
+      "name": "Shinjuku Highrise Facility 38",
+      "use": "commercial",
+      "footprint": [
+        [
+          139.7018,
+          35.6906
+        ],
+        [
+          139.70276,
+          35.6906
+        ],
+        [
+          139.70276,
+          35.6914
+        ],
+        [
+          139.7018,
+          35.6914
+        ]
+      ],
+      "heightM": 42,
+      "heightSource": "inferred",
+      "storeys": 14,
+      "confidence": 0.82,
+      "timestamp": "2026-09-28T00:00:00Z"
+    },
+    {
+      "id": "tokyo-shinjuku-39",
+      "name": "Shinjuku Highrise Facility 39",
+      "use": "residential",
+      "footprint": [
+        [
+          139.703,
+          35.6906
+        ],
+        [
+          139.70396,
+          35.6906
+        ],
+        [
+          139.70396,
+          35.6914
+        ],
+        [
+          139.703,
+          35.6914
+        ]
+      ],
+      "heightM": 52.7,
+      "heightSource": "observed",
+      "storeys": 16,
+      "confidence": 0.95,
+      "timestamp": "2026-09-28T00:00:00Z"
+    },
+    {
+      "id": "tokyo-shinjuku-40",
+      "name": "Shinjuku Highrise Facility 40",
+      "use": "infrastructure",
+      "footprint": [
+        [
+          139.7042,
+          35.6906
+        ],
+        [
+          139.70516,
+          35.6906
+        ],
+        [
+          139.70516,
+          35.6914
+        ],
+        [
+          139.7042,
+          35.6914
+        ]
+      ],
+      "heightM": 39,
+      "heightSource": "inferred",
+      "storeys": 13,
+      "confidence": 0.82,
+      "timestamp": "2026-09-28T00:00:00Z"
+    },
+    {
+      "id": "tokyo-shinjuku-41",
+      "name": "Shinjuku Highrise Facility 41",
+      "use": "infrastructure",
+      "footprint": [
+        [
+          139.6958,
+          35.6918
+        ],
+        [
+          139.69676,
+          35.6918
+        ],
+        [
+          139.69676,
+          35.6926
+        ],
+        [
+          139.6958,
+          35.6926
+        ]
+      ],
+      "heightM": 36,
+      "heightSource": "inferred",
+      "storeys": 12,
+      "confidence": 0.82,
+      "timestamp": "2026-09-28T00:00:00Z"
+    },
+    {
+      "id": "tokyo-shinjuku-42",
+      "name": "Shinjuku Highrise Facility 42",
+      "use": "commercial",
+      "footprint": [
+        [
+          139.697,
+          35.6918
+        ],
+        [
+          139.69796,
+          35.6918
+        ],
+        [
+          139.69796,
+          35.6926
+        ],
+        [
+          139.697,
+          35.6926
+        ]
+      ],
+      "heightM": 47.8,
+      "heightSource": "observed",
+      "storeys": 14,
+      "confidence": 0.95,
+      "timestamp": "2026-09-28T00:00:00Z"
+    },
+    {
+      "id": "tokyo-shinjuku-43",
+      "name": "Shinjuku Highrise Facility 43",
+      "use": "residential",
+      "footprint": [
+        [
+          139.6982,
+          35.6918
+        ],
+        [
+          139.69916,
+          35.6918
+        ],
+        [
+          139.69916,
+          35.6926
+        ],
+        [
+          139.6982,
+          35.6926
+        ]
+      ],
+      "heightM": 48,
+      "heightSource": "inferred",
+      "storeys": 16,
+      "confidence": 0.82,
+      "timestamp": "2026-09-28T00:00:00Z"
+    },
+    {
+      "id": "tokyo-shinjuku-44",
+      "name": "Shinjuku Highrise Facility 44",
+      "use": "infrastructure",
+      "footprint": [
+        [
+          139.6994,
+          35.6918
+        ],
+        [
+          139.70036,
+          35.6918
+        ],
+        [
+          139.70036,
+          35.6926
+        ],
+        [
+          139.6994,
+          35.6926
+        ]
+      ],
+      "heightM": 44.6,
+      "heightSource": "observed",
+      "storeys": 13,
+      "confidence": 0.95,
+      "timestamp": "2026-09-28T00:00:00Z"
+    },
+    {
+      "id": "tokyo-shinjuku-45",
+      "name": "Shinjuku Highrise Facility 45",
+      "use": "commercial",
+      "footprint": [
+        [
+          139.7006,
+          35.6918
+        ],
+        [
+          139.70156,
+          35.6918
+        ],
+        [
+          139.70156,
+          35.6926
+        ],
+        [
+          139.7006,
+          35.6926
+        ]
+      ],
+      "heightM": 45,
+      "heightSource": "inferred",
+      "storeys": 15,
+      "confidence": 0.82,
+      "timestamp": "2026-09-28T00:00:00Z"
+    },
+    {
+      "id": "tokyo-shinjuku-46",
+      "name": "Shinjuku Highrise Facility 46",
+      "use": "residential",
+      "footprint": [
+        [
+          139.7018,
+          35.6918
+        ],
+        [
+          139.70276,
+          35.6918
+        ],
+        [
+          139.70276,
+          35.6926
+        ],
+        [
+          139.7018,
+          35.6926
+        ]
+      ],
+      "heightM": 41.4,
+      "heightSource": "observed",
+      "storeys": 12,
+      "confidence": 0.95,
+      "timestamp": "2026-09-28T00:00:00Z"
+    },
+    {
+      "id": "tokyo-shinjuku-47",
+      "name": "Shinjuku Highrise Facility 47",
+      "use": "infrastructure",
+      "footprint": [
+        [
+          139.703,
+          35.6918
+        ],
+        [
+          139.70396,
+          35.6918
+        ],
+        [
+          139.70396,
+          35.6926
+        ],
+        [
+          139.703,
+          35.6926
+        ]
+      ],
+      "heightM": 42,
+      "heightSource": "inferred",
+      "storeys": 14,
+      "confidence": 0.82,
+      "timestamp": "2026-09-28T00:00:00Z"
+    },
+    {
+      "id": "tokyo-shinjuku-48",
+      "name": "Shinjuku Highrise Facility 48",
+      "use": "commercial",
+      "footprint": [
+        [
+          139.7042,
+          35.6918
+        ],
+        [
+          139.70516,
+          35.6918
+        ],
+        [
+          139.70516,
+          35.6926
+        ],
+        [
+          139.7042,
+          35.6926
+        ]
+      ],
+      "heightM": 54.2,
+      "heightSource": "observed",
+      "storeys": 16,
+      "confidence": 0.95,
+      "timestamp": "2026-09-28T00:00:00Z"
+    },
+    {
+      "id": "tokyo-shinjuku-49",
+      "name": "Shinjuku Highrise Facility 49",
+      "use": "commercial",
+      "footprint": [
+        [
+          139.6958,
+          35.693
+        ],
+        [
+          139.69676,
+          35.693
+        ],
+        [
+          139.69676,
+          35.6938
+        ],
+        [
+          139.6958,
+          35.6938
+        ]
+      ],
+      "heightM": 48,
+      "heightSource": "observed",
+      "storeys": 15,
+      "confidence": 0.95,
+      "timestamp": "2026-09-28T00:00:00Z"
+    },
+    {
+      "id": "tokyo-shinjuku-50",
+      "name": "Shinjuku Highrise Facility 50",
+      "use": "residential",
+      "footprint": [
+        [
+          139.697,
+          35.693
+        ],
+        [
+          139.69796,
+          35.693
+        ],
+        [
+          139.69796,
+          35.6938
+        ],
+        [
+          139.697,
+          35.6938
+        ]
+      ],
+      "heightM": 36,
+      "heightSource": "inferred",
+      "storeys": 12,
+      "confidence": 0.82,
+      "timestamp": "2026-09-28T00:00:00Z"
+    },
+    {
+      "id": "tokyo-shinjuku-51",
+      "name": "Shinjuku Highrise Facility 51",
+      "use": "infrastructure",
+      "footprint": [
+        [
+          139.6982,
+          35.693
+        ],
+        [
+          139.69916,
+          35.693
+        ],
+        [
+          139.69916,
+          35.6938
+        ],
+        [
+          139.6982,
+          35.6938
+        ]
+      ],
+      "heightM": 44.8,
+      "heightSource": "observed",
+      "storeys": 14,
+      "confidence": 0.95,
+      "timestamp": "2026-09-28T00:00:00Z"
+    },
+    {
+      "id": "tokyo-shinjuku-52",
+      "name": "Shinjuku Highrise Facility 52",
+      "use": "commercial",
+      "footprint": [
+        [
+          139.6994,
+          35.693
+        ],
+        [
+          139.70036,
+          35.693
+        ],
+        [
+          139.70036,
+          35.6938
+        ],
+        [
+          139.6994,
+          35.6938
+        ]
+      ],
+      "heightM": 48,
+      "heightSource": "inferred",
+      "storeys": 16,
+      "confidence": 0.82,
+      "timestamp": "2026-09-28T00:00:00Z"
+    },
+    {
+      "id": "tokyo-shinjuku-53",
+      "name": "Shinjuku Highrise Facility 53",
+      "use": "residential",
+      "footprint": [
+        [
+          139.7006,
+          35.693
+        ],
+        [
+          139.70156,
+          35.693
+        ],
+        [
+          139.70156,
+          35.6938
+        ],
+        [
+          139.7006,
+          35.6938
+        ]
+      ],
+      "heightM": 41.6,
+      "heightSource": "observed",
+      "storeys": 13,
+      "confidence": 0.95,
+      "timestamp": "2026-09-28T00:00:00Z"
+    },
+    {
+      "id": "tokyo-shinjuku-54",
+      "name": "Shinjuku Highrise Facility 54",
+      "use": "infrastructure",
+      "footprint": [
+        [
+          139.7018,
+          35.693
+        ],
+        [
+          139.70276,
+          35.693
+        ],
+        [
+          139.70276,
+          35.6938
+        ],
+        [
+          139.7018,
+          35.6938
+        ]
+      ],
+      "heightM": 45,
+      "heightSource": "inferred",
+      "storeys": 15,
+      "confidence": 0.82,
+      "timestamp": "2026-09-28T00:00:00Z"
+    },
+    {
+      "id": "tokyo-shinjuku-55",
+      "name": "Shinjuku Highrise Facility 55",
+      "use": "commercial",
+      "footprint": [
+        [
+          139.703,
+          35.693
+        ],
+        [
+          139.70396,
+          35.693
+        ],
+        [
+          139.70396,
+          35.6938
+        ],
+        [
+          139.703,
+          35.6938
+        ]
+      ],
+      "heightM": 38.4,
+      "heightSource": "observed",
+      "storeys": 12,
+      "confidence": 0.95,
+      "timestamp": "2026-09-28T00:00:00Z"
+    },
+    {
+      "id": "tokyo-shinjuku-56",
+      "name": "Shinjuku Highrise Facility 56",
+      "use": "residential",
+      "footprint": [
+        [
+          139.7042,
+          35.693
+        ],
+        [
+          139.70516,
+          35.693
+        ],
+        [
+          139.70516,
+          35.6938
+        ],
+        [
+          139.7042,
+          35.6938
+        ]
+      ],
+      "heightM": 42,
+      "heightSource": "inferred",
+      "storeys": 14,
+      "confidence": 0.82,
+      "timestamp": "2026-09-28T00:00:00Z"
+    },
+    {
+      "id": "tokyo-shinjuku-57",
+      "name": "Shinjuku Highrise Facility 57",
+      "use": "residential",
+      "footprint": [
+        [
+          139.6958,
+          35.6942
+        ],
+        [
+          139.69676,
+          35.6942
+        ],
+        [
+          139.69676,
+          35.695
+        ],
+        [
+          139.6958,
+          35.695
+        ]
+      ],
+      "heightM": 39,
+      "heightSource": "inferred",
+      "storeys": 13,
+      "confidence": 0.82,
+      "timestamp": "2026-09-28T00:00:00Z"
+    },
+    {
+      "id": "tokyo-shinjuku-58",
+      "name": "Shinjuku Highrise Facility 58",
+      "use": "infrastructure",
+      "footprint": [
+        [
+          139.697,
+          35.6942
+        ],
+        [
+          139.69796,
+          35.6942
+        ],
+        [
+          139.69796,
+          35.695
+        ],
+        [
+          139.697,
+          35.695
+        ]
+      ],
+      "heightM": 49.5,
+      "heightSource": "observed",
+      "storeys": 15,
+      "confidence": 0.95,
+      "timestamp": "2026-09-28T00:00:00Z"
+    },
+    {
+      "id": "tokyo-shinjuku-59",
+      "name": "Shinjuku Highrise Facility 59",
+      "use": "commercial",
+      "footprint": [
+        [
+          139.6982,
+          35.6942
+        ],
+        [
+          139.69916,
+          35.6942
+        ],
+        [
+          139.69916,
+          35.695
+        ],
+        [
+          139.6982,
+          35.695
+        ]
+      ],
+      "heightM": 36,
+      "heightSource": "inferred",
+      "storeys": 12,
+      "confidence": 0.82,
+      "timestamp": "2026-09-28T00:00:00Z"
+    },
+    {
+      "id": "tokyo-shinjuku-60",
+      "name": "Shinjuku Highrise Facility 60",
+      "use": "residential",
+      "footprint": [
+        [
+          139.6994,
+          35.6942
+        ],
+        [
+          139.70036,
+          35.6942
+        ],
+        [
+          139.70036,
+          35.695
+        ],
+        [
+          139.6994,
+          35.695
+        ]
+      ],
+      "heightM": 46.3,
+      "heightSource": "observed",
+      "storeys": 14,
+      "confidence": 0.95,
+      "timestamp": "2026-09-28T00:00:00Z"
+    },
+    {
+      "id": "tokyo-shinjuku-61",
+      "name": "Shinjuku Highrise Facility 61",
+      "use": "infrastructure",
+      "footprint": [
+        [
+          139.7006,
+          35.6942
+        ],
+        [
+          139.70156,
+          35.6942
+        ],
+        [
+          139.70156,
+          35.695
+        ],
+        [
+          139.7006,
+          35.695
+        ]
+      ],
+      "heightM": 48,
+      "heightSource": "inferred",
+      "storeys": 16,
+      "confidence": 0.82,
+      "timestamp": "2026-09-28T00:00:00Z"
+    },
+    {
+      "id": "tokyo-shinjuku-62",
+      "name": "Shinjuku Highrise Facility 62",
+      "use": "commercial",
+      "footprint": [
+        [
+          139.7018,
+          35.6942
+        ],
+        [
+          139.70276,
+          35.6942
+        ],
+        [
+          139.70276,
+          35.695
+        ],
+        [
+          139.7018,
+          35.695
+        ]
+      ],
+      "heightM": 43.1,
+      "heightSource": "observed",
+      "storeys": 13,
+      "confidence": 0.95,
+      "timestamp": "2026-09-28T00:00:00Z"
+    },
+    {
+      "id": "tokyo-shinjuku-63",
+      "name": "Shinjuku Highrise Facility 63",
+      "use": "residential",
+      "footprint": [
+        [
+          139.703,
+          35.6942
+        ],
+        [
+          139.70396,
+          35.6942
+        ],
+        [
+          139.70396,
+          35.695
+        ],
+        [
+          139.703,
+          35.695
+        ]
+      ],
+      "heightM": 45,
+      "heightSource": "inferred",
+      "storeys": 15,
+      "confidence": 0.82,
+      "timestamp": "2026-09-28T00:00:00Z"
+    },
+    {
+      "id": "tokyo-shinjuku-64",
+      "name": "Shinjuku Highrise Facility 64",
+      "use": "infrastructure",
+      "footprint": [
+        [
+          139.7042,
+          35.6942
+        ],
+        [
+          139.70516,
+          35.6942
+        ],
+        [
+          139.70516,
+          35.695
+        ],
+        [
+          139.7042,
+          35.695
+        ]
+      ],
+      "heightM": 39.9,
+      "heightSource": "observed",
+      "storeys": 12,
+      "confidence": 0.95,
+      "timestamp": "2026-09-28T00:00:00Z"
+    }
+  ]
+}

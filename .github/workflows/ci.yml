@@ -2,7 +2,7 @@ name: CI
 
 on:
   push:
-    branches: [main]
+    branches: [main, 'arena/**']
   pull_request:
     branches: [main]
 
@@ -21,12 +21,22 @@ jobs:
         with:
           node-version: 20
           cache: npm
-          cache-dependency-path: package.json
+          cache-dependency-path: package-lock.json
       - name: Install dependencies
-        run: npm install --no-audit --no-fund
+        run: npm ci --no-audit --no-fund
       - name: Typecheck
         run: npm run typecheck
       - name: Unit tests
         run: npm test
       - name: Production build
         run: npm run build
+      - name: Install Chromium
+        run: npx playwright install --with-deps chromium
+      - name: Browser acceptance
+        run: npm run test:browser
+      - name: Browser evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: browser-evidence
+          path: test-results/

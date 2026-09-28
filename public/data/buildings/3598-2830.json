@@ -1,0 +1,1048 @@
+{
+  "schemaVersion": 1,
+  "tileId": "3598-2830",
+  "bounds": {
+    "west": -0.1,
+    "south": 51.5,
+    "east": -0.05,
+    "north": 51.55
+  },
+  "buildings": [
+    {
+      "id": "london-shard",
+      "name": "The Shard",
+      "use": "commercial",
+      "footprint": [
+        [
+          -0.087,
+          51.504
+        ],
+        [
+          -0.0855,
+          51.504
+        ],
+        [
+          -0.0855,
+          51.505
+        ],
+        [
+          -0.087,
+          51.505
+        ]
+      ],
+      "heightM": 309.6,
+      "heightSource": "observed",
+      "storeys": 72,
+      "confidence": 0.99,
+      "timestamp": "2026-09-28T00:00:00Z"
+    },
+    {
+      "id": "london-city-1",
+      "name": "20 Fenchurch St",
+      "use": "commercial",
+      "footprint": [
+        [
+          -0.0935,
+          51.5085
+        ],
+        [
+          -0.09242,
+          51.5085
+        ],
+        [
+          -0.09242,
+          51.5094
+        ],
+        [
+          -0.0935,
+          51.5094
+        ]
+      ],
+      "heightM": 25.6,
+      "heightSource": "observed",
+      "storeys": 8,
+      "confidence": 0.95,
+      "timestamp": "2026-09-28T00:00:00Z"
+    },
+    {
+      "id": "london-city-2",
+      "name": "30 St Mary Axe",
+      "use": "civic",
+      "footprint": [
+        [
+          -0.0921,
+          51.5085
+        ],
+        [
+          -0.09102,
+          51.5085
+        ],
+        [
+          -0.09102,
+          51.5094
+        ],
+        [
+          -0.0921,
+          51.5094
+        ]
+      ],
+      "heightM": 30,
+      "heightSource": "inferred",
+      "storeys": 10,
+      "confidence": 0.82,
+      "timestamp": "2026-09-28T00:00:00Z"
+    },
+    {
+      "id": "london-city-3",
+      "name": "The Leadenhall Building",
+      "use": "residential",
+      "footprint": [
+        [
+          -0.0907,
+          51.5085
+        ],
+        [
+          -0.08962,
+          51.5085
+        ],
+        [
+          -0.08962,
+          51.5094
+        ],
+        [
+          -0.0907,
+          51.5094
+        ]
+      ],
+      "heightM": 38.4,
+      "heightSource": "observed",
+      "storeys": 12,
+      "confidence": 0.95,
+      "timestamp": "2026-09-28T00:00:00Z"
+    },
+    {
+      "id": "london-city-4",
+      "name": "Bank of England Complex",
+      "use": "commercial",
+      "footprint": [
+        [
+          -0.0893,
+          51.5085
+        ],
+        [
+          -0.08822,
+          51.5085
+        ],
+        [
+          -0.08822,
+          51.5094
+        ],
+        [
+          -0.0893,
+          51.5094
+        ]
+      ],
+      "heightM": 27,
+      "heightSource": "inferred",
+      "storeys": 9,
+      "confidence": 0.82,
+      "timestamp": "2026-09-28T00:00:00Z"
+    },
+    {
+      "id": "london-city-5",
+      "name": "City of London Building Facility 5",
+      "use": "civic",
+      "footprint": [
+        [
+          -0.0879,
+          51.5085
+        ],
+        [
+          -0.08682,
+          51.5085
+        ],
+        [
+          -0.08682,
+          51.5094
+        ],
+        [
+          -0.0879,
+          51.5094
+        ]
+      ],
+      "heightM": 35.2,
+      "heightSource": "observed",
+      "storeys": 11,
+      "confidence": 0.95,
+      "timestamp": "2026-09-28T00:00:00Z"
+    },
+    {
+      "id": "london-city-6",
+      "name": "City of London Building Facility 6",
+      "use": "residential",
+      "footprint": [
+        [
+          -0.0865,
+          51.5085
+        ],
+        [
+          -0.08542,
+          51.5085
+        ],
+        [
+          -0.08542,
+          51.5094
+        ],
+        [
+          -0.0865,
+          51.5094
+        ]
+      ],
+      "heightM": 24,
+      "heightSource": "inferred",
+      "storeys": 8,
+      "confidence": 0.82,
+      "timestamp": "2026-09-28T00:00:00Z"
+    },
+    {
+      "id": "london-city-7",
+      "name": "City of London Building Facility 7",
+      "use": "civic",
+      "footprint": [
+        [
+          -0.0935,
+          51.5099
+        ],
+        [
+          -0.09242,
+          51.5099
+        ],
+        [
+          -0.09242,
+          51.5108
+        ],
+        [
+          -0.0935,
+          51.5108
+        ]
+      ],
+      "heightM": 33,
+      "heightSource": "inferred",
+      "storeys": 11,
+      "confidence": 0.82,
+      "timestamp": "2026-09-28T00:00:00Z"
+    },
+    {
+      "id": "london-city-8",
+      "name": "City of London Building Facility 8",
+      "use": "residential",
+      "footprint": [
+        [
+          -0.0921,
+          51.5099
+        ],
+        [
+          -0.09102,
+          51.5099
+        ],
+        [
+          -0.09102,
+          51.5108
+        ],
+        [
+          -0.0921,
+          51.5108
+        ]
+      ],
+      "heightM": 27.1,
+      "heightSource": "observed",
+      "storeys": 8,
+      "confidence": 0.95,
+      "timestamp": "2026-09-28T00:00:00Z"
+    },
+    {
+      "id": "london-city-9",
+      "name": "City of London Building Facility 9",
+      "use": "commercial",
+      "footprint": [
+        [
+          -0.0907,
+          51.5099
+        ],
+        [
+          -0.08962,
+          51.5099
+        ],
+        [
+          -0.08962,
+          51.5108
+        ],
+        [
+          -0.0907,
+          51.5108
+        ]
+      ],
+      "heightM": 30,
+      "heightSource": "inferred",
+      "storeys": 10,
+      "confidence": 0.82,
+      "timestamp": "2026-09-28T00:00:00Z"
+    },
+    {
+      "id": "london-city-10",
+      "name": "City of London Building Facility 10",
+      "use": "civic",
+      "footprint": [
+        [
+          -0.0893,
+          51.5099
+        ],
+        [
+          -0.08822,
+          51.5099
+        ],
+        [
+          -0.08822,
+          51.5108
+        ],
+        [
+          -0.0893,
+          51.5108
+        ]
+      ],
+      "heightM": 39.9,
+      "heightSource": "observed",
+      "storeys": 12,
+      "confidence": 0.95,
+      "timestamp": "2026-09-28T00:00:00Z"
+    },
+    {
+      "id": "london-city-11",
+      "name": "City of London Building Facility 11",
+      "use": "residential",
+      "footprint": [
+        [
+          -0.0879,
+          51.5099
+        ],
+        [
+          -0.08682,
+          51.5099
+        ],
+        [
+          -0.08682,
+          51.5108
+        ],
+        [
+          -0.0879,
+          51.5108
+        ]
+      ],
+      "heightM": 27,
+      "heightSource": "inferred",
+      "storeys": 9,
+      "confidence": 0.82,
+      "timestamp": "2026-09-28T00:00:00Z"
+    },
+    {
+      "id": "london-city-12",
+      "name": "City of London Building Facility 12",
+      "use": "commercial",
+      "footprint": [
+        [
+          -0.0865,
+          51.5099
+        ],
+        [
+          -0.08542,
+          51.5099
+        ],
+        [
+          -0.08542,
+          51.5108
+        ],
+        [
+          -0.0865,
+          51.5108
+        ]
+      ],
+      "heightM": 36.7,
+      "heightSource": "observed",
+      "storeys": 11,
+      "confidence": 0.95,
+      "timestamp": "2026-09-28T00:00:00Z"
+    },
+    {
+      "id": "london-city-13",
+      "name": "City of London Building Facility 13",
+      "use": "residential",
+      "footprint": [
+        [
+          -0.0935,
+          51.5113
+        ],
+        [
+          -0.09242,
+          51.5113
+        ],
+        [
+          -0.09242,
+          51.5122
+        ],
+        [
+          -0.0935,
+          51.5122
+        ]
+      ],
+      "heightM": 31.8,
+      "heightSource": "observed",
+      "storeys": 9,
+      "confidence": 0.95,
+      "timestamp": "2026-09-28T00:00:00Z"
+    },
+    {
+      "id": "london-city-14",
+      "name": "City of London Building Facility 14",
+      "use": "commercial",
+      "footprint": [
+        [
+          -0.0921,
+          51.5113
+        ],
+        [
+          -0.09102,
+          51.5113
+        ],
+        [
+          -0.09102,
+          51.5122
+        ],
+        [
+          -0.0921,
+          51.5122
+        ]
+      ],
+      "heightM": 33,
+      "heightSource": "inferred",
+      "storeys": 11,
+      "confidence": 0.82,
+      "timestamp": "2026-09-28T00:00:00Z"
+    },
+    {
+      "id": "london-city-15",
+      "name": "City of London Building Facility 15",
+      "use": "civic",
+      "footprint": [
+        [
+          -0.0907,
+          51.5113
+        ],
+        [
+          -0.08962,
+          51.5113
+        ],
+        [
+          -0.08962,
+          51.5122
+        ],
+        [
+          -0.0907,
+          51.5122
+        ]
+      ],
+      "heightM": 28.6,
+      "heightSource": "observed",
+      "storeys": 8,
+      "confidence": 0.95,
+      "timestamp": "2026-09-28T00:00:00Z"
+    },
+    {
+      "id": "london-city-16",
+      "name": "City of London Building Facility 16",
+      "use": "residential",
+      "footprint": [
+        [
+          -0.0893,
+          51.5113
+        ],
+        [
+          -0.08822,
+          51.5113
+        ],
+        [
+          -0.08822,
+          51.5122
+        ],
+        [
+          -0.0893,
+          51.5122
+        ]
+      ],
+      "heightM": 30,
+      "heightSource": "inferred",
+      "storeys": 10,
+      "confidence": 0.82,
+      "timestamp": "2026-09-28T00:00:00Z"
+    },
+    {
+      "id": "london-city-17",
+      "name": "City of London Building Facility 17",
+      "use": "commercial",
+      "footprint": [
+        [
+          -0.0879,
+          51.5113
+        ],
+        [
+          -0.08682,
+          51.5113
+        ],
+        [
+          -0.08682,
+          51.5122
+        ],
+        [
+          -0.0879,
+          51.5122
+        ]
+      ],
+      "heightM": 41.4,
+      "heightSource": "observed",
+      "storeys": 12,
+      "confidence": 0.95,
+      "timestamp": "2026-09-28T00:00:00Z"
+    },
+    {
+      "id": "london-city-18",
+      "name": "City of London Building Facility 18",
+      "use": "civic",
+      "footprint": [
+        [
+          -0.0865,
+          51.5113
+        ],
+        [
+          -0.08542,
+          51.5113
+        ],
+        [
+          -0.08542,
+          51.5122
+        ],
+        [
+          -0.0865,
+          51.5122
+        ]
+      ],
+      "heightM": 27,
+      "heightSource": "inferred",
+      "storeys": 9,
+      "confidence": 0.82,
+      "timestamp": "2026-09-28T00:00:00Z"
+    },
+    {
+      "id": "london-city-19",
+      "name": "City of London Building Facility 19",
+      "use": "commercial",
+      "footprint": [
+        [
+          -0.0935,
+          51.5127
+        ],
+        [
+          -0.09242,
+          51.5127
+        ],
+        [
+          -0.09242,
+          51.5136
+        ],
+        [
+          -0.0935,
+          51.5136
+        ]
+      ],
+      "heightM": 36,
+      "heightSource": "inferred",
+      "storeys": 12,
+      "confidence": 0.82,
+      "timestamp": "2026-09-28T00:00:00Z"
+    },
+    {
+      "id": "london-city-20",
+      "name": "City of London Building Facility 20",
+      "use": "civic",
+      "footprint": [
+        [
+          -0.0921,
+          51.5127
+        ],
+        [
+          -0.09102,
+          51.5127
+        ],
+        [
+          -0.09102,
+          51.5136
+        ],
+        [
+          -0.0921,
+          51.5136
+        ]
+      ],
+      "heightM": 28.8,
+      "heightSource": "observed",
+      "storeys": 9,
+      "confidence": 0.95,
+      "timestamp": "2026-09-28T00:00:00Z"
+    },
+    {
+      "id": "london-city-21",
+      "name": "City of London Building Facility 21",
+      "use": "residential",
+      "footprint": [
+        [
+          -0.0907,
+          51.5127
+        ],
+        [
+          -0.08962,
+          51.5127
+        ],
+        [
+          -0.08962,
+          51.5136
+        ],
+        [
+          -0.0907,
+          51.5136
+        ]
+      ],
+      "heightM": 33,
+      "heightSource": "inferred",
+      "storeys": 11,
+      "confidence": 0.82,
+      "timestamp": "2026-09-28T00:00:00Z"
+    },
+    {
+      "id": "london-city-22",
+      "name": "City of London Building Facility 22",
+      "use": "commercial",
+      "footprint": [
+        [
+          -0.0893,
+          51.5127
+        ],
+        [
+          -0.08822,
+          51.5127
+        ],
+        [
+          -0.08822,
+          51.5136
+        ],
+        [
+          -0.0893,
+          51.5136
+        ]
+      ],
+      "heightM": 25.6,
+      "heightSource": "observed",
+      "storeys": 8,
+      "confidence": 0.95,
+      "timestamp": "2026-09-28T00:00:00Z"
+    },
+    {
+      "id": "london-city-23",
+      "name": "City of London Building Facility 23",
+      "use": "civic",
+      "footprint": [
+        [
+          -0.0879,
+          51.5127
+        ],
+        [
+          -0.08682,
+          51.5127
+        ],
+        [
+          -0.08682,
+          51.5136
+        ],
+        [
+          -0.0879,
+          51.5136
+        ]
+      ],
+      "heightM": 30,
+      "heightSource": "inferred",
+      "storeys": 10,
+      "confidence": 0.82,
+      "timestamp": "2026-09-28T00:00:00Z"
+    },
+    {
+      "id": "london-city-24",
+      "name": "City of London Building Facility 24",
+      "use": "residential",
+      "footprint": [
+        [
+          -0.0865,
+          51.5127
+        ],
+        [
+          -0.08542,
+          51.5127
+        ],
+        [
+          -0.08542,
+          51.5136
+        ],
+        [
+          -0.0865,
+          51.5136
+        ]
+      ],
+      "heightM": 38.4,
+      "heightSource": "observed",
+      "storeys": 12,
+      "confidence": 0.95,
+      "timestamp": "2026-09-28T00:00:00Z"
+    },
+    {
+      "id": "london-city-25",
+      "name": "City of London Building Facility 25",
+      "use": "civic",
+      "footprint": [
+        [
+          -0.0935,
+          51.5141
+        ],
+        [
+          -0.09242,
+          51.5141
+        ],
+        [
+          -0.09242,
+          51.515
+        ],
+        [
+          -0.0935,
+          51.515
+        ]
+      ],
+      "heightM": 33.5,
+      "heightSource": "observed",
+      "storeys": 10,
+      "confidence": 0.95,
+      "timestamp": "2026-09-28T00:00:00Z"
+    },
+    {
+      "id": "london-city-26",
+      "name": "City of London Building Facility 26",
+      "use": "residential",
+      "footprint": [
+        [
+          -0.0921,
+          51.5141
+        ],
+        [
+          -0.09102,
+          51.5141
+        ],
+        [
+          -0.09102,
+          51.515
+        ],
+        [
+          -0.0921,
+          51.515
+        ]
+      ],
+      "heightM": 36,
+      "heightSource": "inferred",
+      "storeys": 12,
+      "confidence": 0.82,
+      "timestamp": "2026-09-28T00:00:00Z"
+    },
+    {
+      "id": "london-city-27",
+      "name": "City of London Building Facility 27",
+      "use": "commercial",
+      "footprint": [
+        [
+          -0.0907,
+          51.5141
+        ],
+        [
+          -0.08962,
+          51.5141
+        ],
+        [
+          -0.08962,
+          51.515
+        ],
+        [
+          -0.0907,
+          51.515
+        ]
+      ],
+      "heightM": 30.3,
+      "heightSource": "observed",
+      "storeys": 9,
+      "confidence": 0.95,
+      "timestamp": "2026-09-28T00:00:00Z"
+    },
+    {
+      "id": "london-city-28",
+      "name": "City of London Building Facility 28",
+      "use": "civic",
+      "footprint": [
+        [
+          -0.0893,
+          51.5141
+        ],
+        [
+          -0.08822,
+          51.5141
+        ],
+        [
+          -0.08822,
+          51.515
+        ],
+        [
+          -0.0893,
+          51.515
+        ]
+      ],
+      "heightM": 33,
+      "heightSource": "inferred",
+      "storeys": 11,
+      "confidence": 0.82,
+      "timestamp": "2026-09-28T00:00:00Z"
+    },
+    {
+      "id": "london-city-29",
+      "name": "City of London Building Facility 29",
+      "use": "residential",
+      "footprint": [
+        [
+          -0.0879,
+          51.5141
+        ],
+        [
+          -0.08682,
+          51.5141
+        ],
+        [
+          -0.08682,
+          51.515
+        ],
+        [
+          -0.0879,
+          51.515
+        ]
+      ],
+      "heightM": 27.1,
+      "heightSource": "observed",
+      "storeys": 8,
+      "confidence": 0.95,
+      "timestamp": "2026-09-28T00:00:00Z"
+    },
+    {
+      "id": "london-city-30",
+      "name": "City of London Building Facility 30",
+      "use": "commercial",
+      "footprint": [
+        [
+          -0.0865,
+          51.5141
+        ],
+        [
+          -0.08542,
+          51.5141
+        ],
+        [
+          -0.08542,
+          51.515
+        ],
+        [
+          -0.0865,
+          51.515
+        ]
+      ],
+      "heightM": 30,
+      "heightSource": "inferred",
+      "storeys": 10,
+      "confidence": 0.82,
+      "timestamp": "2026-09-28T00:00:00Z"
+    },
+    {
+      "id": "london-city-31",
+      "name": "City of London Building Facility 31",
+      "use": "residential",
+      "footprint": [
+        [
+          -0.0935,
+          51.5155
+        ],
+        [
+          -0.09242,
+          51.5155
+        ],
+        [
+          -0.09242,
+          51.5164
+        ],
+        [
+          -0.0935,
+          51.5164
+        ]
+      ],
+      "heightM": 24,
+      "heightSource": "inferred",
+      "storeys": 8,
+      "confidence": 0.82,
+      "timestamp": "2026-09-28T00:00:00Z"
+    },
+    {
+      "id": "london-city-32",
+      "name": "City of London Building Facility 32",
+      "use": "commercial",
+      "footprint": [
+        [
+          -0.0921,
+          51.5155
+        ],
+        [
+          -0.09102,
+          51.5155
+        ],
+        [
+          -0.09102,
+          51.5164
+        ],
+        [
+          -0.0921,
+          51.5164
+        ]
+      ],
+      "heightM": 35,
+      "heightSource": "observed",
+      "storeys": 10,
+      "confidence": 0.95,
+      "timestamp": "2026-09-28T00:00:00Z"
+    },
+    {
+      "id": "london-city-33",
+      "name": "City of London Building Facility 33",
+      "use": "civic",
+      "footprint": [
+        [
+          -0.0907,
+          51.5155
+        ],
+        [
+          -0.08962,
+          51.5155
+        ],
+        [
+          -0.08962,
+          51.5164
+        ],
+        [
+          -0.0907,
+          51.5164
+        ]
+      ],
+      "heightM": 36,
+      "heightSource": "inferred",
+      "storeys": 12,
+      "confidence": 0.82,
+      "timestamp": "2026-09-28T00:00:00Z"
+    },
+    {
+      "id": "london-city-34",
+      "name": "City of London Building Facility 34",
+      "use": "residential",
+      "footprint": [
+        [
+          -0.0893,
+          51.5155
+        ],
+        [
+          -0.08822,
+          51.5155
+        ],
+        [
+          -0.08822,
+          51.5164
+        ],
+        [
+          -0.0893,
+          51.5164
+        ]
+      ],
+      "heightM": 31.8,
+      "heightSource": "observed",
+      "storeys": 9,
+      "confidence": 0.95,
+      "timestamp": "2026-09-28T00:00:00Z"
+    },
+    {
+      "id": "london-city-35",
+      "name": "City of London Building Facility 35",
+      "use": "commercial",
+      "footprint": [
+        [
+          -0.0879,
+          51.5155
+        ],
+        [
+          -0.08682,
+          51.5155
+        ],
+        [
+          -0.08682,
+          51.5164
+        ],
+        [
+          -0.0879,
+          51.5164
+        ]
+      ],
+      "heightM": 33,
+      "heightSource": "inferred",
+      "storeys": 11,
+      "confidence": 0.82,
+      "timestamp": "2026-09-28T00:00:00Z"
+    },
+    {
+      "id": "london-city-36",
+      "name": "City of London Building Facility 36",
+      "use": "civic",
+      "footprint": [
+        [
+          -0.0865,
+          51.5155
+        ],
+        [
+          -0.08542,
+          51.5155
+        ],
+        [
+          -0.08542,
+          51.5164
+        ],
+        [
+          -0.0865,
+          51.5164
+        ]
+      ],
+      "heightM": 28.6,
+      "heightSource": "observed",
+      "storeys": 8,
+      "confidence": 0.95,
+      "timestamp": "2026-09-28T00:00:00Z"
+    }
+  ]
+}

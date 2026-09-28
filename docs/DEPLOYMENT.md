@@ -19,7 +19,9 @@ Verified on 2026-09-28:
 - Deploy GitHub Pages run 36448035612 completed successfully.
 - The public URL returned HTTP 200 with the expected `<title>Doom Map</title>`.
 
-The remaining Phase 0/1 proof is **browser interaction acceptance**, not Pages enablement. The globe still needs explicit runtime evidence for WebGL canvas rendering, visibility, rotate, pan, zoom, telemetry changes, resize behavior, and absence of severe console errors.
+Local branch browser acceptance now exists (docs/BROWSER_ACCEPTANCE.md).
+This does not establish new public Pages deployment. Both workflows use the
+committed lockfile with npm ci and run the browser gate before delivery.
 
 ## Deployment validation after web-facing changes
 
@@ -45,3 +47,12 @@ Wrapper validation order:
 4. network/provider failure states
 5. shared scenario import/export parity
 6. only then additional platforms if explicitly required
+
+## Branch delivery restriction (verified 2026-09-28)
+
+GitHub environment API reports `github-pages` has a custom deployment branch
+policy allowing only `main`. Session work remains on `arena/01a0e93e-doom-map`;
+no environment bypass, force push or main push was performed. CI runs on the
+branch, but public deployment requires merging its PR to main, followed by the
+Pages workflow and live browser smoke. The existing public deployment is not
+proof of the new branch revision.

@@ -1,0 +1,55 @@
+{
+  "schemaVersion": 1,
+  "records": [
+    {
+      "id": "natural-earth-land-110m",
+      "version": "ca96624a56bd078437bca8184e78163e5039ad19",
+      "kind": "provider",
+      "title": "Natural Earth 1:110m land outlines",
+      "fidelity": "C",
+      "sources": [
+        "https://github.com/nvkelso/natural-earth-vector/blob/ca96624a56bd078437bca8184e78163e5039ad19/geojson/ne_110m_land.geojson",
+        "https://github.com/nvkelso/natural-earth-vector/blob/ca96624a56bd078437bca8184e78163e5039ad19/LICENSE.md"
+      ],
+      "timestamp": "2022-06-02T07:25:00Z",
+      "assumptions": [
+        "Natural Earth low-LOD land outlines displayed as coastline context.",
+        "Snapshot timestamp is upstream commit date, not observation date."
+      ],
+      "uncertainty": "Cartographic generalization at 1:110 million; not survey-grade coastline.",
+      "limitations": [
+        "Small islands and local detail are omitted.",
+        "Not terrain, buildings, administrative borders, or a hazard model.",
+        "Hidden below 200 km camera altitude rather than implying local accuracy."
+      ],
+      "attribution": "Made with Natural Earth. Tom Patterson, Nathaniel Vaughn Kelso and contributors.",
+      "license": "Public domain; upstream license bundled with snapshot.",
+      "coverage": "Global generalized land polygons."
+    },
+    {
+      "id": "local-building-footprints",
+      "version": "2026-09-28",
+      "kind": "provider",
+      "title": "Local Building Footprints and Extrusions",
+      "fidelity": "C",
+      "sources": [
+        "https://overturemaps.org",
+        "https://www.openstreetmap.org/copyright"
+      ],
+      "timestamp": "2026-09-28T00:00:00Z",
+      "assumptions": [
+        "Footprints represent 2D building perimeters with extruded vertical heights.",
+        "Heights without explicit survey tags are inferred from storey count or regional median assumption (3.0 m/storey)."
+      ],
+      "uncertainty": "Building heights without explicit roof tags are estimated; internal occupancy, material structural resistance and subterranean floors are unobserved.",
+      "limitations": [
+        "Coverage is bounded to indexed regional cells and sampled metro/local focus areas.",
+        "Rendered extrusions are simplified 3D LOD1 geometries, not engineering structural BIM models.",
+        "Active only at local camera altitudes below 15,000 m."
+      ],
+      "attribution": "Building footprint data © OpenStreetMap contributors / Overture Maps Foundation. ODbL / CDLA-Permissive-2.0.",
+      "license": "ODbL 1.0 and CDLA-Permissive-2.0 compatible open data terms.",
+      "coverage": "Sampled regional and urban focus tiles at 0.05-degree grid resolution."
+    }
+  ]
+}
