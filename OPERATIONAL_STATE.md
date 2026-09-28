@@ -7,12 +7,12 @@
   "project_name": "Doom Map",
   "project_root": "westkitty/Doom_Map",
   "artifact_path": "",
-  "state_revision": 3,
-  "last_updated": "2026-09-28T17:33:30Z",
+  "state_revision": 4,
+  "last_updated": "2026-09-28T17:58:00Z",
   "current_baseline": {
-    "identity": "commit 9bdfb9e1aaeec6d0199140fc5a8127cd7270070d",
+    "identity": "commit 28dd723e5e504baeb36fbcd105a17e2a0cc00c13",
     "state": "current-baseline",
-    "last_verified": "2026-09-28T17:33:28Z"
+    "last_verified": "2026-09-28T17:58:00Z"
   },
   "scope_boundaries": [
     "Doom Map repository, web deployment, and native wrapper only",
@@ -28,7 +28,7 @@ Doom Map is a browser-first, Three.js-controlled global disaster and consequence
 
 ## 2. Current Baseline
 
-Current baseline before this state-only update: commit 9bdfb9e1aaeec6d0199140fc5a8127cd7270070d on main. GitHub Pages is enabled with build type `workflow`, and the public site returned HTTP 200 at https://westkitty.github.io/Doom_Map/.
+Current baseline before this state update: commit 28dd723e5e504baeb36fbcd105a17e2a0cc00c13 on main. GitHub Pages is enabled with build type `workflow`, and the public site is recorded as verified live. Deployment and traceability documentation have been reconciled so they no longer claim Pages is blocked.
 
 Verified by GitHub Actions CI run 36447608037:
 - TypeScript typecheck passed.
@@ -164,8 +164,8 @@ None currently recorded.
 
 ### PND-005 — Generate and commit package lockfile
 - **State:** pending
-- **Priority:** medium
-- **Reason:** Current CI deliberately uses npm install because no locally generated package-lock.json exists yet.
+- **Priority:** critical for Phase 0 exit
+- **Reason:** Current CI deliberately uses npm install because no locally generated package-lock.json exists yet. Switch CI/Pages to `npm ci` only after a real lockfile is generated and validated.
 
 ## 10. Active Decisions, Defaults, and Prohibitions
 
@@ -192,10 +192,11 @@ None currently recorded.
 
 ## 12. Current Change Scope and Impact Radius
 
-Phase 0 plus the earliest Phase 1 foundation now exists. The next safe implementation scope is browser verification of the globe and then geospatial streaming/data providers. Do not jump directly to 100 hazard implementations before the tile/data/time architecture exists.
+Phase 0 plus the earliest Phase 1 foundation now exists. The immediate implementation scope remains: generate/validate the lockfile and reproducible `npm ci` path, add browser acceptance coverage, then finish the remaining Phase 1 globe foundation. Documentation-only Pages state reconciliation is complete. Do not jump directly to hazard implementations before the globe/data/time foundations exist.
 
 ## 13. Compact Revision Log
 
 - r1 — 2026-09-28: Bootstrapped project state and invariants.
 - r2 — 2026-09-28: Recorded Phase 0/1 source baseline, successful CI typecheck/tests/build, initial bundle warning, unverified globe runtime, and the Pages-enablement delivery blocker.
 - r3 — 2026-09-28: Verified Pages enabled in workflow mode, reran deployment successfully, and confirmed the public Doom Map URL returns HTTP 200.
+- r4 — 2026-09-28: Reconciled stale deployment/traceability/README state with the verified live Pages deployment; browser interaction proof and deterministic-install work remain pending.
