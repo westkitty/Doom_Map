@@ -15,3 +15,28 @@ it.each([null, {}, { type: 'FeatureCollection', features: [{ geometry: { type: '
   { type: 'FeatureCollection', features: [{ geometry: { type: 'Polygon', coordinates: [[[0, 0], [1, 0], [1, 100], [0, 0]]] } }] }])('rejects malformed or unsupported geography', input => {
   expect(() => polygonRings(input)).toThrow()
 })
+
+import { readdirSync } from 'node:fs'
+import { parseSegments, regionalRequests } from '../src/data/providers/NaturalEarth'
+
+it('all derived tiles remain bounded, valid and in declared geographic cells', () => {
+  const files = readdirSync('public/data/ne-110m')
+  expect(files).toHaveLength(72)
+  for (const file of files) {
+    const [x, y] = file.replace('.json', '').split('-').map(Number) as [number, number]
+    const data = parseSegments(JSON.parse(readFileSync(`public/data/ne-110m/${file}`, 'utf8')))
+    for (let i = 0; i < data.length; i += 2) {
+      expect(data[i]!).toBeGreaterThanOrEqual(x * 30 - 180 - 1e-6)
+      expect(data[i]!).toBeLessThanOrEqual(x * 30 - 150 + 1e-6)
+      expect(data[i + 1]!).toBeGreaterThanOrEqual(y * 30 - 90 - 1e-6)
+      expect(data[i + 1]!).toBeLessThanOrEqual(y * 30 - 60 + 1e-6)
+    }
+  }
+})
+
+it('region requests wrap the antimeridian and clamp at poles', () => {
+  const requests = regionalRequests(89, 179)
+  expect(requests).toHaveLength(6)
+  expect(requests.some(r => r.id.startsWith('0-'))).toBe(true)
+  expect(new Set(requests.map(r => r.id)).size).toBe(requests.length)
+})

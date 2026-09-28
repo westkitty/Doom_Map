@@ -1,5 +1,6 @@
 import * as THREE from 'three'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
+import { RegionalGeography } from './RegionalGeography'
 import { FrameStatistics } from '../core/performance'
 import { QUALITY, type QualityTier } from '../core/quality'
 import { type CameraBookmark, validBookmark } from '../core/bookmarks'
@@ -34,6 +35,7 @@ export class GlobeApp {
   private disposed = false
   private readonly geographyAbort = new AbortController()
   private geography: THREE.LineSegments | undefined
+  private readonly regional = new RegionalGeography()
   private readonly statistics = new FrameStatistics()
 
   constructor(canvas: HTMLCanvasElement, onTelemetry: (value: GlobeTelemetry) => void) {
@@ -68,7 +70,7 @@ export class GlobeApp {
     this.world.add(sun, sun.target)
 
     this.buildEarth()
-    this.world.add(this.earth, this.marker)
+    this.world.add(this.earth, this.marker, this.regional.group)
     this.marker.visible = false
     this.scene.add(this.world)
     this.setQuality('Balanced')
@@ -109,7 +111,8 @@ export class GlobeApp {
       this.camera.updateProjectionMatrix()
       this.camera.updateMatrixWorld()
       this.updateTelemetry()
-      if (this.geography) this.geography.visible = geo.heightM >= 200_000
+      this.regional.update(geo.latitudeDeg, geo.longitudeDeg, geo.heightM)
+      if (this.geography) this.geography.visible = geo.heightM >= 200_000 && !this.regional.group.visible
       // Orbit camera remains in double-precision ECEF. Only render copies are rebased.
       this.renderCamera.copy(this.camera)
       this.renderCamera.position.set(0, 0, 0)
@@ -124,6 +127,7 @@ export class GlobeApp {
         triangles: info.render.triangles, geometries: info.memory.geometries,
         textures: info.memory.textures, frame: info.render.frame,
         camera: this.camera.position.toArray(), target: this.controls.target.toArray(),
+        streaming: this.regional.snapshot(),
         aspect: this.camera.aspect, quality: this.quality, renderOrigin: this.camera.position.toArray(),
         renderCamera: this.renderCamera.position.toArray(), selection: this.selection
       })
@@ -136,6 +140,7 @@ export class GlobeApp {
     if (this.disposed) return
     this.disposed = true
     this.geographyAbort.abort()
+    this.regional.dispose()
     this.running = false
     cancelAnimationFrame(this.animationFrame)
     window.removeEventListener('resize', this.resize)

@@ -83,3 +83,17 @@ just completion of its asynchronous download. Three remounts retain equal counts
 
 Geography is a 138 kB low-LOD fallback, not worldwide high-detail data or a tile
 streaming system. Phase 2 must introduce bounded regional providers/eviction.
+
+## Phase 2 first bounded-provider slice
+
+30 unit tests and 10 browser tests pass. Scheduler fixtures cover priority,
+concurrency, cancellation, stale responses even when a provider ignores abort,
+retry/backoff, decoded-byte budget, LRU eviction, cache reuse and disposal.
+All 72 generated cells have coordinate/bounds validation. Four browser regional
+moves retain <=9 GPU tiles, <=12 cached tiles, <=2 MB decoded data and bounded
+geometry counts; returning to orbit unloads all regional GPU tiles. HTTP 503 tests
+prove explicit degraded state and retained global fallback. Regional screenshot
+was inspected: source outlines render and remain visibly coarse (no local-detail
+claim). Requests time out after 10 seconds. CPU cache is memory-only; persistent
+cache, terrain, buildings, workers, geographic frustum prioritization and smooth
+fade transitions remain unimplemented.

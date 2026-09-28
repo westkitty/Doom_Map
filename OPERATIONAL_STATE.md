@@ -7,10 +7,10 @@
   "project_name": "Doom Map",
   "project_root": "westkitty/Doom_Map",
   "artifact_path": "",
-  "state_revision": 8,
+  "state_revision": 9,
   "last_updated": "2026-09-28T17:58:00Z",
   "current_baseline": {
-    "identity": "commit 28dd723e5e504baeb36fbcd105a17e2a0cc00c13",
+    "identity": "branch implementation through 236118862f53de96265de5855e0f9e8e2791272d; next slice described below",
     "state": "current-baseline",
     "last_verified": "2026-09-28T17:58:00Z"
   },
@@ -152,7 +152,7 @@ Inherited development-tool dependency audit findings: Vite high, Vitest critical
 ### PND-002 — Implement geospatial streaming and data-provider layer
 - **State:** next implementation unit
 - **Priority:** critical
-- Natural Earth low-LOD fallback is verified; bounded regional scheduler/provider lifecycle is next.
+- Natural Earth bounded regional provider now passes 30 unit / 10 browser tests: cancellation, stale rejection, retry, LRU/decoded-byte bounds, GPU unload and explicit fallback. Phase 2 is partial: terrain/buildings/persistent cache and broader formats still absent.
 
 ### PND-003 — Implement disaster and consequence engines
 - **State:** pending
@@ -200,7 +200,7 @@ Inherited development-tool dependency audit findings: Vite high, Vitest critical
 ## 12. Current Change Scope and Impact Radius
 
 Phase 0/early Phase 1 on `arena/01a0e93e-doom-map`. Reproducible install and
-production-path browser acceptance now pass locally. Continue with Phase 1 coordinates/navigation before streaming/hazards. Public Pages still
+production-path browser acceptance now pass locally. Continue Phase 2 with a genuinely local-detail provider and persistent cache before time/hazard phases. Public Pages still
 represents main, not this branch. No wrapper or hazard capability is claimed.
 
 ## 13. Compact Revision Log
@@ -217,3 +217,5 @@ represents main, not this branch. No wrapper or hazard capability is claimed.
 - r7 — 19 unit tests; browser navigation to 100 m, keyboard, quality, bookmark and bounded remount evidence. CI 36465293562 passed prior provenance slice.
 
 - r8 — Natural Earth immutable public-domain snapshot, 24 unit / 8 browser tests; rendered geographic context inspected; explicit provider failure and remount gates pass.
+
+- r9 — First bounded regional coastline provider/scheduler; 30 unit / 10 browser tests. CI 36466585295 passed prior global-geography slice. No Phase 2 completion claim.

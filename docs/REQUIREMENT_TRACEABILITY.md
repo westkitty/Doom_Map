@@ -9,7 +9,7 @@ This file maps the controlling request to current evidence. Planned work is not 
 | R03 | Use westkitty/Doom_Map as the repository | Repository initialized and populated on main | PASS |
 | R04 | Three.js interactive globe | Chromium render/picking, keyboard, 100 m fly-to, ENU and camera-relative fixtures | PARTIAL; low-LOD geography verified, local terrain pending |
 | R05 | Panable, zoomable, spinnable globe | Playwright mouse rotate/pan/wheel and CDP pinch pass | PASS for tested desktop/emulated path |
-| R06 | Accurate global/geographical data strategy | Pinned Natural Earth low-LOD outlines, validated manifest/license/hash and browser failure test | PARTIAL; regional streaming pending |
+| R06 | Accurate global/geographical data strategy | Pinned Natural Earth low-LOD outlines, validated manifest/license/hash and browser failure test | PARTIAL; bounded regional coastlines verified, terrain/buildings pending |
 | R07 | Building-level capability | best-available building LOD/provider contract defined; runtime pending | PASS for plan; runtime pending |
 | R08 | Full animation and consequences | timed hazard/VFX/consequence architecture defined | PASS for plan; runtime pending |
 | R09 | Native wrapper | Tauri 2 shared-web-core plan and acceptance contract defined | PASS for plan; runtime pending |
@@ -33,3 +33,5 @@ The Phase-0/early-Phase-1 code seed has local production-path browser evidence; 
 Public Pages delivery is verified. Remaining gaps include Phase 1 spatial/navigation capabilities; physical-device and long-session evidence remain pending. Branch work is not yet deployed.
 
 Spatial/navigation evidence and limitations: docs/BROWSER_ACCEPTANCE.md. Quality tiers change DPR/grid/atmosphere only; no unimplemented tile/particle budgets are claimed.
+
+Phase 2 evidence: common typed provider contract, bounded scheduler, static Natural Earth tiles, explicit regional failure/fallback; 30 unit / 10 browser tests locally. No buildings or higher-resolution source adapters yet.

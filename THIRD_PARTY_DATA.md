@@ -33,3 +33,14 @@ at startup. Every record requires ID, version, kind, title, fidelity A/B/C/D,
 HTTPS sources, timestamp (explicit null if unknown), assumptions, uncertainty,
 limitations, attribution, license notes and coverage. New providers must document
 retrieval/cache/redistribution policy before activation.
+
+### Regional derivative
+
+`node scripts/tile-natural-earth.mjs` deterministically clips the same upstream
+line segments into 72 static 30° cells under `public/data/ne-110m/` (about 350 kB
+filesystem allocation). The derivative adds no source detail and retains fidelity
+C and the same provenance/license/version. Dateline edges unwrap before clipping.
+Regional loading is active at 200–3,000 km camera altitude, with a 3x3 neighborhood.
+The global snapshot remains a labeled fallback until all requested regional cells
+are ready; no simultaneous duplicate coastline presentation. These are **coarse
+coastline tiles**, not a local terrain or building provider.

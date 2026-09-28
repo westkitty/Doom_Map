@@ -167,3 +167,45 @@ test('geography failure is explicit and globe navigation remains usable', async 
   await expect(page.locator('#globe')).toHaveAttribute('data-geography', 'unavailable')
   await expect.poll(async () => (await runtime(page)).triangles).toBeGreaterThan(1000)
 })
+
+async function streaming(page: Page) {
+  return page.locator('#globe').evaluate(el => JSON.parse((el as HTMLElement).dataset.runtime!).streaming as {
+    active: number; queued: number; cached: number; decodedBytes: number; gpuTiles: number; failed: number; visible: boolean
+  })
+}
+
+test('regional coastlines load, unload and stay inside request/cache/GPU bounds', async ({ page }, testInfo) => {
+  await page.emulateMedia({ reducedMotion: 'reduce' })
+  await page.goto('./')
+  await expect(page.locator('#globe')).toHaveAttribute('data-geography', 'ready')
+  const baseline = await runtime(page)
+  await page.getByText('Navigate Earth', { exact: true }).click()
+  await page.getByLabel('Altitude (m)').fill('500000')
+  for (const [latitude, longitude] of [['40', '10'], ['35', '140'], ['-30', '-70'], ['40', '10']]) {
+    await page.getByLabel('Latitude', { exact: true }).fill(latitude!)
+    await page.getByLabel('Longitude', { exact: true }).fill(longitude!)
+    await page.getByRole('button', { name: 'Fly to coordinates' }).click()
+    await expect.poll(async () => (await streaming(page)).visible).toBe(true)
+    const stats = await streaming(page)
+    expect(stats.gpuTiles).toBeLessThanOrEqual(9)
+    expect(stats.cached).toBeLessThanOrEqual(12)
+    expect(stats.decodedBytes).toBeLessThanOrEqual(2_000_000)
+    expect((await runtime(page)).geometries).toBeLessThanOrEqual(baseline.geometries + 10)
+  }
+  await page.screenshot({ path: testInfo.outputPath('regional-coastlines.png') })
+  await page.locator('#globe').focus()
+  await page.keyboard.press('Home')
+  await expect.poll(async () => (await streaming(page)).gpuTiles).toBe(0)
+})
+
+test('failed regional tiles retain a labeled global fallback', async ({ page }) => {
+  await page.emulateMedia({ reducedMotion: 'reduce' })
+  await page.route('**/data/ne-110m/*.json', route => route.fulfill({ status: 503, body: 'Unavailable' }))
+  await page.goto('./')
+  await page.getByText('Navigate Earth', { exact: true }).click()
+  await page.getByLabel('Altitude (m)').fill('500000')
+  await page.getByRole('button', { name: 'Fly to coordinates' }).click()
+  await expect(page.locator('#streaming-status')).toContainText('Regional provider degraded')
+  await expect(page.locator('#streaming-status')).toContainText('fallback retained')
+  expect((await streaming(page)).visible).toBe(false)
+})

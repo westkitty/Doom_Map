@@ -99,3 +99,15 @@ for (const action of ['save', 'restore'] as const) {
     } catch (error) { navigationStatus.textContent = `Bookmark unavailable: ${String(error)}` }
   })
 }
+
+// Low-rate DOM reporting, never an authority for camera/provider state.
+setInterval(() => {
+  const runtime = canvas.dataset.runtime
+  if (!runtime) return
+  const value = JSON.parse(runtime)
+  document.querySelector('#performance')!.textContent = `Frame ${value.meanMs.toFixed(1)} ms / p95 ${value.p95Ms.toFixed(1)} ms · ${value.fps.toFixed(0)} FPS · ${value.calls} draws · ${value.triangles} triangles · ${value.geometries} geometries / ${value.textures} textures. Software/device dependent, not a performance guarantee.`
+  const stream = value.streaming
+  document.querySelector('#streaming-status')!.textContent = stream.error
+    ? `Regional provider degraded: ${stream.error}. Global low-resolution fallback retained if available.`
+    : `Natural Earth regional ${stream.health}: ${stream.active} requests / ${stream.queued} queued · ${stream.gpuTiles} GPU tiles · ${stream.cached} decoded / ${stream.decodedBytes} bytes. Workers and persistent data cache not implemented.`
+}, 500)
