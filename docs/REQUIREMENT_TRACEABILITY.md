@@ -7,8 +7,8 @@ This file maps the controlling request to current evidence. Planned work is not 
 | R01 | Store a full beginning-to-end plan in GitHub | docs/MASTER_BUILD_PLAN.md | PASS |
 | R02 | Store a full implementation prompt in GitHub | BUILD_PROMPT.md | PASS |
 | R03 | Use westkitty/Doom_Map as the repository | Repository initialized and populated on main | PASS |
-| R04 | Three.js interactive globe | Three.js source exists and production-builds; browser interaction not yet observed | UNVERIFIED |
-| R05 | Panable, zoomable, spinnable globe | OrbitControls configured for rotate/pan/zoom; runtime proof pending | UNVERIFIED |
+| R04 | Three.js interactive globe | Chromium screenshot inspected and nonzero draw statistics asserted | PARTIAL; local-scale foundation pending |
+| R05 | Panable, zoomable, spinnable globe | Playwright mouse rotate/pan/wheel and CDP pinch pass | PASS for tested desktop/emulated path |
 | R06 | Accurate global/geographical data strategy | docs/DATA_SOURCE_MATRIX.md plus LOD/provider architecture | PASS for plan; runtime pending |
 | R07 | Building-level capability | best-available building LOD/provider contract defined; runtime pending | PASS for plan; runtime pending |
 | R08 | Full animation and consequences | timed hazard/VFX/consequence architecture defined | PASS for plan; runtime pending |
@@ -28,6 +28,6 @@ This file maps the controlling request to current evidence. Planned work is not 
 
 The requested planning/research/prompt package is complete and committed.
 
-The Phase-0/early-Phase-1 code seed is build-verified but not yet browser-verified.
+The Phase-0/early-Phase-1 code seed has local production-path browser evidence; see docs/BROWSER_ACCEPTANCE.md.
 
-Public Pages delivery is verified. The remaining Phase 0/1 evidence gap is browser-level interaction acceptance for the Three.js globe itself.
+Public Pages delivery is verified. Remaining gaps include provenance contracts and Phase 1 spatial/navigation capabilities; physical-device and long-session evidence remain pending. Branch work is not yet deployed.

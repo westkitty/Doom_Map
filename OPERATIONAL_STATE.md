@@ -7,7 +7,7 @@
   "project_name": "Doom Map",
   "project_root": "westkitty/Doom_Map",
   "artifact_path": "",
-  "state_revision": 4,
+  "state_revision": 5,
   "last_updated": "2026-09-28T17:58:00Z",
   "current_baseline": {
     "identity": "commit 28dd723e5e504baeb36fbcd105a17e2a0cc00c13",
@@ -36,7 +36,7 @@ Verified by GitHub Actions CI run 36447608037:
 - Vite production build passed.
 - Initial production JS bundle is approximately 539 kB minified / 136 kB gzip and currently triggers Vite's >500 kB chunk warning.
 
-The browser-rendered globe itself has not yet been visually observed in a real browser during this workflow, so interactive behavior remains implemented but unverified.
+Superseding local evidence (2026-09-28): clean npm ci, typecheck, 3 unit tests, production build and 3 Playwright browser tests pass on the session branch. The rendered globe screenshot was inspected. See docs/BROWSER_ACCEPTANCE.md. Historical main CI/Pages records below do not prove deployment of this branch.
 
 ## 3. Artifact Contract
 
@@ -125,13 +125,12 @@ None currently recorded.
 
 ## 7. Implemented but Unverified
 
-<!-- operational-state:entry
-{"id":"UNV-001","title":"Interactive Three.js globe foundation","state":"implemented-unverified","scope":"index.html, src/main.ts, src/globe/GlobeApp.ts, src/style.css","evidence":"Source exists and production build passes; no rendered browser observation yet.","validation_method":"Open production build in real browser; verify globe renders, orbit/pan/zoom respond, telemetry updates, resize works, and console stays clean.","status":"active"}
--->
-### UNV-001 — Interactive Three.js globe foundation
-- **State:** implemented-unverified
-- **Missing proof:** Real-browser render and interaction observation.
-<!-- /operational-state:entry -->
+### Globe foundation — partially verified
+- Chromium 143 software-WebGL render screenshot inspected; rotate/pan/wheel,
+  telemetry, resize, context recovery and emulated pinch pass browser tests.
+- Short interaction geometry/texture counts remain constant.
+- Physical touch, long-session lifecycle, local-scale precision remain unverified.
+- Full Phase 1 remains incomplete. See docs/BROWSER_ACCEPTANCE.md.
 
 ## 8. Unknown or Evidence-Stale State
 
@@ -162,10 +161,16 @@ None currently recorded.
 - **State:** pending
 - **Priority:** high
 
-### PND-005 — Generate and commit package lockfile
-- **State:** pending
-- **Priority:** critical for Phase 0 exit
-- **Reason:** Current CI deliberately uses npm install because no locally generated package-lock.json exists yet. Switch CI/Pages to `npm ci` only after a real lockfile is generated and validated.
+### PND-005 — Deterministic installation and browser harness
+- **State:** locally verified; branch CI pending
+- Real package-lock.json committed with pinned Playwright 1.63.0.
+- Clean npm ci passes; both workflows use npm ci and lockfile caching.
+- CI and Pages build gates include browser acceptance.
+
+### PND-006 — Remaining Phase 0 spine
+- Provenance/model/data manifests and validation are next.
+- Baseline bounded frame statistics and renderer counts implemented.
+- Unsupported WebGL status and context-recovery status implemented; unsupported path needs test.
 
 ## 10. Active Decisions, Defaults, and Prohibitions
 
@@ -185,14 +190,17 @@ None currently recorded.
 | VER-001 | TypeScript baseline | verified | CI 36447608037 |
 | VER-002 | WGS84 fixtures | verified | 3/3 Vitest in CI |
 | VER-003 | Production build | verified | CI + Pages build before configure gate |
-| UNV-001 | Interactive globe behavior | implemented-unverified | needs real-browser smoke |
+| UNV-001 | Interactive globe behavior | partially verified | 3 local Chromium browser tests; screenshot inspected |
 | VER-004 | Public Pages delivery | verified | Pages workflow run 36448035612 + live HTTP 200 probe |
 | INV-004 | >=40 hazards | requested | catalog exists; runtime not built |
 | INV-005 | Wrapper shares web core | requested | wrapper not built |
 
 ## 12. Current Change Scope and Impact Radius
 
-Phase 0 plus the earliest Phase 1 foundation now exists. The immediate implementation scope remains: generate/validate the lockfile and reproducible `npm ci` path, add browser acceptance coverage, then finish the remaining Phase 1 globe foundation. Documentation-only Pages state reconciliation is complete. Do not jump directly to hazard implementations before the globe/data/time foundations exist.
+Phase 0/early Phase 1 on `arena/01a0e93e-doom-map`. Reproducible install and
+production-path browser acceptance now pass locally. Continue with provenance
+contracts, then complete Phase 1 before streaming/hazards. Public Pages still
+represents main, not this branch. No wrapper or hazard capability is claimed.
 
 ## 13. Compact Revision Log
 
@@ -200,3 +208,5 @@ Phase 0 plus the earliest Phase 1 foundation now exists. The immediate implement
 - r2 — 2026-09-28: Recorded Phase 0/1 source baseline, successful CI typecheck/tests/build, initial bundle warning, unverified globe runtime, and the Pages-enablement delivery blocker.
 - r3 — 2026-09-28: Verified Pages enabled in workflow mode, reran deployment successfully, and confirmed the public Doom Map URL returns HTTP 200.
 - r4 — 2026-09-28: Reconciled stale deployment/traceability/README state with the verified live Pages deployment; browser interaction proof and deterministic-install work remain pending.
+
+- r5 — Reproducible install, production-path browser harness, preview-base repair, bounded runtime metrics and context lifecycle evidence.

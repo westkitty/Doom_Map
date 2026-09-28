@@ -12,16 +12,18 @@
     "test": "vitest run",
     "build": "tsc --noEmit && vite build",
     "preview": "vite preview",
-    "check": "npm run typecheck && npm run test && npm run build"
+    "check": "npm run typecheck && npm run test && npm run build",
+    "test:browser": "playwright test"
   },
   "dependencies": {
     "three": "0.185.1"
   },
   "devDependencies": {
+    "@playwright/test": "1.63.0",
+    "@types/node": "22.14.0",
     "@types/three": "0.185.4",
     "typescript": "5.8.2",
     "vite": "6.2.3",
-    "vitest": "3.2.4",
-    "@types/node": "22.14.0"
+    "vitest": "3.2.4"
   }
 }

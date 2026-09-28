@@ -16,12 +16,27 @@ const formatAltitude = (meters: number): string => {
   return meters.toFixed(0) + ' m'
 }
 
-const app = new GlobeApp(canvas, (telemetry) => {
-  lat.textContent = 'LAT ' + telemetry.latitudeDeg.toFixed(3) + '°'
-  lon.textContent = 'LON ' + telemetry.longitudeDeg.toFixed(3) + '°'
-  alt.textContent = 'ALT ' + formatAltitude(telemetry.altitudeM)
+const status = document.querySelector<HTMLElement>('#status')!
+canvas.addEventListener('globe-status', (event) => {
+  status.textContent = (event as CustomEvent<string>).detail
 })
-
-app.start()
-
-window.addEventListener('pagehide', () => app.dispose(), { once: true })
+let app: GlobeApp | undefined
+function mount(): void {
+  try {
+    app = new GlobeApp(canvas!, (telemetry) => {
+      lat!.textContent = 'LAT ' + telemetry.latitudeDeg.toFixed(3) + '°'
+      lon!.textContent = 'LON ' + telemetry.longitudeDeg.toFixed(3) + '°'
+      alt!.textContent = 'ALT ' + formatAltitude(telemetry.altitudeM)
+    })
+    app.start()
+  } catch (error) {
+    app?.dispose()
+    status.textContent = 'Unable to start WebGL2. Enable hardware acceleration or try a supported browser.'
+    status.setAttribute('role', 'alert')
+    document.body.dataset.webgl = 'unavailable'
+    console.error('Globe initialization failed', error)
+  }
+}
+mount()
+window.addEventListener('pagehide', () => { app?.dispose(); app = undefined })
+window.addEventListener('pageshow', (event) => { if (event.persisted) mount() })

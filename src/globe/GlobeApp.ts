@@ -1,5 +1,6 @@
 import * as THREE from 'three'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
+import { FrameStatistics } from '../core/performance'
 import { WGS84, ecefToGeodetic } from '../core/coordinates'
 
 const EARTH_A = WGS84.semiMajorAxis
@@ -19,6 +20,9 @@ export class GlobeApp {
   private readonly earth = new THREE.Group()
   private readonly onTelemetry: (value: GlobeTelemetry) => void
   private animationFrame = 0
+  private running = false
+  private disposed = false
+  private readonly statistics = new FrameStatistics()
 
   constructor(canvas: HTMLCanvasElement, onTelemetry: (value: GlobeTelemetry) => void) {
     this.onTelemetry = onTelemetry
@@ -59,16 +63,31 @@ export class GlobeApp {
   }
 
   start(): void {
+    if (this.running || this.disposed) return
+    this.running = true
     const frame = (): void => {
+      if (!this.running) return
       this.controls.update()
       this.updateTelemetry()
       this.renderer.render(this.scene, this.camera)
+      this.statistics.record(performance.now())
+      const info = this.renderer.info
+      this.renderer.domElement.dataset.runtime = JSON.stringify({
+        ...this.statistics.snapshot(), calls: info.render.calls,
+        triangles: info.render.triangles, geometries: info.memory.geometries,
+        textures: info.memory.textures, frame: info.render.frame,
+        camera: this.camera.position.toArray(), target: this.controls.target.toArray(),
+        aspect: this.camera.aspect
+      })
       this.animationFrame = requestAnimationFrame(frame)
     }
     frame()
   }
 
   dispose(): void {
+    if (this.disposed) return
+    this.disposed = true
+    this.running = false
     cancelAnimationFrame(this.animationFrame)
     window.removeEventListener('resize', this.resize)
     this.renderer.domElement.removeEventListener('webglcontextlost', this.onContextLost)
@@ -171,9 +190,14 @@ export class GlobeApp {
   private readonly onContextLost = (event: Event): void => {
     event.preventDefault()
     document.body.dataset.webgl = 'lost'
+    this.running = false
+    cancelAnimationFrame(this.animationFrame)
+    this.renderer.domElement.dispatchEvent(new CustomEvent('globe-status', { detail: 'Graphics context lost. Waiting for recovery.' }))
   }
 
   private readonly onContextRestored = (): void => {
     delete document.body.dataset.webgl
+    this.renderer.domElement.dispatchEvent(new CustomEvent('globe-status', { detail: 'Graphics restored · model systems pending' }))
+    this.start()
   }
 }
