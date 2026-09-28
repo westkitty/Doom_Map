@@ -2,6 +2,7 @@ import './style.css'
 import { cameraBookmark } from './core/bookmarks'
 import { QUALITY, type QualityTier } from './core/quality'
 import type { GeodeticPoint } from './core/coordinates'
+import type { BuildingFeature } from './data/providers/buildings'
 import models from '../data/models.json'
 import providers from '../data/providers.json'
 import { parseManifest } from './data/provenance'
@@ -72,6 +73,24 @@ canvas.addEventListener('globe-selection', event => {
   const point = (event as CustomEvent<GeodeticPoint>).detail
   document.querySelector('#selection')!.textContent = `Selected ${point.latitudeDeg.toFixed(5)}°, ${point.longitudeDeg.toFixed(5)}° · WGS84 ellipsoid, not terrain`
 })
+
+const buildingInspector = document.querySelector<HTMLElement>('#building-info')
+canvas.addEventListener('building-selection', event => {
+  const b = (event as CustomEvent<BuildingFeature | null>).detail
+  if (!buildingInspector) return
+  if (!b) {
+    buildingInspector.textContent = 'No building selected. Zoom below 15 km to inspect local building extrusions.'
+    return
+  }
+  const heightTag = b.heightSource === 'observed'
+    ? `${b.heightM.toFixed(1)} m (observed survey/roof tag)`
+    : `${b.heightM.toFixed(1)} m (inferred from ${b.storeys} storeys @ 3m/storey)`
+  buildingInspector.innerHTML = `<strong>${b.name || b.id}</strong><br>` +
+    `Use: ${b.use} · Storeys: ${b.storeys} · Height: ${heightTag}<br>` +
+    `Confidence: ${(b.confidence * 100).toFixed(0)}% · Timestamp: ${b.timestamp || 'unknown'}<br>` +
+    `<em>Truth contract: 2D footprint extrusion; structural resistance and internal occupancy unobserved.</em>`
+})
+
 const navigationStatus = document.querySelector<HTMLElement>('#navigation-status')!
 document.querySelector<HTMLFormElement>('#location-form')!.addEventListener('submit', event => {
   event.preventDefault()
@@ -107,7 +126,11 @@ setInterval(() => {
   const value = JSON.parse(runtime)
   document.querySelector('#performance')!.textContent = `Frame ${value.meanMs.toFixed(1)} ms / p95 ${value.p95Ms.toFixed(1)} ms · ${value.fps.toFixed(0)} FPS · ${value.calls} draws · ${value.triangles} triangles · ${value.geometries} geometries / ${value.textures} textures. Software/device dependent, not a performance guarantee.`
   const stream = value.streaming
+  const bldg = value.buildings
+  const bldgText = bldg && bldg.visible
+    ? ` · Local buildings: ${bldg.buildingCount} structures (${bldg.gpuTiles} tiles loaded)`
+    : ''
   document.querySelector('#streaming-status')!.textContent = stream.error
     ? `Regional provider degraded: ${stream.error}. Global low-resolution fallback retained if available.`
-    : `Natural Earth regional ${stream.health}: ${stream.active} requests / ${stream.queued} queued · ${stream.gpuTiles} GPU tiles · ${stream.cached} decoded / ${stream.decodedBytes} bytes. Workers and persistent data cache not implemented.`
+    : `Natural Earth regional ${stream.health}: ${stream.active} requests / ${stream.queued} queued · ${stream.gpuTiles} coastline tiles · ${stream.cachedTiles} persistent-cache tiles / ${stream.staleTiles} stale-cache fallback tiles${bldgText}.${stream.persistent.warning ? ` (${stream.persistent.warning})` : ''} Workers not implemented.`
 }, 500)

@@ -112,3 +112,12 @@ Final implementation CI run **36467794054** passed on **5dbe6a1**, including
 Local Chromium fallback and CI's standard installation therefore have separate
 positive evidence. This does not imply physical-device performance or Pages
 publication. Public Pages remains on main behind its main-only environment rule.
+
+## Phase 2 bounded persistent caching and 3D buildings slice
+
+42 unit tests and 20 browser tests pass together.
+- Persistent IndexedDB cache (`doom-map-provider-cache`) is isolated with `[provider, version, codec, lod, tile]` compound keys, freshness bounds, LRU eviction (128 entries, 8 MB), stale network fallback, and storage-denial resilience.
+- Local 3D building extrusions stream at local camera altitudes below 15,000 m. Footprints are triangulated into roofs with wall quads in local ENU floating origin.
+- Building truth contract inspector exposes observed vs inferred height, storeys, usage, confidence, attribution, and structural limitations upon selection.
+- Zooming back to orbital altitudes unloads all building GPU meshes and geometries.
+- Inspected screenshot `local-buildings-3d.png` verifies crisp 3D extruded geometry, categorized materials, and truth contract HUD.

@@ -44,3 +44,19 @@ Regional loading is active at 200–3,000 km camera altitude, with a 3x3 neighbo
 The global snapshot remains a labeled fallback until all requested regional cells
 are ready; no simultaneous duplicate coastline presentation. These are **coarse
 coastline tiles**, not a local terrain or building provider.
+
+## Local Building Footprints and Extrusions
+
+- Provider: OpenStreetMap contributors / Overture Maps Foundation.
+- Attribution: **Building footprint data © OpenStreetMap contributors / Overture Maps Foundation. ODbL / CDLA-Permissive-2.0.**
+- Version: `2026-09-28`.
+- Registration: `data/providers.json`.
+- Delivery: Bounded static JSON tiles (`public/data/buildings/*.json`), requested on-demand at local camera altitudes below 15,000 m via `BuildingProvider` and `TileScheduler`.
+- Caching: Persisted in IndexedDB `doom-map-provider-cache` with version-keyed isolation, 7-day freshness, and 90-day stale fallback.
+- Coverage: Sampled regional and urban focus tiles at 0.05-degree grid resolution (e.g. Niles/South Bend, San Francisco, Tokyo, London).
+- Fidelity: C (data-driven cartographic footprints and LOD1 extrusions).
+- Building-level truth contract:
+  - 2D building footprint polygons extruded along local ENU normal vectors.
+  - Heights tagged as `observed` (survey/roof height tags) or `inferred` (storey counts @ 3.0 m/storey).
+  - Geometry is simplified LOD1 3D massing, not an architectural BIM or structural engineering model.
+  - Internal building occupancy, construction materials, structural degradation, and subterranean basements are unobserved.

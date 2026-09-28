@@ -1,4 +1,5 @@
 import * as THREE from 'three'
+import type { TileDelivery } from '../data/providers/types'
 import { TileScheduler } from '../data/TileScheduler'
 import { NaturalEarthProvider, regionalRequests } from '../data/providers/NaturalEarth'
 import { geodeticToEcef, toRenderRelative } from '../core/coordinates'
@@ -8,13 +9,16 @@ export class RegionalGeography {
   readonly group = new THREE.Group()
   private readonly layers = new Map<string, THREE.LineSegments>()
   private readonly scheduler: TileScheduler<Float64Array>
+  private readonly provider = new NaturalEarthProvider()
+  private readonly delivery = new Map<string, TileDelivery>()
   private region = ''
   private error = ''
 
   constructor() {
-    this.scheduler = new TileScheduler(new NaturalEarthProvider(), {
+    this.scheduler = new TileScheduler(this.provider, {
       concurrency: 3, maxTiles: 12, maxBytes: 2_000_000, retries: 1, retryDelayMs: 250,
       onLoad: (id, tile) => {
+        if (tile.delivery) this.delivery.set(id, tile.delivery)
         const [x, y] = id.split('-').map(Number) as [number, number]
         const anchor = geodeticToEcef({ longitudeDeg: x * 30 - 165, latitudeDeg: y * 30 - 75, heightM: 1000 })
         const positions: number[] = []
@@ -35,6 +39,7 @@ export class RegionalGeography {
         this.group.add(layer)
       },
       onUnload: id => {
+        this.delivery.delete(id)
         const layer = this.layers.get(id)
         if (!layer) return
         this.group.remove(layer)
@@ -60,6 +65,9 @@ export class RegionalGeography {
     this.group.visible = enabled && stats.active === 0 && stats.queued === 0 && stats.failed === 0 && stats.resident > 0
   }
 
-  snapshot() { return { ...this.scheduler.snapshot(), error: this.error, gpuTiles: this.layers.size, visible: this.group.visible } }
+  snapshot() { return { ...this.scheduler.snapshot(), error: this.error, persistent: this.provider.cacheStatus(),
+    cachedTiles: [...this.delivery.values()].filter(v => v.source === 'persistent-cache').length,
+    staleTiles: [...this.delivery.values()].filter(v => v.source === 'stale-cache').length,
+    oldestStoredAt: Math.min(Date.now(), ...[...this.delivery.values()].map(v => v.storedAt)), gpuTiles: this.layers.size, visible: this.group.visible } }
   dispose(): void { this.scheduler.dispose() }
 }

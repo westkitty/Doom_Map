@@ -1,3 +1,5 @@
+import { CachedTileLoader } from '../cache/CachedTileLoader'
+import { PersistentTileCache } from '../cache/PersistentTileCache'
 import providers from '../../../data/providers.json'
 import { parseManifest } from '../provenance'
 import type { DataProvider, TileRequest } from './types'
@@ -25,15 +27,24 @@ export function parseSegments(value: unknown): Float64Array {
 export class NaturalEarthProvider implements DataProvider<Float64Array> {
   readonly provenance = parseManifest(providers, 'provider')[0]!
   readonly kind = 'vectors' as const
-  async load(request: TileRequest, signal: AbortSignal) {
-    if (!/^(?:[0-9]|1[01])-[0-5]$/.test(request.id) || request.lod !== 1) throw new Error('Unsupported Natural Earth tile')
-    const response = await fetch(`${import.meta.env.BASE_URL}data/ne-110m/${request.id}.json`, {
-      signal: AbortSignal.any([signal, AbortSignal.timeout(10_000)])
-    })
-    if (!response.ok) throw new Error(`Natural Earth tile HTTP ${response.status}`)
-    const text = await response.text()
-    if (text.length > 1_000_000) throw new Error('Encoded tile exceeds byte budget')
+  private readonly loader = new CachedTileLoader(new PersistentTileCache(), {
+    freshMs: 30 * 86400_000, maxStaleMs: 365 * 86400_000
+  }, text => {
     const data = parseSegments(JSON.parse(text))
     return { data, bytes: data.byteLength }
+  })
+  cacheStatus() { return { ...this.loader.status } }
+  async load(request: TileRequest, signal: AbortSignal) {
+    if (!/^(?:[0-9]|1[01])-[0-5]$/.test(request.id) || request.lod !== 1) throw new Error('Unsupported Natural Earth tile')
+    return this.loader.load({ provider: this.provenance.id, version: this.provenance.version,
+      codec: 'natural-earth-segments-v1', tile: request.id, lod: request.lod }, async () => {
+      const response = await fetch(`${import.meta.env.BASE_URL}data/ne-110m/${request.id}.json`, {
+        signal: AbortSignal.any([signal, AbortSignal.timeout(10_000)])
+      })
+      if (!response.ok) throw new Error(`Natural Earth tile HTTP ${response.status}`)
+      const text = await response.text()
+      if (text.length > 1_000_000) throw new Error('Encoded tile exceeds byte budget')
+      return text
+    }, signal)
   }
 }

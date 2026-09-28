@@ -1,0 +1,1440 @@
+{
+  "schemaVersion": 1,
+  "tileId": "1151-2555",
+  "bounds": {
+    "west": -122.45,
+    "south": 37.75,
+    "east": -122.4,
+    "north": 37.8
+  },
+  "buildings": [
+    {
+      "id": "sf-salesforce",
+      "name": "Salesforce Tower",
+      "use": "commercial",
+      "footprint": [
+        [
+          -122.3975,
+          37.7895
+        ],
+        [
+          -122.3965,
+          37.7895
+        ],
+        [
+          -122.3965,
+          37.7905
+        ],
+        [
+          -122.3975,
+          37.7905
+        ]
+      ],
+      "heightM": 326,
+      "heightSource": "observed",
+      "storeys": 61,
+      "confidence": 0.99,
+      "timestamp": "2026-09-28T00:00:00Z"
+    },
+    {
+      "id": "sf-transamerica",
+      "name": "Transamerica Pyramid",
+      "use": "commercial",
+      "footprint": [
+        [
+          -122.4022,
+          37.795
+        ],
+        [
+          -122.401,
+          37.795
+        ],
+        [
+          -122.401,
+          37.7958
+        ],
+        [
+          -122.4022,
+          37.7958
+        ]
+      ],
+      "heightM": 260,
+      "heightSource": "observed",
+      "storeys": 48,
+      "confidence": 0.99,
+      "timestamp": "2026-09-28T00:00:00Z"
+    },
+    {
+      "id": "sf-downtown-1",
+      "name": "555 California St",
+      "use": "commercial",
+      "footprint": [
+        [
+          -122.4065,
+          37.7875
+        ],
+        [
+          -122.4053,
+          37.7875
+        ],
+        [
+          -122.4053,
+          37.7885
+        ],
+        [
+          -122.4065,
+          37.7885
+        ]
+      ],
+      "heightM": 57.6,
+      "heightSource": "observed",
+      "storeys": 18,
+      "confidence": 0.95,
+      "timestamp": "2026-09-28T00:00:00Z"
+    },
+    {
+      "id": "sf-downtown-2",
+      "name": "Market Center Highrise",
+      "use": "residential",
+      "footprint": [
+        [
+          -122.405,
+          37.7875
+        ],
+        [
+          -122.4038,
+          37.7875
+        ],
+        [
+          -122.4038,
+          37.7885
+        ],
+        [
+          -122.405,
+          37.7885
+        ]
+      ],
+      "heightM": 60,
+      "heightSource": "inferred",
+      "storeys": 20,
+      "confidence": 0.82,
+      "timestamp": "2026-09-28T00:00:00Z"
+    },
+    {
+      "id": "sf-downtown-3",
+      "name": "Embarcadero Center 1",
+      "use": "civic",
+      "footprint": [
+        [
+          -122.4035,
+          37.7875
+        ],
+        [
+          -122.4023,
+          37.7875
+        ],
+        [
+          -122.4023,
+          37.7885
+        ],
+        [
+          -122.4035,
+          37.7885
+        ]
+      ],
+      "heightM": 70.4,
+      "heightSource": "observed",
+      "storeys": 22,
+      "confidence": 0.95,
+      "timestamp": "2026-09-28T00:00:00Z"
+    },
+    {
+      "id": "sf-downtown-4",
+      "name": "Embarcadero Center 2",
+      "use": "commercial",
+      "footprint": [
+        [
+          -122.402,
+          37.7875
+        ],
+        [
+          -122.4008,
+          37.7875
+        ],
+        [
+          -122.4008,
+          37.7885
+        ],
+        [
+          -122.402,
+          37.7885
+        ]
+      ],
+      "heightM": 57,
+      "heightSource": "inferred",
+      "storeys": 19,
+      "confidence": 0.82,
+      "timestamp": "2026-09-28T00:00:00Z"
+    },
+    {
+      "id": "sf-downtown-5",
+      "name": "Financial District Tower Facility 5",
+      "use": "residential",
+      "footprint": [
+        [
+          -122.4005,
+          37.7875
+        ],
+        [
+          -122.3993,
+          37.7875
+        ],
+        [
+          -122.3993,
+          37.7885
+        ],
+        [
+          -122.4005,
+          37.7885
+        ]
+      ],
+      "heightM": 67.2,
+      "heightSource": "observed",
+      "storeys": 21,
+      "confidence": 0.95,
+      "timestamp": "2026-09-28T00:00:00Z"
+    },
+    {
+      "id": "sf-downtown-6",
+      "name": "Financial District Tower Facility 6",
+      "use": "civic",
+      "footprint": [
+        [
+          -122.399,
+          37.7875
+        ],
+        [
+          -122.3978,
+          37.7875
+        ],
+        [
+          -122.3978,
+          37.7885
+        ],
+        [
+          -122.399,
+          37.7885
+        ]
+      ],
+      "heightM": 54,
+      "heightSource": "inferred",
+      "storeys": 18,
+      "confidence": 0.82,
+      "timestamp": "2026-09-28T00:00:00Z"
+    },
+    {
+      "id": "sf-downtown-7",
+      "name": "Financial District Tower Facility 7",
+      "use": "commercial",
+      "footprint": [
+        [
+          -122.3975,
+          37.7875
+        ],
+        [
+          -122.3963,
+          37.7875
+        ],
+        [
+          -122.3963,
+          37.7885
+        ],
+        [
+          -122.3975,
+          37.7885
+        ]
+      ],
+      "heightM": 64,
+      "heightSource": "observed",
+      "storeys": 20,
+      "confidence": 0.95,
+      "timestamp": "2026-09-28T00:00:00Z"
+    },
+    {
+      "id": "sf-downtown-8",
+      "name": "Financial District Tower Facility 8",
+      "use": "residential",
+      "footprint": [
+        [
+          -122.4065,
+          37.789
+        ],
+        [
+          -122.4053,
+          37.789
+        ],
+        [
+          -122.4053,
+          37.79
+        ],
+        [
+          -122.4065,
+          37.79
+        ]
+      ],
+      "heightM": 63,
+      "heightSource": "inferred",
+      "storeys": 21,
+      "confidence": 0.82,
+      "timestamp": "2026-09-28T00:00:00Z"
+    },
+    {
+      "id": "sf-downtown-9",
+      "name": "Financial District Tower Facility 9",
+      "use": "civic",
+      "footprint": [
+        [
+          -122.405,
+          37.789
+        ],
+        [
+          -122.4038,
+          37.789
+        ],
+        [
+          -122.4038,
+          37.79
+        ],
+        [
+          -122.405,
+          37.79
+        ]
+      ],
+      "heightM": 59.1,
+      "heightSource": "observed",
+      "storeys": 18,
+      "confidence": 0.95,
+      "timestamp": "2026-09-28T00:00:00Z"
+    },
+    {
+      "id": "sf-downtown-10",
+      "name": "Financial District Tower Facility 10",
+      "use": "commercial",
+      "footprint": [
+        [
+          -122.4035,
+          37.789
+        ],
+        [
+          -122.4023,
+          37.789
+        ],
+        [
+          -122.4023,
+          37.79
+        ],
+        [
+          -122.4035,
+          37.79
+        ]
+      ],
+      "heightM": 60,
+      "heightSource": "inferred",
+      "storeys": 20,
+      "confidence": 0.82,
+      "timestamp": "2026-09-28T00:00:00Z"
+    },
+    {
+      "id": "sf-downtown-11",
+      "name": "Financial District Tower Facility 11",
+      "use": "residential",
+      "footprint": [
+        [
+          -122.402,
+          37.789
+        ],
+        [
+          -122.4008,
+          37.789
+        ],
+        [
+          -122.4008,
+          37.79
+        ],
+        [
+          -122.402,
+          37.79
+        ]
+      ],
+      "heightM": 71.9,
+      "heightSource": "observed",
+      "storeys": 22,
+      "confidence": 0.95,
+      "timestamp": "2026-09-28T00:00:00Z"
+    },
+    {
+      "id": "sf-downtown-12",
+      "name": "Financial District Tower Facility 12",
+      "use": "civic",
+      "footprint": [
+        [
+          -122.4005,
+          37.789
+        ],
+        [
+          -122.3993,
+          37.789
+        ],
+        [
+          -122.3993,
+          37.79
+        ],
+        [
+          -122.4005,
+          37.79
+        ]
+      ],
+      "heightM": 57,
+      "heightSource": "inferred",
+      "storeys": 19,
+      "confidence": 0.82,
+      "timestamp": "2026-09-28T00:00:00Z"
+    },
+    {
+      "id": "sf-downtown-13",
+      "name": "Financial District Tower Facility 13",
+      "use": "commercial",
+      "footprint": [
+        [
+          -122.399,
+          37.789
+        ],
+        [
+          -122.3978,
+          37.789
+        ],
+        [
+          -122.3978,
+          37.79
+        ],
+        [
+          -122.399,
+          37.79
+        ]
+      ],
+      "heightM": 68.7,
+      "heightSource": "observed",
+      "storeys": 21,
+      "confidence": 0.95,
+      "timestamp": "2026-09-28T00:00:00Z"
+    },
+    {
+      "id": "sf-downtown-14",
+      "name": "Financial District Tower Facility 14",
+      "use": "residential",
+      "footprint": [
+        [
+          -122.3975,
+          37.789
+        ],
+        [
+          -122.3963,
+          37.789
+        ],
+        [
+          -122.3963,
+          37.79
+        ],
+        [
+          -122.3975,
+          37.79
+        ]
+      ],
+      "heightM": 54,
+      "heightSource": "inferred",
+      "storeys": 18,
+      "confidence": 0.82,
+      "timestamp": "2026-09-28T00:00:00Z"
+    },
+    {
+      "id": "sf-downtown-15",
+      "name": "Financial District Tower Facility 15",
+      "use": "civic",
+      "footprint": [
+        [
+          -122.4065,
+          37.7905
+        ],
+        [
+          -122.4053,
+          37.7905
+        ],
+        [
+          -122.4053,
+          37.7915
+        ],
+        [
+          -122.4065,
+          37.7915
+        ]
+      ],
+      "heightM": 63.8,
+      "heightSource": "observed",
+      "storeys": 19,
+      "confidence": 0.95,
+      "timestamp": "2026-09-28T00:00:00Z"
+    },
+    {
+      "id": "sf-downtown-16",
+      "name": "Financial District Tower Facility 16",
+      "use": "commercial",
+      "footprint": [
+        [
+          -122.405,
+          37.7905
+        ],
+        [
+          -122.4038,
+          37.7905
+        ],
+        [
+          -122.4038,
+          37.7915
+        ],
+        [
+          -122.405,
+          37.7915
+        ]
+      ],
+      "heightM": 63,
+      "heightSource": "inferred",
+      "storeys": 21,
+      "confidence": 0.82,
+      "timestamp": "2026-09-28T00:00:00Z"
+    },
+    {
+      "id": "sf-downtown-17",
+      "name": "Financial District Tower Facility 17",
+      "use": "residential",
+      "footprint": [
+        [
+          -122.4035,
+          37.7905
+        ],
+        [
+          -122.4023,
+          37.7905
+        ],
+        [
+          -122.4023,
+          37.7915
+        ],
+        [
+          -122.4035,
+          37.7915
+        ]
+      ],
+      "heightM": 60.6,
+      "heightSource": "observed",
+      "storeys": 18,
+      "confidence": 0.95,
+      "timestamp": "2026-09-28T00:00:00Z"
+    },
+    {
+      "id": "sf-downtown-18",
+      "name": "Financial District Tower Facility 18",
+      "use": "civic",
+      "footprint": [
+        [
+          -122.402,
+          37.7905
+        ],
+        [
+          -122.4008,
+          37.7905
+        ],
+        [
+          -122.4008,
+          37.7915
+        ],
+        [
+          -122.402,
+          37.7915
+        ]
+      ],
+      "heightM": 60,
+      "heightSource": "inferred",
+      "storeys": 20,
+      "confidence": 0.82,
+      "timestamp": "2026-09-28T00:00:00Z"
+    },
+    {
+      "id": "sf-downtown-19",
+      "name": "Financial District Tower Facility 19",
+      "use": "commercial",
+      "footprint": [
+        [
+          -122.4005,
+          37.7905
+        ],
+        [
+          -122.3993,
+          37.7905
+        ],
+        [
+          -122.3993,
+          37.7915
+        ],
+        [
+          -122.4005,
+          37.7915
+        ]
+      ],
+      "heightM": 73.4,
+      "heightSource": "observed",
+      "storeys": 22,
+      "confidence": 0.95,
+      "timestamp": "2026-09-28T00:00:00Z"
+    },
+    {
+      "id": "sf-downtown-20",
+      "name": "Financial District Tower Facility 20",
+      "use": "residential",
+      "footprint": [
+        [
+          -122.399,
+          37.7905
+        ],
+        [
+          -122.3978,
+          37.7905
+        ],
+        [
+          -122.3978,
+          37.7915
+        ],
+        [
+          -122.399,
+          37.7915
+        ]
+      ],
+      "heightM": 57,
+      "heightSource": "inferred",
+      "storeys": 19,
+      "confidence": 0.82,
+      "timestamp": "2026-09-28T00:00:00Z"
+    },
+    {
+      "id": "sf-downtown-21",
+      "name": "Financial District Tower Facility 21",
+      "use": "civic",
+      "footprint": [
+        [
+          -122.3975,
+          37.7905
+        ],
+        [
+          -122.3963,
+          37.7905
+        ],
+        [
+          -122.3963,
+          37.7915
+        ],
+        [
+          -122.3975,
+          37.7915
+        ]
+      ],
+      "heightM": 70.2,
+      "heightSource": "observed",
+      "storeys": 21,
+      "confidence": 0.95,
+      "timestamp": "2026-09-28T00:00:00Z"
+    },
+    {
+      "id": "sf-downtown-22",
+      "name": "Financial District Tower Facility 22",
+      "use": "commercial",
+      "footprint": [
+        [
+          -122.4065,
+          37.792
+        ],
+        [
+          -122.4053,
+          37.792
+        ],
+        [
+          -122.4053,
+          37.793
+        ],
+        [
+          -122.4065,
+          37.793
+        ]
+      ],
+      "heightM": 66,
+      "heightSource": "inferred",
+      "storeys": 22,
+      "confidence": 0.82,
+      "timestamp": "2026-09-28T00:00:00Z"
+    },
+    {
+      "id": "sf-downtown-23",
+      "name": "Financial District Tower Facility 23",
+      "use": "residential",
+      "footprint": [
+        [
+          -122.405,
+          37.792
+        ],
+        [
+          -122.4038,
+          37.792
+        ],
+        [
+          -122.4038,
+          37.793
+        ],
+        [
+          -122.405,
+          37.793
+        ]
+      ],
+      "heightM": 60.8,
+      "heightSource": "observed",
+      "storeys": 19,
+      "confidence": 0.95,
+      "timestamp": "2026-09-28T00:00:00Z"
+    },
+    {
+      "id": "sf-downtown-24",
+      "name": "Financial District Tower Facility 24",
+      "use": "civic",
+      "footprint": [
+        [
+          -122.4035,
+          37.792
+        ],
+        [
+          -122.4023,
+          37.792
+        ],
+        [
+          -122.4023,
+          37.793
+        ],
+        [
+          -122.4035,
+          37.793
+        ]
+      ],
+      "heightM": 63,
+      "heightSource": "inferred",
+      "storeys": 21,
+      "confidence": 0.82,
+      "timestamp": "2026-09-28T00:00:00Z"
+    },
+    {
+      "id": "sf-downtown-25",
+      "name": "Financial District Tower Facility 25",
+      "use": "commercial",
+      "footprint": [
+        [
+          -122.402,
+          37.792
+        ],
+        [
+          -122.4008,
+          37.792
+        ],
+        [
+          -122.4008,
+          37.793
+        ],
+        [
+          -122.402,
+          37.793
+        ]
+      ],
+      "heightM": 57.6,
+      "heightSource": "observed",
+      "storeys": 18,
+      "confidence": 0.95,
+      "timestamp": "2026-09-28T00:00:00Z"
+    },
+    {
+      "id": "sf-downtown-26",
+      "name": "Financial District Tower Facility 26",
+      "use": "residential",
+      "footprint": [
+        [
+          -122.4005,
+          37.792
+        ],
+        [
+          -122.3993,
+          37.792
+        ],
+        [
+          -122.3993,
+          37.793
+        ],
+        [
+          -122.4005,
+          37.793
+        ]
+      ],
+      "heightM": 60,
+      "heightSource": "inferred",
+      "storeys": 20,
+      "confidence": 0.82,
+      "timestamp": "2026-09-28T00:00:00Z"
+    },
+    {
+      "id": "sf-downtown-27",
+      "name": "Financial District Tower Facility 27",
+      "use": "civic",
+      "footprint": [
+        [
+          -122.399,
+          37.792
+        ],
+        [
+          -122.3978,
+          37.792
+        ],
+        [
+          -122.3978,
+          37.793
+        ],
+        [
+          -122.399,
+          37.793
+        ]
+      ],
+      "heightM": 70.4,
+      "heightSource": "observed",
+      "storeys": 22,
+      "confidence": 0.95,
+      "timestamp": "2026-09-28T00:00:00Z"
+    },
+    {
+      "id": "sf-downtown-28",
+      "name": "Financial District Tower Facility 28",
+      "use": "commercial",
+      "footprint": [
+        [
+          -122.3975,
+          37.792
+        ],
+        [
+          -122.3963,
+          37.792
+        ],
+        [
+          -122.3963,
+          37.793
+        ],
+        [
+          -122.3975,
+          37.793
+        ]
+      ],
+      "heightM": 57,
+      "heightSource": "inferred",
+      "storeys": 19,
+      "confidence": 0.82,
+      "timestamp": "2026-09-28T00:00:00Z"
+    },
+    {
+      "id": "sf-downtown-29",
+      "name": "Financial District Tower Facility 29",
+      "use": "residential",
+      "footprint": [
+        [
+          -122.4065,
+          37.7935
+        ],
+        [
+          -122.4053,
+          37.7935
+        ],
+        [
+          -122.4053,
+          37.7945
+        ],
+        [
+          -122.4065,
+          37.7945
+        ]
+      ],
+      "heightM": 65.5,
+      "heightSource": "observed",
+      "storeys": 20,
+      "confidence": 0.95,
+      "timestamp": "2026-09-28T00:00:00Z"
+    },
+    {
+      "id": "sf-downtown-30",
+      "name": "Financial District Tower Facility 30",
+      "use": "civic",
+      "footprint": [
+        [
+          -122.405,
+          37.7935
+        ],
+        [
+          -122.4038,
+          37.7935
+        ],
+        [
+          -122.4038,
+          37.7945
+        ],
+        [
+          -122.405,
+          37.7945
+        ]
+      ],
+      "heightM": 66,
+      "heightSource": "inferred",
+      "storeys": 22,
+      "confidence": 0.82,
+      "timestamp": "2026-09-28T00:00:00Z"
+    },
+    {
+      "id": "sf-downtown-31",
+      "name": "Financial District Tower Facility 31",
+      "use": "commercial",
+      "footprint": [
+        [
+          -122.4035,
+          37.7935
+        ],
+        [
+          -122.4023,
+          37.7935
+        ],
+        [
+          -122.4023,
+          37.7945
+        ],
+        [
+          -122.4035,
+          37.7945
+        ]
+      ],
+      "heightM": 62.3,
+      "heightSource": "observed",
+      "storeys": 19,
+      "confidence": 0.95,
+      "timestamp": "2026-09-28T00:00:00Z"
+    },
+    {
+      "id": "sf-downtown-32",
+      "name": "Financial District Tower Facility 32",
+      "use": "residential",
+      "footprint": [
+        [
+          -122.402,
+          37.7935
+        ],
+        [
+          -122.4008,
+          37.7935
+        ],
+        [
+          -122.4008,
+          37.7945
+        ],
+        [
+          -122.402,
+          37.7945
+        ]
+      ],
+      "heightM": 63,
+      "heightSource": "inferred",
+      "storeys": 21,
+      "confidence": 0.82,
+      "timestamp": "2026-09-28T00:00:00Z"
+    },
+    {
+      "id": "sf-downtown-33",
+      "name": "Financial District Tower Facility 33",
+      "use": "civic",
+      "footprint": [
+        [
+          -122.4005,
+          37.7935
+        ],
+        [
+          -122.3993,
+          37.7935
+        ],
+        [
+          -122.3993,
+          37.7945
+        ],
+        [
+          -122.4005,
+          37.7945
+        ]
+      ],
+      "heightM": 59.1,
+      "heightSource": "observed",
+      "storeys": 18,
+      "confidence": 0.95,
+      "timestamp": "2026-09-28T00:00:00Z"
+    },
+    {
+      "id": "sf-downtown-34",
+      "name": "Financial District Tower Facility 34",
+      "use": "commercial",
+      "footprint": [
+        [
+          -122.399,
+          37.7935
+        ],
+        [
+          -122.3978,
+          37.7935
+        ],
+        [
+          -122.3978,
+          37.7945
+        ],
+        [
+          -122.399,
+          37.7945
+        ]
+      ],
+      "heightM": 60,
+      "heightSource": "inferred",
+      "storeys": 20,
+      "confidence": 0.82,
+      "timestamp": "2026-09-28T00:00:00Z"
+    },
+    {
+      "id": "sf-downtown-35",
+      "name": "Financial District Tower Facility 35",
+      "use": "residential",
+      "footprint": [
+        [
+          -122.3975,
+          37.7935
+        ],
+        [
+          -122.3963,
+          37.7935
+        ],
+        [
+          -122.3963,
+          37.7945
+        ],
+        [
+          -122.3975,
+          37.7945
+        ]
+      ],
+      "heightM": 71.9,
+      "heightSource": "observed",
+      "storeys": 22,
+      "confidence": 0.95,
+      "timestamp": "2026-09-28T00:00:00Z"
+    },
+    {
+      "id": "sf-downtown-36",
+      "name": "Financial District Tower Facility 36",
+      "use": "civic",
+      "footprint": [
+        [
+          -122.4065,
+          37.795
+        ],
+        [
+          -122.4053,
+          37.795
+        ],
+        [
+          -122.4053,
+          37.796
+        ],
+        [
+          -122.4065,
+          37.796
+        ]
+      ],
+      "heightM": 54,
+      "heightSource": "inferred",
+      "storeys": 18,
+      "confidence": 0.82,
+      "timestamp": "2026-09-28T00:00:00Z"
+    },
+    {
+      "id": "sf-downtown-37",
+      "name": "Financial District Tower Facility 37",
+      "use": "commercial",
+      "footprint": [
+        [
+          -122.405,
+          37.795
+        ],
+        [
+          -122.4038,
+          37.795
+        ],
+        [
+          -122.4038,
+          37.796
+        ],
+        [
+          -122.405,
+          37.796
+        ]
+      ],
+      "heightM": 67,
+      "heightSource": "observed",
+      "storeys": 20,
+      "confidence": 0.95,
+      "timestamp": "2026-09-28T00:00:00Z"
+    },
+    {
+      "id": "sf-downtown-38",
+      "name": "Financial District Tower Facility 38",
+      "use": "residential",
+      "footprint": [
+        [
+          -122.4035,
+          37.795
+        ],
+        [
+          -122.4023,
+          37.795
+        ],
+        [
+          -122.4023,
+          37.796
+        ],
+        [
+          -122.4035,
+          37.796
+        ]
+      ],
+      "heightM": 66,
+      "heightSource": "inferred",
+      "storeys": 22,
+      "confidence": 0.82,
+      "timestamp": "2026-09-28T00:00:00Z"
+    },
+    {
+      "id": "sf-downtown-39",
+      "name": "Financial District Tower Facility 39",
+      "use": "civic",
+      "footprint": [
+        [
+          -122.402,
+          37.795
+        ],
+        [
+          -122.4008,
+          37.795
+        ],
+        [
+          -122.4008,
+          37.796
+        ],
+        [
+          -122.402,
+          37.796
+        ]
+      ],
+      "heightM": 63.8,
+      "heightSource": "observed",
+      "storeys": 19,
+      "confidence": 0.95,
+      "timestamp": "2026-09-28T00:00:00Z"
+    },
+    {
+      "id": "sf-downtown-40",
+      "name": "Financial District Tower Facility 40",
+      "use": "commercial",
+      "footprint": [
+        [
+          -122.4005,
+          37.795
+        ],
+        [
+          -122.3993,
+          37.795
+        ],
+        [
+          -122.3993,
+          37.796
+        ],
+        [
+          -122.4005,
+          37.796
+        ]
+      ],
+      "heightM": 63,
+      "heightSource": "inferred",
+      "storeys": 21,
+      "confidence": 0.82,
+      "timestamp": "2026-09-28T00:00:00Z"
+    },
+    {
+      "id": "sf-downtown-41",
+      "name": "Financial District Tower Facility 41",
+      "use": "residential",
+      "footprint": [
+        [
+          -122.399,
+          37.795
+        ],
+        [
+          -122.3978,
+          37.795
+        ],
+        [
+          -122.3978,
+          37.796
+        ],
+        [
+          -122.399,
+          37.796
+        ]
+      ],
+      "heightM": 60.6,
+      "heightSource": "observed",
+      "storeys": 18,
+      "confidence": 0.95,
+      "timestamp": "2026-09-28T00:00:00Z"
+    },
+    {
+      "id": "sf-downtown-42",
+      "name": "Financial District Tower Facility 42",
+      "use": "civic",
+      "footprint": [
+        [
+          -122.3975,
+          37.795
+        ],
+        [
+          -122.3963,
+          37.795
+        ],
+        [
+          -122.3963,
+          37.796
+        ],
+        [
+          -122.3975,
+          37.796
+        ]
+      ],
+      "heightM": 60,
+      "heightSource": "inferred",
+      "storeys": 20,
+      "confidence": 0.82,
+      "timestamp": "2026-09-28T00:00:00Z"
+    },
+    {
+      "id": "sf-downtown-43",
+      "name": "Financial District Tower Facility 43",
+      "use": "commercial",
+      "footprint": [
+        [
+          -122.4065,
+          37.7965
+        ],
+        [
+          -122.4053,
+          37.7965
+        ],
+        [
+          -122.4053,
+          37.7975
+        ],
+        [
+          -122.4065,
+          37.7975
+        ]
+      ],
+      "heightM": 67.2,
+      "heightSource": "observed",
+      "storeys": 21,
+      "confidence": 0.95,
+      "timestamp": "2026-09-28T00:00:00Z"
+    },
+    {
+      "id": "sf-downtown-44",
+      "name": "Financial District Tower Facility 44",
+      "use": "residential",
+      "footprint": [
+        [
+          -122.405,
+          37.7965
+        ],
+        [
+          -122.4038,
+          37.7965
+        ],
+        [
+          -122.4038,
+          37.7975
+        ],
+        [
+          -122.405,
+          37.7975
+        ]
+      ],
+      "heightM": 54,
+      "heightSource": "inferred",
+      "storeys": 18,
+      "confidence": 0.82,
+      "timestamp": "2026-09-28T00:00:00Z"
+    },
+    {
+      "id": "sf-downtown-45",
+      "name": "Financial District Tower Facility 45",
+      "use": "civic",
+      "footprint": [
+        [
+          -122.4035,
+          37.7965
+        ],
+        [
+          -122.4023,
+          37.7965
+        ],
+        [
+          -122.4023,
+          37.7975
+        ],
+        [
+          -122.4035,
+          37.7975
+        ]
+      ],
+      "heightM": 64,
+      "heightSource": "observed",
+      "storeys": 20,
+      "confidence": 0.95,
+      "timestamp": "2026-09-28T00:00:00Z"
+    },
+    {
+      "id": "sf-downtown-46",
+      "name": "Financial District Tower Facility 46",
+      "use": "commercial",
+      "footprint": [
+        [
+          -122.402,
+          37.7965
+        ],
+        [
+          -122.4008,
+          37.7965
+        ],
+        [
+          -122.4008,
+          37.7975
+        ],
+        [
+          -122.402,
+          37.7975
+        ]
+      ],
+      "heightM": 66,
+      "heightSource": "inferred",
+      "storeys": 22,
+      "confidence": 0.82,
+      "timestamp": "2026-09-28T00:00:00Z"
+    },
+    {
+      "id": "sf-downtown-47",
+      "name": "Financial District Tower Facility 47",
+      "use": "residential",
+      "footprint": [
+        [
+          -122.4005,
+          37.7965
+        ],
+        [
+          -122.3993,
+          37.7965
+        ],
+        [
+          -122.3993,
+          37.7975
+        ],
+        [
+          -122.4005,
+          37.7975
+        ]
+      ],
+      "heightM": 60.8,
+      "heightSource": "observed",
+      "storeys": 19,
+      "confidence": 0.95,
+      "timestamp": "2026-09-28T00:00:00Z"
+    },
+    {
+      "id": "sf-downtown-48",
+      "name": "Financial District Tower Facility 48",
+      "use": "civic",
+      "footprint": [
+        [
+          -122.399,
+          37.7965
+        ],
+        [
+          -122.3978,
+          37.7965
+        ],
+        [
+          -122.3978,
+          37.7975
+        ],
+        [
+          -122.399,
+          37.7975
+        ]
+      ],
+      "heightM": 63,
+      "heightSource": "inferred",
+      "storeys": 21,
+      "confidence": 0.82,
+      "timestamp": "2026-09-28T00:00:00Z"
+    },
+    {
+      "id": "sf-downtown-49",
+      "name": "Financial District Tower Facility 49",
+      "use": "commercial",
+      "footprint": [
+        [
+          -122.3975,
+          37.7965
+        ],
+        [
+          -122.3963,
+          37.7965
+        ],
+        [
+          -122.3963,
+          37.7975
+        ],
+        [
+          -122.3975,
+          37.7975
+        ]
+      ],
+      "heightM": 57.6,
+      "heightSource": "observed",
+      "storeys": 18,
+      "confidence": 0.95,
+      "timestamp": "2026-09-28T00:00:00Z"
+    }
+  ]
+}

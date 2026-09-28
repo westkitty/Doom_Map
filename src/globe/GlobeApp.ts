@@ -1,10 +1,12 @@
 import * as THREE from 'three'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
 import { RegionalGeography } from './RegionalGeography'
+import { LocalBuildings } from './LocalBuildings'
 import { FrameStatistics } from '../core/performance'
 import { QUALITY, type QualityTier } from '../core/quality'
 import { type CameraBookmark, validBookmark } from '../core/bookmarks'
 import { WGS84, ecefToGeodetic, geodeticToEcef, enuFrame, intersectEllipsoid, type GeodeticPoint } from '../core/coordinates'
+import type { BuildingFeature } from '../data/providers/buildings'
 
 const EARTH_A = WGS84.semiMajorAxis
 const EARTH_B = WGS84.semiMinorAxis
@@ -26,6 +28,7 @@ export class GlobeApp {
   private readonly marker = new THREE.Mesh(new THREE.SphereGeometry(1, 16, 8), new THREE.MeshBasicMaterial({ color: 0xffb46a }))
   private quality: QualityTier = 'Balanced'
   private selection: GeodeticPoint | null = null
+  private selectedBuilding: BuildingFeature | null = null
   private pointerStart = { x: 0, y: 0 }
   private lastTap = 0
   private readonly activePointers = new Set<number>()
@@ -38,6 +41,7 @@ export class GlobeApp {
   private readonly geographyAbort = new AbortController()
   private geography: THREE.LineSegments | undefined
   private readonly regional = new RegionalGeography()
+  private readonly buildings = new LocalBuildings()
   private readonly statistics = new FrameStatistics()
 
   constructor(canvas: HTMLCanvasElement, onTelemetry: (value: GlobeTelemetry) => void) {
@@ -72,7 +76,7 @@ export class GlobeApp {
     this.world.add(sun, sun.target)
 
     this.buildEarth()
-    this.world.add(this.earth, this.marker, this.regional.group)
+    this.world.add(this.earth, this.marker, this.regional.group, this.buildings.group)
     this.marker.visible = false
     this.scene.add(this.world)
     this.setQuality('Balanced')
@@ -115,6 +119,7 @@ export class GlobeApp {
       this.camera.updateMatrixWorld()
       this.updateTelemetry()
       this.regional.update(geo.latitudeDeg, geo.longitudeDeg, geo.heightM)
+      this.buildings.update(geo.latitudeDeg, geo.longitudeDeg, geo.heightM)
       if (this.geography) this.geography.visible = geo.heightM >= 200_000 && !this.regional.group.visible
       // Orbit camera remains in double-precision ECEF. Only render copies are rebased.
       this.renderCamera.copy(this.camera)
@@ -131,8 +136,10 @@ export class GlobeApp {
         textures: info.memory.textures, frame: info.render.frame,
         camera: this.camera.position.toArray(), target: this.controls.target.toArray(),
         streaming: this.regional.snapshot(),
+        buildings: this.buildings.snapshot(),
         aspect: this.camera.aspect, quality: this.quality, renderOrigin: this.camera.position.toArray(),
-        renderCamera: this.renderCamera.position.toArray(), selection: this.selection
+        renderCamera: this.renderCamera.position.toArray(), selection: this.selection,
+        selectedBuilding: this.selectedBuilding
       })
       this.animationFrame = requestAnimationFrame(frame)
     }
@@ -144,6 +151,7 @@ export class GlobeApp {
     this.disposed = true
     this.geographyAbort.abort()
     this.regional.dispose()
+    this.buildings.dispose()
     this.running = false
     cancelAnimationFrame(this.animationFrame)
     window.removeEventListener('resize', this.resize)
@@ -277,10 +285,25 @@ export class GlobeApp {
 
   private pick(x: number, y: number): GeodeticPoint | null {
     const rect = this.renderer.domElement.getBoundingClientRect()
-    this.camera.updateMatrixWorld()
-    const ray = new THREE.Raycaster()
-    ray.setFromCamera(new THREE.Vector2((x - rect.left) / rect.width * 2 - 1, -(y - rect.top) / rect.height * 2 + 1), this.camera)
-    const hit = intersectEllipsoid(ray.ray.origin, ray.ray.direction)
+    const mouseNorm = new THREE.Vector2((x - rect.left) / rect.width * 2 - 1, -(y - rect.top) / rect.height * 2 + 1)
+
+    this.scene.updateMatrixWorld(true)
+    this.renderCamera.updateMatrixWorld(true)
+    const renderRay = new THREE.Raycaster()
+    renderRay.setFromCamera(mouseNorm, this.renderCamera)
+
+    const building = this.buildings.pick(renderRay)
+    this.selectedBuilding = building
+    if (building) {
+      this.renderer.domElement.dispatchEvent(new CustomEvent('building-selection', { detail: building }))
+    } else {
+      this.renderer.domElement.dispatchEvent(new CustomEvent('building-selection', { detail: null }))
+    }
+
+    this.camera.updateMatrixWorld(true)
+    const ecefRay = new THREE.Raycaster()
+    ecefRay.setFromCamera(mouseNorm, this.camera)
+    const hit = intersectEllipsoid(ecefRay.ray.origin, ecefRay.ray.direction)
     return hit ? { ...ecefToGeodetic(hit), heightM: 0 } : null
   }
 
