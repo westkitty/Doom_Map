@@ -1,7 +1,7 @@
-import { defineConfig } from 'vite'
+import { defineConfig } from 'vitest/config'
 
-export default defineConfig({
-  base: process.env.GITHUB_ACTIONS ? '/Doom_Map/' : '/',
+export default defineConfig(({ command }) => ({
+  base: command === 'build' ? '/Doom_Map/' : '/',
   build: {
     sourcemap: true,
     target: 'es2022'
@@ -9,4 +9,4 @@ export default defineConfig({
   test: {
     environment: 'node'
   }
-})
+}))
