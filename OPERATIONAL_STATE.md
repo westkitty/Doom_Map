@@ -7,12 +7,12 @@
   "project_name": "Doom Map",
   "project_root": "westkitty/Doom_Map",
   "artifact_path": "",
-  "state_revision": 2,
-  "last_updated": "2026-09-28T16:00:00Z",
+  "state_revision": 3,
+  "last_updated": "2026-09-28T17:33:30Z",
   "current_baseline": {
-    "identity": "commit 8d5c1d6a90218927b384bb06761325c8c7418512",
+    "identity": "commit 9bdfb9e1aaeec6d0199140fc5a8127cd7270070d",
     "state": "current-baseline",
-    "last_verified": "2026-09-28T15:58:50Z"
+    "last_verified": "2026-09-28T17:33:28Z"
   },
   "scope_boundaries": [
     "Doom Map repository, web deployment, and native wrapper only",
@@ -28,7 +28,7 @@ Doom Map is a browser-first, Three.js-controlled global disaster and consequence
 
 ## 2. Current Baseline
 
-Current baseline: commit 8d5c1d6a90218927b384bb06761325c8c7418512 on main.
+Current baseline before this state-only update: commit 9bdfb9e1aaeec6d0199140fc5a8127cd7270070d on main. GitHub Pages is enabled with build type `workflow`, and the public site returned HTTP 200 at https://westkitty.github.io/Doom_Map/.
 
 Verified by GitHub Actions CI run 36447608037:
 - TypeScript typecheck passed.
@@ -111,17 +111,17 @@ The final product must:
 - **Evidence:** Production build completed successfully in CI and Pages build job.
 <!-- /operational-state:entry -->
 
+<!-- operational-state:entry
+{"id":"VER-004","title":"GitHub Pages public deployment is live","state":"verified","capability":"GitHub Pages is enabled with workflow build mode and the production site is publicly reachable.","scope":"Public web deployment","verification_method":"GitHub Pages API, successful Deploy GitHub Pages run 36448035612, and live HTTP probe","evidence":"Pages build and deploy jobs succeeded; https://westkitty.github.io/Doom_Map/ returned HTTP/2 200 with <title>Doom Map</title>.","artifact_revision":"9bdfb9e1aaeec6d0199140fc5a8127cd7270070d","last_verified":"2026-09-28T17:33:28Z","dependencies":[".github/workflows/deploy-pages.yml","vite.config.ts","dist artifact"],"freshness":"current deployment","recheck_trigger":"Pages settings, workflow, build base, or deployment changes"}
+-->
+### VER-004 — GitHub Pages public deployment is live
+- **State:** verified
+- **Evidence:** Deployment run 36448035612 succeeded and the live site returned HTTP 200 with the expected title.
+<!-- /operational-state:entry -->
+
 ## 6. Known Not Working
 
-<!-- operational-state:entry
-{"id":"BRK-001","title":"GitHub Pages repository site not enabled","state":"known-broken","observed_failure":"actions/configure-pages@v5 returns Get Pages site failed / Not Found.","artifact_revision":"8d5c1d6a90218927b384bb06761325c8c7418512","evidence":"Pages run 36447607695 build verification passed, then Configure Pages failed because no Pages site is enabled.","severity":"delivery-blocking","affected_user_path":"Public https://westkitty.github.io/Doom_Map/ deployment","workaround":"One-time repository setting: Settings -> Pages -> Build and deployment -> Source = GitHub Actions.","required_repair":"Enable GitHub Pages for this repository using GitHub Actions as source.","required_validation":"Re-run Deploy GitHub Pages workflow and load the public URL.","status":"active"}
--->
-### BRK-001 — GitHub Pages repository site not enabled
-- **State:** known-broken
-- **Observed failure:** Configure Pages returns Not Found because Pages has not been enabled for the repository.
-- **Required repair:** Settings → Pages → Build and deployment → Source: GitHub Actions.
-- **Then:** rerun the deployment workflow.
-<!-- /operational-state:entry -->
+None currently recorded.
 
 ## 7. Implemented but Unverified
 
@@ -186,7 +186,7 @@ The final product must:
 | VER-002 | WGS84 fixtures | verified | 3/3 Vitest in CI |
 | VER-003 | Production build | verified | CI + Pages build before configure gate |
 | UNV-001 | Interactive globe behavior | implemented-unverified | needs real-browser smoke |
-| BRK-001 | Public Pages delivery | known-broken | Pages must be enabled in repo settings |
+| VER-004 | Public Pages delivery | verified | Pages workflow run 36448035612 + live HTTP 200 probe |
 | INV-004 | >=40 hazards | requested | catalog exists; runtime not built |
 | INV-005 | Wrapper shares web core | requested | wrapper not built |
 
@@ -198,3 +198,4 @@ Phase 0 plus the earliest Phase 1 foundation now exists. The next safe implement
 
 - r1 — 2026-09-28: Bootstrapped project state and invariants.
 - r2 — 2026-09-28: Recorded Phase 0/1 source baseline, successful CI typecheck/tests/build, initial bundle warning, unverified globe runtime, and the Pages-enablement delivery blocker.
+- r3 — 2026-09-28: Verified Pages enabled in workflow mode, reran deployment successfully, and confirmed the public Doom Map URL returns HTTP 200.
