@@ -2,39 +2,39 @@
 
 ## GitHub Pages
 
-The repository contains .github/workflows/deploy-pages.yml.
+The repository contains `.github/workflows/deploy-pages.yml`.
 
-The production build is already verified to succeed with Vite base /Doom_Map/.
+GitHub Pages is enabled in **GitHub Actions workflow mode**, and the public production site is live at:
 
-### One-time repository enablement
+`https://westkitty.github.io/Doom_Map/`
 
-GitHub currently reports no Pages site for this repository. A repository administrator must set:
+The production build uses the Vite base `/Doom_Map/`.
 
-Settings -> Pages -> Build and deployment -> Source -> GitHub Actions
+## Verified deployment evidence
 
-This is a one-time repository setting, not an application-code change.
+The deployment blocker recorded during the initial setup has been resolved.
 
-After enabling it:
-1. Open Actions.
-2. Run "Deploy GitHub Pages" manually, or push a new commit to main.
-3. Confirm the build job passes.
-4. Confirm the deploy job passes.
-5. Load https://westkitty.github.io/Doom_Map/
-6. Verify the Three.js globe renders, drag rotates, modified/middle/right drag pans, wheel/pinch zooms, telemetry updates, resize works, and the console has no serious errors.
-7. Only then promote Pages delivery to verified in OPERATIONAL_STATE.md.
+Verified on 2026-09-28:
+- GitHub Actions CI run 36447608037 passed TypeScript typecheck, 3/3 WGS84 coordinate tests, and the Vite production build.
+- Deploy GitHub Pages run 36448035612 completed successfully.
+- The public URL returned HTTP 200 with the expected `<title>Doom Map</title>`.
 
-## Current build evidence
+The remaining Phase 0/1 proof is **browser interaction acceptance**, not Pages enablement. The globe still needs explicit runtime evidence for WebGL canvas rendering, visibility, rotate, pan, zoom, telemetry changes, resize behavior, and absence of severe console errors.
 
-GitHub Actions CI run 36447608037 passed:
-- TypeScript typecheck
-- 3/3 WGS84 coordinate tests
-- Vite production build
+## Deployment validation after web-facing changes
 
-A Pages build also reached a successful production build before failing at the repository-level Configure Pages step.
+For any change merged to `main` that affects the web application:
+1. Confirm CI passes.
+2. Confirm the Pages build and deploy jobs pass.
+3. Load `https://westkitty.github.io/Doom_Map/`.
+4. Run the browser acceptance path.
+5. Record only the behavior actually observed as verified.
+
+Do not call the application deployed merely because `git push` succeeded.
 
 ## Native wrapper
 
-The planned wrapper is Tauri 2 using the same built dist artifact.
+The planned wrapper is Tauri 2 using the same built `dist` artifact.
 
 Do not create a parallel wrapper-specific simulation implementation.
 
