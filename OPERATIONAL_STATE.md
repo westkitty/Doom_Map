@@ -7,7 +7,7 @@
   "project_name": "Doom Map",
   "project_root": "westkitty/Doom_Map",
   "artifact_path": "",
-  "state_revision": 9,
+  "state_revision": 10,
   "last_updated": "2026-09-28T17:58:00Z",
   "current_baseline": {
     "identity": "branch implementation through 236118862f53de96265de5855e0f9e8e2791272d; next slice described below",
@@ -121,7 +121,7 @@ The final product must:
 
 ## 6. Known Not Working
 
-Inherited development-tool dependency audit findings: Vite high, Vitest critical, @vitest/mocker moderate (npm audit, 2026-09-28). No runtime dependency findings. Do not expose dev/test servers; deliberate patching remains pending.
+Security patches Vite 6.4.3 / Vitest 3.2.7 remove the reported high/critical findings. Two moderate dev-tool findings remain (Vitest/@vitest/mocker GHSA-82fw-gwwq-j7x9). Production audit reports 0 findings. Do not expose Vitest servers. The attempted 4.1.11 update hit an npm resolver exception; see docs/DEPENDENCY_SECURITY.md.
 
 ## 7. Implemented but Unverified
 
@@ -219,3 +219,5 @@ represents main, not this branch. No wrapper or hazard capability is claimed.
 - r8 — Natural Earth immutable public-domain snapshot, 24 unit / 8 browser tests; rendered geographic context inspected; explicit provider failure and remount gates pass.
 
 - r9 — First bounded regional coastline provider/scheduler; 30 unit / 10 browser tests. CI 36466585295 passed prior global-geography slice. No Phase 2 completion claim.
+
+- r10 — Targeted same-major dev-tool security patches; clean npm ci, 30 unit / 10 browser tests; production audit 0, full audit 2 moderate. CI 36467158338 passed prior regional slice. Pages environment permits main only, so branch deployment is intentionally not claimed.

@@ -47,3 +47,12 @@ Wrapper validation order:
 4. network/provider failure states
 5. shared scenario import/export parity
 6. only then additional platforms if explicitly required
+
+## Branch delivery restriction (verified 2026-09-28)
+
+GitHub environment API reports `github-pages` has a custom deployment branch
+policy allowing only `main`. Session work remains on `arena/01a0e93e-doom-map`;
+no environment bypass, force push or main push was performed. CI runs on the
+branch, but public deployment requires merging its PR to main, followed by the
+Pages workflow and live browser smoke. The existing public deployment is not
+proof of the new branch revision.
