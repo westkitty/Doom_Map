@@ -340,7 +340,7 @@ export class GlobeApp {
     this.select(point)
     if (event.pointerType === 'touch') {
       const now = performance.now()
-      if (this.lastTap > 0 && now - this.lastTap < 350) this.flyTo({ ...point, heightM: 100_000 })
+      if (this.lastTap > 0 && now - this.lastTap < 500) this.flyTo({ ...point, heightM: 100_000 })
       this.lastTap = now
     }
   }

@@ -11,6 +11,7 @@ import { GlobeApp } from './globe/GlobeApp'
 import { ScenarioClock } from './core/time/ScenarioClock'
 import { ScenarioVault } from './core/scenario/ScenarioVault'
 import { encodeScenarioToHash, decodeScenarioFromHash } from './core/scenario/urlState'
+import { compareScenarios, forkScenario } from './core/scenario/comparison'
 import type { ScenarioDefinition } from './core/scenario/types'
 import { globalHazardRegistry } from './hazards/registry'
 import { initHazardRegistry } from './hazards/catalog'
@@ -235,7 +236,37 @@ const saveScenarioBtn = document.querySelector<HTMLButtonElement>('#save-scenari
 const shareScenarioBtn = document.querySelector<HTMLButtonElement>('#share-scenario')!
 const exportScenarioBtn = document.querySelector<HTMLButtonElement>('#export-scenario')!
 const importScenarioBtn = document.querySelector<HTMLButtonElement>('#import-scenario')!
+const forkScenarioBtn = document.querySelector<HTMLButtonElement>('#fork-scenario')!
+const compareScenarioBtn = document.querySelector<HTMLButtonElement>('#compare-scenario')!
+const comparisonOutput = document.querySelector<HTMLElement>('#comparison-output')!
 const vaultStatus = document.querySelector<HTMLElement>('#vault-status')!
+
+let baselineScenario: ScenarioDefinition = JSON.parse(JSON.stringify(activeScenario))
+
+forkScenarioBtn?.addEventListener('click', () => {
+  baselineScenario = JSON.parse(JSON.stringify(activeScenario))
+  const branched = forkScenario(activeScenario, `${activeScenario.name} (Forked Branch)`, {})
+  activeScenario = branched
+  vaultStatus.textContent = `Branched scenario "${branched.name}". Modify parameters to compare against baseline.`
+})
+
+compareScenarioBtn?.addEventListener('click', () => {
+  const currentOffset = clock.state.timeMs - activeScenario.startTimeMs
+  const comparison = compareScenarios(baselineScenario, activeScenario, currentOffset)
+  if (comparisonOutput) {
+    comparisonOutput.style.display = 'block'
+    comparisonOutput.innerHTML = `
+      <div style="background: rgba(0,0,0,0.4); padding: 0.4rem; border-radius: 4px; border: 1px solid #405968;">
+        <strong>A/B Delta (${baselineScenario.name} vs ${activeScenario.name}):</strong><br>
+        • Exposed Pop Delta: ${comparison.deltas.exposedPopulationDelta >= 0 ? '+' : ''}${comparison.deltas.exposedPopulationDelta.toLocaleString()}<br>
+        • Economic Loss Delta: ${comparison.deltas.economicLossDeltaM >= 0 ? '+' : ''}$${comparison.deltas.economicLossDeltaM.toLocaleString()}M USD<br>
+        • Lifelines Delta: ${comparison.deltas.lifelineOperabilityDelta >= 0 ? '+' : ''}${comparison.deltas.lifelineOperabilityDelta}%<br>
+        <em>${comparison.deltas.summary}</em>
+      </div>
+    `
+  }
+  vaultStatus.textContent = 'A/B comparison calculated.'
+})
 
 saveScenarioBtn.addEventListener('click', async () => {
   try {

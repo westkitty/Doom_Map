@@ -9,8 +9,15 @@ export default defineConfig({
     viewport: { width: 1200, height: 800 },
     launchOptions: {
       executablePath: process.env.CHROMIUM_PATH,
-      args: ['--no-sandbox', '--use-angle=swiftshader', '--enable-unsafe-swiftshader',
-        ...(process.env.CHROMIUM_PATH ? ['--no-zygote'] : [])]
+      args: [
+        '--no-sandbox',
+        '--use-gl=angle',
+        '--use-angle=swiftshader',
+        '--enable-unsafe-swiftshader',
+        '--in-process-gpu',
+        '--ignore-gpu-blocklist',
+        ...(process.env.CHROMIUM_PATH ? ['--no-zygote'] : [])
+      ]
     },
     trace: 'retain-on-failure',
     screenshot: 'only-on-failure'
