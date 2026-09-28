@@ -12,9 +12,9 @@
       <canvas id="globe" tabindex="0" aria-describedby="camera-help" aria-label="Interactive three-dimensional Earth"></canvas>
       <section class="hud">
         <div>
-          <p class="eyebrow">DOOM MAP / FOUNDATION</p>
+          <p class="eyebrow">DOOM MAP / PLANETARY SIMULATOR</p>
           <h1>Earth is the interface.</h1>
-          <p id="status" role="status">Three.js globe foundation · model systems pending</p>
+          <p id="status" role="status">Active scenario & disaster consequence engine online</p>
         </div>
         <div class="telemetry" aria-label="Globe telemetry">
           <span id="lat">LAT 0.000°</span>
@@ -22,6 +22,46 @@
           <span id="alt">ALT —</span>
         </div>
       </section>
+
+      <!-- TIMELINE CONTROLS -->
+      <section class="timeline-bar" aria-label="Scenario timeline controls">
+        <button id="play-pause" type="button">▶ Play</button>
+        <span id="time-display">T+0.0s (0.0m)</span>
+        <input id="timeline-scrubber" type="range" min="0" max="1000" value="0" aria-label="Timeline seek scrubber">
+        <select id="speed-select" aria-label="Playback speed">
+          <option value="0.1">0.1x</option>
+          <option value="1" selected>1x</option>
+          <option value="5">5x</option>
+          <option value="10">10x</option>
+          <option value="50">50x</option>
+          <option value="100">100x</option>
+          <option value="1000">1000x</option>
+        </select>
+      </section>
+
+      <!-- SIMULATION CONTROLS -->
+      <details class="simulation-panel">
+        <summary>Disaster & Consequences</summary>
+        <label for="hazard-select">Hazard Model</label>
+        <select id="hazard-select"></select>
+        <div id="hazard-params" class="params-box"></div>
+        <div id="consequence-content" class="consequence-box">
+          <p>Evaluating consequences…</p>
+        </div>
+      </details>
+
+      <!-- SCENARIO VAULT & SHARING -->
+      <details class="vault-panel">
+        <summary>Scenario Vault & Sharing</summary>
+        <div class="vault-actions">
+          <button id="save-scenario" type="button">Save Scenario</button>
+          <button id="share-scenario" type="button">Share Link</button>
+          <button id="export-scenario" type="button">Export JSON</button>
+          <button id="import-scenario" type="button">Import JSON</button>
+        </div>
+        <p id="vault-status" role="status">Ready.</p>
+      </details>
+
       <details class="navigation-panel">
         <summary>Navigate Earth</summary>
         <p id="camera-help">Drag: orbit · right drag: pan · wheel / pinch: zoom · double click / tap: fly. Focus globe: arrows orbit, Shift+arrows pan, +/- zoom, Enter select, Home reset.</p>
@@ -32,21 +72,23 @@
           <button type="submit">Fly to coordinates</button>
         </form>
         <label for="quality">Quality</label><select id="quality"><option>Ultra</option><option>High</option><option selected>Balanced</option><option>Low</option><option>Safe</option></select>
-        <button id="save-camera">Save camera</button><button id="restore-camera">Restore camera</button>
+        <button id="save-camera" type="button">Save camera</button><button id="restore-camera" type="button">Restore camera</button>
         <p id="selection" role="status">No location selected.</p>
         <p id="building-info" role="status">No building selected. Zoom below 15 km to inspect local building extrusions.</p>
         <p id="navigation-status" role="status"></p>
         <p id="performance">Waiting for runtime metrics.</p>
         <p id="streaming-status" role="status"></p>
       </details>
+
       <details class="science-panel">
         <summary>Science / sources</summary>
         <div id="science-content"><p>Natural Earth low-LOD land outlines. No hazard model is active.</p></div>
       </details>
+
       <aside class="source-note">
-        <strong>FOUNDATION BUILD</strong>
-        <span id="geography-status">Loading low-resolution geography…</span>
-        <span>No disaster model is active. Scientific outputs are not yet implemented.</span>
+        <strong>DOOM MAP SIMULATOR</strong>
+        <span id="geography-status">Natural Earth & Local Buildings online</span>
+        <span>Deterministic physics & consequence engine active.</span>
       </aside>
     </main>
     <script type="module" src="/src/main.ts"></script>

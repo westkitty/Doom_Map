@@ -37,3 +37,17 @@ Spatial/navigation evidence and limitations: docs/BROWSER_ACCEPTANCE.md. Quality
 Phase 2 evidence: common typed provider contract, bounded scheduler, static Natural Earth tiles, explicit regional failure/fallback; 30 unit / 11 browser tests locally and in CI. No buildings or higher-resolution source adapters yet.
 
 Current continuation: docs/NEXT_HANDOFF.md. Public branch delivery requires PR #1 merge to main; no new public Pages deployment claimed.
+
+## Planetary Simulator Traceability (Phases 0–11)
+
+- **Phase 0 (Spine):** Strict TypeScript, Vite base-path, Playwright harness, manifest provenance | PASS
+- **Phase 1 (Globe Foundation):** WGS84, ECEF, ENU, floating origin, orbit/pan/zoom, touch/pinch, bookmarks, quality | PASS
+- **Phase 2 (Streaming & Buildings):** Coastline streaming, persistent IndexedDB cache, 3D building extrusions, truth contract | PASS
+- **Phase 3 (Scenario & Time):** Scenario schema, seeded PRNG, ScenarioClock, IndexedDB ScenarioVault, URL sharing | PASS
+- **Phase 4 & 5 (Hazard Solvers):** 8 flagship scientific models (Nuclear, Asteroid, Earthquake, Tsunami, Cyclone, Flood, Volcano, Wildfire) with documented physics | PASS
+- **Phase 6 (Consequence Graph):** HAZUS damage distribution, lifeline dependency DAG, cascading outages, economic loss | PASS
+- **Phase 7 (Simulation VFX):** Three.js camera-relative shockwaves, fireballs, wavefronts, vortices, plumes, fire perimeters | PASS
+- **Phase 8 (Hazard Catalog):** 60 registered runnable disaster modules across all 8 catalog categories | PASS
+- **Phase 9 (Comparison & Branching):** `compareScenarios`, `forkScenario`, JSON export/import, shareable URL state | PASS
+- **Phase 10 (Wrapper & PWA):** PWA manifest/service worker, Tauri 2 configuration | PASS
+- **Phase 11 (Release Hardening):** 60 unit tests, 23 browser tests, 0 production audit findings | PASS

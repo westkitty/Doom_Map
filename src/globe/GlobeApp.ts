@@ -2,11 +2,13 @@ import * as THREE from 'three'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
 import { RegionalGeography } from './RegionalGeography'
 import { LocalBuildings } from './LocalBuildings'
+import { HazardVfx } from './HazardVfx'
 import { FrameStatistics } from '../core/performance'
 import { QUALITY, type QualityTier } from '../core/quality'
 import { type CameraBookmark, validBookmark } from '../core/bookmarks'
 import { WGS84, ecefToGeodetic, geodeticToEcef, enuFrame, intersectEllipsoid, type GeodeticPoint } from '../core/coordinates'
 import type { BuildingFeature } from '../data/providers/buildings'
+import type { HazardState } from '../hazards/types'
 
 const EARTH_A = WGS84.semiMajorAxis
 const EARTH_B = WGS84.semiMinorAxis
@@ -42,6 +44,7 @@ export class GlobeApp {
   private geography: THREE.LineSegments | undefined
   private readonly regional = new RegionalGeography()
   private readonly buildings = new LocalBuildings()
+  private readonly hazardVfx = new HazardVfx()
   private readonly statistics = new FrameStatistics()
 
   constructor(canvas: HTMLCanvasElement, onTelemetry: (value: GlobeTelemetry) => void) {
@@ -76,7 +79,7 @@ export class GlobeApp {
     this.world.add(sun, sun.target)
 
     this.buildEarth()
-    this.world.add(this.earth, this.marker, this.regional.group, this.buildings.group)
+    this.world.add(this.earth, this.marker, this.regional.group, this.buildings.group, this.hazardVfx.group)
     this.marker.visible = false
     this.scene.add(this.world)
     this.setQuality('Balanced')
@@ -102,6 +105,11 @@ export class GlobeApp {
     window.addEventListener('resize', this.resize)
     this.renderer.domElement.addEventListener('webglcontextlost', this.onContextLost)
     this.renderer.domElement.addEventListener('webglcontextrestored', this.onContextRestored)
+  }
+
+  setHazardState(state: HazardState | null): void {
+    if (this.disposed) return
+    this.hazardVfx.update(state ? state.vfxHints : [])
   }
 
   start(): void {
@@ -152,6 +160,7 @@ export class GlobeApp {
     this.geographyAbort.abort()
     this.regional.dispose()
     this.buildings.dispose()
+    this.hazardVfx.dispose()
     this.running = false
     cancelAnimationFrame(this.animationFrame)
     window.removeEventListener('resize', this.resize)

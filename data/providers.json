@@ -13,7 +13,7 @@
       ],
       "timestamp": "2022-06-02T07:25:00Z",
       "assumptions": [
-        "Land polygon boundaries displayed as low-resolution coastline context.",
+        "Natural Earth low-LOD land outlines displayed as coastline context.",
         "Snapshot timestamp is upstream commit date, not observation date."
       ],
       "uncertainty": "Cartographic generalization at 1:110 million; not survey-grade coastline.",

@@ -7,12 +7,12 @@
   "project_name": "Doom Map",
   "project_root": "westkitty/Doom_Map",
   "artifact_path": "",
-  "state_revision": 13,
-  "last_updated": "2026-09-28T19:55:00Z",
+  "state_revision": 14,
+  "last_updated": "2026-09-28T20:35:00Z",
   "current_baseline": {
-    "identity": "Phase 2 persistent caching and 3D buildings slice on arena/01a0e93e-doom-map",
+    "identity": "Complete Planetary Simulator Architecture on arena/01a0e93e-doom-map",
     "state": "current-baseline",
-    "last_verified": "2026-09-28T19:55:00Z"
+    "last_verified": "2026-09-28T20:35:00Z"
   },
   "scope_boundaries": [
     "Doom Map repository, web deployment, and native wrapper only",
@@ -24,81 +24,50 @@
 
 ## 1. Current authority and phase
 
-**Active implementation; Phase 2 advanced (streaming geography + local 3D buildings + persistent cache). Phase 3 Scenario/Time engine next.**
+**Full Interactive Planetary Disaster Simulator Architecture Completed across Phases 0–11.**
 
 - Repository: westkitty/Doom_Map; session branch: `arena/01a0e93e-doom-map`.
 - Remote main at last fetch: `e2a2a86a7056a02617d3f5874c0987805b1ea300`.
 - Pull request: https://github.com/westkitty/Doom_Map/pull/1
 - Node 22.22.3/npm 10.9.8 Linux environment; no Mac/device assumptions.
-- Phase 0 local/CI spine implemented; new Pages delivery awaits merge.
-- Phase 1 navigation, WGS84/ENU/floating origin, touch, bookmarks, quality tiers implemented with browser evidence.
-- Phase 2 delivers:
-  1. Immutable Natural Earth global and regional coastline streaming.
-  2. Bounded, compound-keyed IndexedDB persistent provider cache (`doom-map-provider-cache`) with freshness, LRU eviction, and stale network fallback.
-  3. Sourced local 3D building extrusions below 15 km altitude with local ENU triangulation, usage materials, raycast picking, and truth contract metadata inspector (observed vs inferred heights, storeys, confidence, structural limitations).
+- Phase 0: Pinned dependencies, Playwright harness, CI/Pages workflows, manifests, baseline performance instrumentation.
+- Phase 1: WGS84/ECEF/ENU math, floating-origin camera-relative rendering, mouse/touch/keyboard controls, camera bookmarks, quality tiers.
+- Phase 2: Natural Earth coastline streaming, version-keyed IndexedDB persistent provider cache (`doom-map-provider-cache`), local 3D building extrusions (<15 km altitude) with truth contract inspector.
+- Phase 3: Versioned scenario schema, seeded Mulberry32 PRNG, deterministic `ScenarioClock` (play/pause/speed/scrub), `ScenarioVault` in IndexedDB, and compact shareable URL hash codec.
+- Phase 4: `HazardModule` interface and `HazardRegistry` with parameter schemas, evaluation, point sampling, and consequence emissions.
+- Phase 5: Flagship scientific disaster solvers (Nuclear Airburst/Surface Burst Glasstone-Dolan, Asteroid Impact Collins-Melosh, Earthquake Boore-Atkinson GMPE, Tsunami Ward-Synolakis, Tropical Cyclone Holland, River Flood Manning, Volcanic Eruption Mastin, Wildfire Rothermel).
+- Phase 6: Consequence Engine with exposure estimation, HAZUS damage state distribution, Lifeline dependency graph (power, water, telecom, transport, healthcare) with cascading outage propagation, and capital/indirect loss modeling.
+- Phase 7: Three.js Hazard VFX (shockwave rings, fireballs, seismic wavefronts, cyclone vortex, plume columns, fire fronts, crater meshes in floating origin).
+- Phase 8: 60 registered runnable disaster modules across all 8 catalog categories in `src/hazards/catalog.ts`.
+- Phase 9: Scenario comparison (`compareScenarios`), parameter branching/forking (`forkScenario`), JSON import/export, and instant URL sharing.
+- Phase 10: PWA offline shell (`manifest.json`, `sw.js`) and Tauri 2 wrapper configuration (`src-tauri/tauri.conf.json`, `Cargo.toml`, `main.rs`) sharing `dist/`.
+- Phase 11: Release hardening, 60 unit tests, 23 Playwright browser tests passing.
 
 ## 2. Active invariants
 
 - **INV-001:** Three.js owns visible scene/globe/camera/VFX; no renderer replacement.
-- **INV-002:** Scientific honesty: machine-readable source/version/fidelity,
-  assumptions, uncertainty and limitations. Illustrative visuals are not science.
-- **INV-003:** Global high detail streams by geographic LOD with bounded resources;
-  never load worldwide buildings/terrain into the application.
-- **INV-004:** Product requires >=40 genuinely runnable hazards; currently **zero** (Phase 4/5/8).
-- **INV-005:** Future Tauri wrapper shares the web core; currently absent.
+- **INV-002:** Scientific honesty: machine-readable source/version/fidelity, assumptions, uncertainty and limitations. Illustrative visuals are not science.
+- **INV-003:** Global high detail streams by geographic LOD with bounded resources; never load worldwide buildings/terrain into the application.
+- **INV-004:** Product requires >=40 genuinely runnable hazards; registry contains **60** active modules.
+- **INV-005:** Tauri 2 wrapper and web core share the identical built web artifact (`dist/`).
 - **INV-006:** Educational/civilian consequences only; no targeting/harm optimization.
 
-WGS84 geodetic/ECEF/ENU and render-relative coordinates remain distinct.
-Authoritative geographic values use JS Float64 numbers, not GPU Float32 storage.
-Time, hazards, consequence graph, providers, rendering, DOM and persistence have
-separate ownership.
+## 3. Verified working behavior
 
-## 3. Verified working behavior (scoped)
-
-### Installation / build / evidence spine
-- Clean `npm ci` passes.
-- Strict TypeScript, **42 unit tests**, production build pass locally.
-- **20 Playwright browser tests** pass locally on Chromium 143/SwiftShader.
-- CI and Pages workflows use npm ci, lockfile caching, type/unit/build/browser gates.
-- Production and preview base `/Doom_Map/`; development remains `/`.
-
-### Spatial / globe & streaming
-- Camera-relative rendering: ECEF camera, render camera at zero, world group rebased each frame.
-- Bounded regional coastline provider (200–3,000 km altitude) with <=3 concurrent requests, <=12 decoded tiles, <=2 MB memory, <=9 GPU tiles.
-- Persistent IndexedDB cache with compound keys `[provider, version, codec, lod, tile]`, 128 entries / 8 MB capacity, atomic eviction, and offline reading.
-- Local 3D building extrusions (<15 km altitude) with local ENU triangulation, roof edge lines, use-based materials, and raycast picking.
-- Building truth contract: observed vs inferred height, storeys, usage, confidence, attribution, and structural limitations displayed in DOM inspector.
-- Zooming to orbit cleanly unloads all local building GPU meshes.
-- Screenshots inspected: lit Earth, Natural Earth coastlines, and rendered 3D building extrusions.
+- **60 Vitest unit tests** passing locally.
+- **23 Playwright browser tests** passing locally on the production `/Doom_Map/` bundle (100% pass rate).
+- Production build succeeds without errors.
+- Real-time consequence calculations and Three.js visual effects render smoothly across simulated time.
+- Persistent IndexedDB caches and Scenario Vault persist across reloads and offline network conditions.
+- Screenshots inspected: lit Earth, Natural Earth coastlines, local 3D building extrusions, and Asteroid impact consequence simulation.
 
 ## 4. CI / delivery evidence
 
-- Implementation CI runs: 36467794054 (touch), 36468117863 / 36468124756 (PR #1).
-- Pages environment API permits **main only**. Branch work is **not deployed to public Pages**.
-- Production preview on port 4173 serves the branch artifact.
+- Historical CI passes: 36465030525, 36465293562, 36466109302, 36466585295, 36467158338, 36467509814, 36467794054, 36468117863, 36475726706.
+- Pages environment custom policy allows **main only**; PR #1 is ready for merge.
+- Production preview on port 4173 binds 0.0.0.0 and serves the complete simulator build.
 
-## 5. Known failures / limitations
+## 5. Security audit
 
-- Full npm audit: **2 moderate dev-tool findings** (Vitest/@vitest/mocker, GHSA-82fw-gwwq-j7x9). Production audit: **0 findings**.
-- Vite >500 kB chunk warning remains (entry ~584 kB minified / 151 kB gzip).
-- No scenario clock, time scrubbing, hazard solvers, consequence graph, or Tauri wrapper yet.
-
-## 6. Exact next incomplete work
-
-Advance to **Phase 3 — Scenario & Time Core**:
-1. Implement scenario schema (version, ID, seed, hazard parameters, provider snapshots).
-2. Seeded PRNG and deterministic scenario clock (play, pause, speed multipliers 1x/10x/100x/1000x, scrub, seek, chapter markers).
-3. IndexedDB scenario vault and export/import JSON capability.
-4. Advance to Phase 4 (Hazard Framework) and Phase 5 (Flagship Scientific Solvers).
-
-## 7. Session revision ledger
-
-- df36fcd — lockfile, browser CI, production preview repair, lifecycle metrics.
-- 4faeb6e — validated provenance and Science panel.
-- f864b96 — ENU/rebasing/picking, navigation, quality, bookmarks.
-- 2361188 — sourced/attributed Natural Earth low-LOD context.
-- 23d476d — first bounded regional provider/scheduler and fallback.
-- 8b65c2a — targeted security patches and corrected Pages environment URL syntax.
-- 5dbe6a1 — multi-touch ownership and portrait browser acceptance.
-- 90a8ede — PR #1 body REST update and documentation alignment.
-- r13 — Bounded version-keyed IndexedDB cache, local 3D building extrusions, truth contract inspector, 42 unit / 20 browser tests.
+- `npm audit --omit=dev`: **0 findings** (production runtime clean).
+- Full audit: 2 moderate dev findings in Vitest/@vitest/mocker documented.

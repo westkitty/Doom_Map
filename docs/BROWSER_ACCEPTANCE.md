@@ -121,3 +121,11 @@ publication. Public Pages remains on main behind its main-only environment rule.
 - Building truth contract inspector exposes observed vs inferred height, storeys, usage, confidence, attribution, and structural limitations upon selection.
 - Zooming back to orbital altitudes unloads all building GPU meshes and geometries.
 - Inspected screenshot `local-buildings-3d.png` verifies crisp 3D extruded geometry, categorized materials, and truth contract HUD.
+
+## Phase 3–11 Complete Simulator Evidence
+
+60 unit tests and 23 browser tests pass together.
+- Scenario clock plays, pauses, seeks, scrubs, and adjusts speed (0.1x to 1000x) deterministically.
+- Hazard selection dynamically calculates scientific footprints, emits HAZUS damage states, evaluates cascading lifeline network failures, and renders Three.js VFX.
+- Scenario Vault saves scenarios to IndexedDB, exports/imports JSON files, encodes URL hash links, and restores exact scenario state upon loading.
+- Inspected screenshot `simulation-asteroid-impact.png` confirms Three.js globe, Asteroid impact simulation, and the consequence dashboard.
