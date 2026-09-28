@@ -13,7 +13,7 @@ This file maps the controlling request to current evidence. Planned work is not 
 | R07 | Building-level capability | best-available building LOD/provider contract defined; runtime pending | PASS for plan; runtime pending |
 | R08 | Full animation and consequences | timed hazard/VFX/consequence architecture defined | PASS for plan; runtime pending |
 | R09 | Native wrapper | Tauri 2 shared-web-core plan and acceptance contract defined | PASS for plan; runtime pending |
-| R10 | GitHub Pages | deployment workflow exists and build passes | BLOCKED: Pages not enabled in repository settings |
+| R10 | GitHub Pages | workflow mode enabled; deploy run 36448035612 succeeded; public URL returned HTTP 200 | PASS |
 | R11 | At least 40 disaster possibilities | docs/DISASTER_CATALOG.md defines 100 scenario IDs | PASS for plan; runtime pending |
 | R12 | Consult named westkitty projects | 9 readable named repositories reviewed; World_Set unavailable | PARTIAL with declared source gap |
 | R13 | Source >=50 similar/relevant projects | docs/PRECEDENT_RESEARCH.md contains >50 external projects | PASS |
@@ -22,7 +22,7 @@ This file maps the controlling request to current evidence. Planned work is not 
 | R16 | Honest scientific consequences | fidelity/provenance/uncertainty invariant locked in OPERATIONAL_STATE.md | PASS for contract |
 | R17 | No false claim of uniform building accuracy | explicit building-truth contract in README/data matrix/state | PASS |
 | R18 | Validation | CI run 36447608037 passed typecheck, 3/3 tests, and production build | PASS for current source baseline |
-| R19 | Public live Pages URL verified | blocked at configure-pages because Pages is not enabled | FAIL pending one repository setting |
+| R19 | Public live Pages URL verified | deploy run 36448035612 succeeded; public URL returned HTTP 200 with expected title | PASS |
 
 ## Current verdict
 
@@ -30,4 +30,4 @@ The requested planning/research/prompt package is complete and committed.
 
 The Phase-0/early-Phase-1 code seed is build-verified but not yet browser-verified.
 
-Public deployment is not complete until GitHub Pages is enabled for the repository with Build and deployment Source set to GitHub Actions, after which the existing deploy workflow must be rerun and the live URL smoke-tested.
+Public Pages delivery is verified. The remaining Phase 0/1 evidence gap is browser-level interaction acceptance for the Three.js globe itself.
