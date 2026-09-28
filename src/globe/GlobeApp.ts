@@ -28,6 +28,8 @@ export class GlobeApp {
   private selection: GeodeticPoint | null = null
   private pointerStart = { x: 0, y: 0 }
   private lastTap = 0
+  private readonly activePointers = new Set<number>()
+  private multiplePointers = false
   private flight: { start: number; from: GeodeticPoint; to: GeodeticPoint; target: THREE.Vector3 } | null = null
   private readonly onTelemetry: (value: GlobeTelemetry) => void
   private animationFrame = 0
@@ -87,6 +89,7 @@ export class GlobeApp {
     })
     canvas.addEventListener('pointerdown', this.onPointerDown)
     canvas.addEventListener('pointerup', this.onPointerUp)
+    canvas.addEventListener('pointercancel', this.onPointerCancel)
     canvas.addEventListener('dblclick', this.onDoubleClick)
     canvas.addEventListener('wheel', this.cancelFlight)
     canvas.addEventListener('keydown', this.onKeyDown)
@@ -149,6 +152,7 @@ export class GlobeApp {
     const canvas = this.renderer.domElement
     canvas.removeEventListener('pointerdown', this.onPointerDown)
     canvas.removeEventListener('pointerup', this.onPointerUp)
+    canvas.removeEventListener('pointercancel', this.onPointerCancel)
     canvas.removeEventListener('dblclick', this.onDoubleClick)
     canvas.removeEventListener('wheel', this.cancelFlight)
     canvas.removeEventListener('keydown', this.onKeyDown)
@@ -283,16 +287,28 @@ export class GlobeApp {
   private readonly cancelFlight = (): void => { this.flight = null }
   private readonly onPointerDown = (event: PointerEvent): void => {
     this.cancelFlight()
+    this.activePointers.add(event.pointerId)
+    if (this.activePointers.size > 1) { this.multiplePointers = true; this.lastTap = 0 }
     this.pointerStart = { x: event.clientX, y: event.clientY }
   }
+  private readonly onPointerCancel = (event: PointerEvent): void => {
+    this.activePointers.delete(event.pointerId)
+    if (this.activePointers.size === 0) this.multiplePointers = false
+    this.lastTap = 0
+  }
   private readonly onPointerUp = (event: PointerEvent): void => {
+    this.activePointers.delete(event.pointerId)
+    if (this.multiplePointers) {
+      if (this.activePointers.size === 0) this.multiplePointers = false
+      return
+    }
     if (event.button !== 0 || Math.hypot(event.clientX - this.pointerStart.x, event.clientY - this.pointerStart.y) > 5) return
     const point = this.pick(event.clientX, event.clientY)
     if (!point) return
     this.select(point)
     if (event.pointerType === 'touch') {
       const now = performance.now()
-      if (now - this.lastTap < 350) this.flyTo({ ...point, heightM: 100_000 })
+      if (this.lastTap > 0 && now - this.lastTap < 350) this.flyTo({ ...point, heightM: 100_000 })
       this.lastTap = now
     }
   }

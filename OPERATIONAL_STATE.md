@@ -221,3 +221,5 @@ represents main, not this branch. No wrapper or hazard capability is claimed.
 - r9 — First bounded regional coastline provider/scheduler; 30 unit / 10 browser tests. CI 36466585295 passed prior global-geography slice. No Phase 2 completion claim.
 
 - r10 — Targeted same-major dev-tool security patches; clean npm ci, 30 unit / 10 browser tests; production audit 0, full audit 2 moderate. CI 36467158338 passed prior regional slice. Pages environment permits main only, so branch deployment is intentionally not claimed.
+
+- r11 — Touch gesture ownership hardened; 30 unit / 11 browser tests pass locally, including portrait emulation and no accidental selection after pinch. Preview host suffix configured. Current release is still partial Phase 2.

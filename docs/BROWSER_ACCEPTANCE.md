@@ -97,3 +97,12 @@ was inspected: source outlines render and remain visibly coarse (no local-detail
 claim). Requests time out after 10 seconds. CPU cache is memory-only; persistent
 cache, terrain, buildings, workers, geographic frustum prioritization and smooth
 fade transitions remain unimplemented.
+
+## Touch hardening
+
+30 unit tests and 11 browser tests pass on the patched toolchain. Portrait
+390x844 CDP-emulated touch drag and double-tap fly-to now pass. Pinch acceptance
+also asserts that a two-finger gesture does not accidentally select/place a
+location. Multi-pointer/cancel tracking prevents that false click path. This
+remains emulation, not physical phone proof. Preview host allowance is limited to
+Arena's `.e2b.app` suffix; development hosting is not broadened.
