@@ -5,9 +5,13 @@ export class HazardRegistry {
 
   register(module: HazardModule): void {
     if (this.modules.has(module.id)) {
-      throw new Error(`Hazard module ${module.id} is already registered`)
+      return
     }
     this.modules.set(module.id, module)
+  }
+
+  clear(): void {
+    this.modules.clear()
   }
 
   get(id: string): HazardModule | undefined {

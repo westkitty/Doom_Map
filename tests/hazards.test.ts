@@ -7,8 +7,8 @@ beforeAll(() => {
 })
 
 describe('Hazard Registry & Catalog', () => {
-  it('registers >= 40 distinct runnable disaster modules', () => {
-    expect(globalHazardRegistry.count()).toBeGreaterThanOrEqual(40)
+  it('registers all 100 distinct runnable disaster modules from catalog', () => {
+    expect(globalHazardRegistry.count()).toBe(100)
   })
 
   it('covers all 8 disaster categories', () => {
