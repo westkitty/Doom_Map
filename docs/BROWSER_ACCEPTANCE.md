@@ -48,3 +48,24 @@ reported. These need a deliberate security update; do not expose the Vite dev
 server or Vitest UI publicly in the meantime. Production static files do not
 run those development servers. Core versions were intentionally not silently
 changed during browser/provenance work.
+
+## Spatial/navigation slice
+
+19 unit tests pass, including 175 geodetic round trips (poles, antimeridian,
+negative/surface/orbital heights), ENU orientation/inverse fixtures, submeter
+render-relative offsets and analytic ellipsoid intersection. Six browser tests
+passed together, plus a focused seventh lifecycle test after correcting its
+resource assertion. New paths: keyboard orbit/pan/zoom/reset/select; reduced-motion
+100 m coordinate fly-to; persisted IndexedDB camera restore after reload; Safe
+mode draw-call reduction; double-click fly-to and keyboard interruption.
+
+The local screenshot was inspected: the scene remains rendered and camera
+telemetry is finite at 100 m. It is **not local terrain or building evidence**.
+Global mesh tessellation is still coarse. Orbit camera stays in Float64 ECEF;
+render camera is at zero and a common world group is rebased each frame. Future
+local tiles must use local anchors, not Earth-sized Float32 vertex attributes.
+
+Three synthetic pagehide/pageshow cycles dispose all tracked geometries and
+restore identical geometry/texture counts. Three.js reports one texture even
+after renderer disposal; this test therefore does not assert all GPU allocations
+are zero or claim a complete leak proof. Physical bfcache/device tests remain.

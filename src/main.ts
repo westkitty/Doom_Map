@@ -1,4 +1,7 @@
 import './style.css'
+import { cameraBookmark } from './core/bookmarks'
+import { QUALITY, type QualityTier } from './core/quality'
+import type { GeodeticPoint } from './core/coordinates'
 import models from '../data/models.json'
 import providers from '../data/providers.json'
 import { parseManifest } from './data/provenance'
@@ -60,4 +63,36 @@ for (const record of records) {
     link.rel = 'noopener noreferrer'
     science.append(link)
   }
+}
+
+canvas.addEventListener('globe-selection', event => {
+  const point = (event as CustomEvent<GeodeticPoint>).detail
+  document.querySelector('#selection')!.textContent = `Selected ${point.latitudeDeg.toFixed(5)}°, ${point.longitudeDeg.toFixed(5)}° · WGS84 ellipsoid, not terrain`
+})
+const navigationStatus = document.querySelector<HTMLElement>('#navigation-status')!
+document.querySelector<HTMLFormElement>('#location-form')!.addEventListener('submit', event => {
+  event.preventDefault()
+  const data = new FormData(event.currentTarget as HTMLFormElement)
+  try {
+    app?.flyTo({ latitudeDeg: Number(data.get('latitude')), longitudeDeg: Number(data.get('longitude')), heightM: Number(data.get('altitude')) })
+    navigationStatus.textContent = 'Flying to coordinates. User input cancels camera motion.'
+  } catch (error) { navigationStatus.textContent = String(error) }
+})
+document.querySelector<HTMLSelectElement>('#quality')!.addEventListener('change', event => {
+  const tier = (event.target as HTMLSelectElement).value
+  if (tier in QUALITY) app?.setQuality(tier as QualityTier)
+})
+for (const action of ['save', 'restore'] as const) {
+  document.querySelector(`#${action}-camera`)!.addEventListener('click', async () => {
+    try {
+      if (!app) throw new Error('Globe unavailable')
+      if (action === 'save') await cameraBookmark('save', app.bookmark())
+      else {
+        const bookmark = await cameraBookmark('load')
+        if (!bookmark) throw new Error('No valid saved camera')
+        app.restoreBookmark(bookmark)
+      }
+      navigationStatus.textContent = action === 'save' ? 'Camera saved on this device.' : 'Camera restored.'
+    } catch (error) { navigationStatus.textContent = `Bookmark unavailable: ${String(error)}` }
+  })
 }

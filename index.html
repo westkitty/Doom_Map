@@ -9,7 +9,7 @@
   </head>
   <body>
     <main id="app" aria-label="Doom Map globe">
-      <canvas id="globe" aria-label="Interactive three-dimensional Earth"></canvas>
+      <canvas id="globe" tabindex="0" aria-describedby="camera-help" aria-label="Interactive three-dimensional Earth"></canvas>
       <section class="hud">
         <div>
           <p class="eyebrow">DOOM MAP / FOUNDATION</p>
@@ -22,6 +22,20 @@
           <span id="alt">ALT —</span>
         </div>
       </section>
+      <details class="navigation-panel">
+        <summary>Navigate Earth</summary>
+        <p id="camera-help">Drag: orbit · right drag: pan · wheel / pinch: zoom · double click / tap: fly. Focus globe: arrows orbit, Shift+arrows pan, +/- zoom, Enter select, Home reset.</p>
+        <form id="location-form">
+          <label>Latitude <input name="latitude" type="number" min="-90" max="90" step="any" value="41.8298" required></label>
+          <label>Longitude <input name="longitude" type="number" min="-180" max="180" step="any" value="-86.2542" required></label>
+          <label>Altitude (m) <input name="altitude" type="number" min="30" max="50000000" step="any" value="100000" required></label>
+          <button type="submit">Fly to coordinates</button>
+        </form>
+        <label for="quality">Quality</label><select id="quality"><option>Ultra</option><option>High</option><option selected>Balanced</option><option>Low</option><option>Safe</option></select>
+        <button id="save-camera">Save camera</button><button id="restore-camera">Restore camera</button>
+        <p id="selection" role="status">No location selected.</p>
+        <p id="navigation-status" role="status"></p>
+      </details>
       <details class="science-panel">
         <summary>Science / sources</summary>
         <div id="science-content"><p>No geographic data provider is active. No hazard model is active.</p></div>

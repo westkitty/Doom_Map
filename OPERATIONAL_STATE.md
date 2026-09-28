@@ -7,7 +7,7 @@
   "project_name": "Doom Map",
   "project_root": "westkitty/Doom_Map",
   "artifact_path": "",
-  "state_revision": 6,
+  "state_revision": 7,
   "last_updated": "2026-09-28T17:58:00Z",
   "current_baseline": {
     "identity": "commit 28dd723e5e504baeb36fbcd105a17e2a0cc00c13",
@@ -129,8 +129,8 @@ Inherited development-tool dependency audit findings: Vite high, Vitest critical
 - Chromium 143 software-WebGL render screenshot inspected; rotate/pan/wheel,
   telemetry, resize, context recovery and emulated pinch pass browser tests.
 - Short interaction geometry/texture counts remain constant.
-- Physical touch, long-session lifecycle, local-scale precision remain unverified.
-- Full Phase 1 remains incomplete. See docs/BROWSER_ACCEPTANCE.md.
+- Physical touch and long-session lifecycle remain unverified. Tested coordinate fly-to reaches 100 m with finite camera state; local terrain fidelity remains absent.
+- Phase 1 now includes ENU, render-camera rebasing, analytic picking, keyboard navigation, fly-to, quality/Safe and IndexedDB camera bookmarks. Low-LOD real geography is next; Phase 1 remains incomplete. See docs/BROWSER_ACCEPTANCE.md.
 
 ## 8. Unknown or Evidence-Stale State
 
@@ -212,3 +212,5 @@ represents main, not this branch. No wrapper or hazard capability is claimed.
 - r5 — Reproducible install, production-path browser harness, preview-base repair, bounded runtime metrics and context lifecycle evidence.
 
 - r6 — Governed manifests/source panel and unsupported-WebGL proof; prior branch CI green. Recorded inherited development-tool audit findings.
+
+- r7 — 19 unit tests; browser navigation to 100 m, keyboard, quality, bookmark and bounded remount evidence. CI 36465293562 passed prior provenance slice.
