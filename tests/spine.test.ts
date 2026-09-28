@@ -5,9 +5,9 @@ import { parseManifest, parseProvenance } from '../src/data/provenance'
 import { FrameStatistics } from '../src/core/performance'
 
 describe('governed manifest boundary', () => {
-  it('validates all active records without inventing providers', () => {
+  it('validates all active records with explicit providers', () => {
     expect(parseManifest(models, 'model')).toHaveLength(1)
-    expect(parseManifest(providers, 'provider')).toEqual([])
+    expect(parseManifest(providers, 'provider')).toHaveLength(1)
   })
   it.each(['id', 'version', 'sources', 'assumptions', 'uncertainty', 'limitations', 'license', 'coverage', 'timestamp'])(
     'rejects absent %s', key => {

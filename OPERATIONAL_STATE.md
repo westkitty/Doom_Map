@@ -7,7 +7,7 @@
   "project_name": "Doom Map",
   "project_root": "westkitty/Doom_Map",
   "artifact_path": "",
-  "state_revision": 7,
+  "state_revision": 8,
   "last_updated": "2026-09-28T17:58:00Z",
   "current_baseline": {
     "identity": "commit 28dd723e5e504baeb36fbcd105a17e2a0cc00c13",
@@ -130,7 +130,7 @@ Inherited development-tool dependency audit findings: Vite high, Vitest critical
   telemetry, resize, context recovery and emulated pinch pass browser tests.
 - Short interaction geometry/texture counts remain constant.
 - Physical touch and long-session lifecycle remain unverified. Tested coordinate fly-to reaches 100 m with finite camera state; local terrain fidelity remains absent.
-- Phase 1 now includes ENU, render-camera rebasing, analytic picking, keyboard navigation, fly-to, quality/Safe and IndexedDB camera bookmarks. Low-LOD real geography is next; Phase 1 remains incomplete. See docs/BROWSER_ACCEPTANCE.md.
+- Phase 1 now includes ENU, render-camera rebasing, analytic picking, keyboard navigation, fly-to, quality/Safe and IndexedDB camera bookmarks. Natural Earth low-LOD outlines now render with verified provenance and explicit failure handling. Core navigation slice passes; physical-device, local mesh refinement, extended lifecycle and regional streaming remain. See docs/BROWSER_ACCEPTANCE.md.
 
 ## 8. Unknown or Evidence-Stale State
 
@@ -150,8 +150,9 @@ Inherited development-tool dependency audit findings: Vite high, Vitest critical
 - **Need:** Browser smoke, visual observation, context-loss/resize verification, and later floating-origin/local-detail work.
 
 ### PND-002 — Implement geospatial streaming and data-provider layer
-- **State:** pending
+- **State:** next implementation unit
 - **Priority:** critical
+- Natural Earth low-LOD fallback is verified; bounded regional scheduler/provider lifecycle is next.
 
 ### PND-003 — Implement disaster and consequence engines
 - **State:** pending
@@ -214,3 +215,5 @@ represents main, not this branch. No wrapper or hazard capability is claimed.
 - r6 — Governed manifests/source panel and unsupported-WebGL proof; prior branch CI green. Recorded inherited development-tool audit findings.
 
 - r7 — 19 unit tests; browser navigation to 100 m, keyboard, quality, bookmark and bounded remount evidence. CI 36465293562 passed prior provenance slice.
+
+- r8 — Natural Earth immutable public-domain snapshot, 24 unit / 8 browser tests; rendered geographic context inspected; explicit provider failure and remount gates pass.

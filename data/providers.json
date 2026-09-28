@@ -1,4 +1,30 @@
 {
   "schemaVersion": 1,
-  "records": []
+  "records": [
+    {
+      "id": "natural-earth-land-110m",
+      "version": "ca96624a56bd078437bca8184e78163e5039ad19",
+      "kind": "provider",
+      "title": "Natural Earth 1:110m land outlines",
+      "fidelity": "C",
+      "sources": [
+        "https://github.com/nvkelso/natural-earth-vector/blob/ca96624a56bd078437bca8184e78163e5039ad19/geojson/ne_110m_land.geojson",
+        "https://github.com/nvkelso/natural-earth-vector/blob/ca96624a56bd078437bca8184e78163e5039ad19/LICENSE.md"
+      ],
+      "timestamp": "2022-06-02T07:25:00Z",
+      "assumptions": [
+        "Land polygon boundaries displayed as low-resolution coastline context.",
+        "Snapshot timestamp is upstream commit date, not observation date."
+      ],
+      "uncertainty": "Cartographic generalization at 1:110 million; not survey-grade coastline.",
+      "limitations": [
+        "Small islands and local detail are omitted.",
+        "Not terrain, buildings, administrative borders, or a hazard model.",
+        "Hidden below 200 km camera altitude rather than implying local accuracy."
+      ],
+      "attribution": "Made with Natural Earth. Tom Patterson, Nathaniel Vaughn Kelso and contributors.",
+      "license": "Public domain; upstream license bundled with snapshot.",
+      "coverage": "Global generalized land polygons."
+    }
+  ]
 }

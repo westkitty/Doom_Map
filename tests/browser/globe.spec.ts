@@ -13,6 +13,7 @@ test('production WebGL render, mouse navigation, resize and bounded resources', 
   page.on('console', m => { if (m.type() === 'error') errors.push(m.text()) })
   await page.goto('./')
   await expect(page).toHaveTitle('Doom Map')
+  await expect(page.locator('#globe')).toHaveAttribute('data-geography', 'ready')
   await expect.poll(async () => (await runtime(page)).triangles).toBeGreaterThan(1000)
   const canvas = page.locator('#globe')
   expect(await canvas.boundingBox()).toMatchObject({ width: 1200, height: 800 })
@@ -84,7 +85,7 @@ test('unsupported WebGL reports an accessible failure instead of a blank canvas'
   await page.goto('./')
   await expect(page.getByRole('alert')).toContainText('Unable to start WebGL2')
   await page.getByText('Science / sources').click()
-  await expect(page.locator('#science-content')).toContainText('No geographic data provider is active')
+  await expect(page.locator('#science-content')).toContainText('Natural Earth low-LOD land outlines')
   await expect(page.locator('#science-content')).toContainText('earth-presentation@1.0.0')
 })
 
@@ -146,13 +147,23 @@ test('double-click flies to ellipsoid and user input interrupts motion', async (
 test('repeated page lifecycle disposes GPU geometry and restores the same bounded scene', async ({ page }) => {
   await page.goto('./')
   await expect.poll(async () => (await runtime(page)).frame).toBeGreaterThan(2)
+  await expect(page.locator('#globe')).toHaveAttribute('data-geography', 'ready')
   const initial = await runtime(page)
   for (let i = 0; i < 3; i++) {
     await page.evaluate(() => window.dispatchEvent(new PageTransitionEvent('pagehide', { persisted: true })))
     await expect.poll(async () => JSON.parse((await page.locator('#globe').getAttribute('data-lifecycle'))!)).toMatchObject({ state: 'disposed', geometries: 0 })
     await page.evaluate(() => window.dispatchEvent(new PageTransitionEvent('pageshow', { persisted: true })))
     await expect.poll(async () => (await runtime(page)).frame).toBeGreaterThan(2)
+    await expect(page.locator('#globe')).toHaveAttribute('data-geography', 'ready')
     expect((await runtime(page)).geometries).toBe(initial.geometries)
     expect((await runtime(page)).textures).toBe(initial.textures)
   }
+})
+
+test('geography failure is explicit and globe navigation remains usable', async ({ page }) => {
+  await page.route('**/data/ne_110m_land.geojson', route => route.fulfill({ status: 503, body: 'Unavailable' }))
+  await page.goto('./')
+  await expect(page.locator('#geography-status')).toContainText('Geography unavailable')
+  await expect(page.locator('#globe')).toHaveAttribute('data-geography', 'unavailable')
+  await expect.poll(async () => (await runtime(page)).triangles).toBeGreaterThan(1000)
 })

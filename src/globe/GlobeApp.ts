@@ -32,10 +32,13 @@ export class GlobeApp {
   private animationFrame = 0
   private running = false
   private disposed = false
+  private readonly geographyAbort = new AbortController()
+  private geography: THREE.LineSegments | undefined
   private readonly statistics = new FrameStatistics()
 
   constructor(canvas: HTMLCanvasElement, onTelemetry: (value: GlobeTelemetry) => void) {
     this.onTelemetry = onTelemetry
+    canvas.dataset.geography = 'loading'
     this.renderer = new THREE.WebGLRenderer({
       canvas,
       antialias: true,
@@ -69,6 +72,17 @@ export class GlobeApp {
     this.marker.visible = false
     this.scene.add(this.world)
     this.setQuality('Balanced')
+    void import('./geography').then(module => module.loadGeography(this.geographyAbort.signal)).then(layer => {
+      if (this.disposed) { layer.geometry.dispose(); (layer.material as THREE.Material).dispose(); return }
+      this.geography = layer
+      this.world.add(layer)
+      canvas.dataset.geography = 'loaded'
+      canvas.dispatchEvent(new CustomEvent('geography-status', { detail: 'Natural Earth 1:110m · C / data-driven · snapshot 2022-06-02' }))
+    }).catch(error => {
+      if (this.disposed) return
+      canvas.dataset.geography = 'unavailable'
+      canvas.dispatchEvent(new CustomEvent('geography-status', { detail: `Geography unavailable: ${String(error)}. Ellipsoid/grid only; no substitute data.` }))
+    })
     canvas.addEventListener('pointerdown', this.onPointerDown)
     canvas.addEventListener('pointerup', this.onPointerUp)
     canvas.addEventListener('dblclick', this.onDoubleClick)
@@ -95,12 +109,14 @@ export class GlobeApp {
       this.camera.updateProjectionMatrix()
       this.camera.updateMatrixWorld()
       this.updateTelemetry()
+      if (this.geography) this.geography.visible = geo.heightM >= 200_000
       // Orbit camera remains in double-precision ECEF. Only render copies are rebased.
       this.renderCamera.copy(this.camera)
       this.renderCamera.position.set(0, 0, 0)
       this.world.position.copy(this.camera.position).negate()
       if (this.selection) this.marker.scale.setScalar(Math.max(0.1, Math.max(30, geo.heightM) * 0.006))
       this.renderer.render(this.scene, this.renderCamera)
+      if (this.geography) this.renderer.domElement.dataset.geography = 'ready'
       this.statistics.record(performance.now())
       const info = this.renderer.info
       this.renderer.domElement.dataset.runtime = JSON.stringify({
@@ -119,6 +135,7 @@ export class GlobeApp {
   dispose(): void {
     if (this.disposed) return
     this.disposed = true
+    this.geographyAbort.abort()
     this.running = false
     cancelAnimationFrame(this.animationFrame)
     window.removeEventListener('resize', this.resize)

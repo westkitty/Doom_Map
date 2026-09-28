@@ -35,7 +35,7 @@ Every visible consequence must be able to answer: **where did this number/shape 
 
 ## Current state
 
-The repository is in **active phased implementation**. The initial Three.js globe foundation builds and GitHub Pages is live; browser-level interaction proof and the remaining Phase 0/1 foundation are still in progress.
+The repository is in **active phased implementation**. The branch foundation has reproducible installs, browser-tested globe navigation, ENU/camera-relative coordinates, bookmarks, quality tiers, and sourced Natural Earth outlines. Public Pages is live on the older main revision; branch changes are not yet deployed. Regional streaming and all hazard/time/consequence systems remain incomplete. See OPERATIONAL_STATE.md for scoped evidence.
 
 Read these first:
 

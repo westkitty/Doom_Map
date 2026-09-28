@@ -23,6 +23,9 @@ const formatAltitude = (meters: number): string => {
 }
 
 const status = document.querySelector<HTMLElement>('#status')!
+canvas.addEventListener('geography-status', event => {
+  document.querySelector('#geography-status')!.textContent = (event as CustomEvent<string>).detail
+})
 canvas.addEventListener('globe-status', (event) => {
   status.textContent = (event as CustomEvent<string>).detail
 })

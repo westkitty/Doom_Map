@@ -69,3 +69,17 @@ Three synthetic pagehide/pageshow cycles dispose all tracked geometries and
 restore identical geometry/texture counts. Three.js reports one texture even
 after renderer disposal; this test therefore does not assert all GPU allocations
 are zero or claim a complete leak proof. Physical bfcache/device tests remain.
+
+## Low-LOD geography slice
+
+24 unit tests and all 8 browser tests pass together. Natural Earth snapshot
+SHA-256, polygon validity and decode bounds are tested. The new globe screenshot
+was inspected: Europe, Africa, Mediterranean and surrounding coastline context
+are visibly rendered, with source/date/fidelity shown. Production geography is
+loaded through a separate dynamic-import chunk and a same-origin cancellable
+fetch. A forced HTTP 503 produces an explicit unavailable message without losing
+the globe. Lifecycle tests now wait for the first rendered geography frame, not
+just completion of its asynchronous download. Three remounts retain equal counts.
+
+Geography is a 138 kB low-LOD fallback, not worldwide high-detail data or a tile
+streaming system. Phase 2 must introduce bounded regional providers/eviction.
