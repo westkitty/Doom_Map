@@ -1,6 +1,11 @@
 # Doom Map — 20-Improvement Uplift Ledger (2026-10-04)
 
-This ledger is the traceability surface for the fifth iterative uplift round. Each numbered item is a distinct requested project improvement. Source presence is necessary but not sufficient: repository CI must also typecheck, run the full Vitest suite, and build successfully before the round is marked verified.
+This ledger is the traceability surface for the fifth iterative uplift round. Each numbered item is a distinct requested project improvement.
+
+**Verification result: PASS** at repair commit `69905d40334d7fa21cac979d2509957012de1363`.
+- GitHub CI run 37176072053: `npm ci`, strict TypeScript, complete Vitest suite, and production build passed.
+- GitHub Pages run 37176072086: verify/build, artifact upload, and deploy passed.
+- Initial implementation commit `9dc387f82916108c558c94f2d95d3ed7e82d0d58` exposed one TypeScript base-path error; repair commit `69905d40334d7fa21cac979d2509957012de1363` corrected it without weakening the project checks.
 
 | ID | Improvement | Primary implementation | Focused proof |
 |---|---|---|---|

@@ -7,12 +7,12 @@
   "project_name": "Doom Map",
   "project_root": "westkitty/Doom_Map",
   "artifact_path": "",
-  "state_revision": 7,
-  "last_updated": "2026-10-04T03:33:41Z",
+  "state_revision": 8,
+  "last_updated": "2026-10-04T04:07:59Z",
   "current_baseline": {
-    "identity": "commit 36730edfaeda7a69be9ad48c0b33b1da59a773fd",
+    "identity": "commit 69905d40334d7fa21cac979d2509957012de1363",
     "state": "current-baseline",
-    "last_verified": "2026-10-04T03:33:41Z"
+    "last_verified": "2026-10-04T04:07:59Z"
   },
   "scope_boundaries": [
     "Doom Map repository, web deployment, and native wrapper only",
@@ -28,17 +28,17 @@ Doom Map is a browser-first, Three.js-controlled global disaster and consequence
 
 ## 2. Current Baseline
 
-Current implementation baseline: commit 36730edfaeda7a69be9ad48c0b33b1da59a773fd on main.
+Current implementation baseline: commit 69905d40334d7fa21cac979d2509957012de1363 on main.
 
 Verified for this implementation by GitHub Actions:
-- CI run 37174389781: dependency installation via committed `package-lock.json` + `npm ci`, strict TypeScript typecheck, full Vitest suite, and Vite production build all succeeded.
-- Deploy GitHub Pages run 37174389792: deterministic `npm ci`, verify/build, Pages artifact upload, and deploy all succeeded.
+- CI run 37176072053: committed-lockfile `npm ci`, strict TypeScript typecheck, the complete Vitest suite, and Vite production build all succeeded.
+- Deploy GitHub Pages run 37176072086: deterministic `npm ci`, verify/build, Pages artifact upload, and deploy all succeeded.
 
-This revision composes prior primitives into runnable pipelines. It adds an executable hazard-module contract, bounded parameter normalization, runtime hazard registration, a deterministic non-physical reference fixture, an end-to-end scenario runtime, checkpoint/replay fingerprints, tamper-evident scenario bundles, forward schema migrations, a runtime geodata-provider contract, HTTP JSON loading with retry classification, circuit breaking, provider failover, request deduplication, payload hashes/byte accounting, attribution aggregation, a same-origin GeoJSON fixture provider, network-state tracking, an app-shell service worker, and a foundation audit.
+This round connects the existing geospatial and replay foundations more directly to runtime use. It adds Web Mercator tile conversion, antimeridian-safe viewport coverage, prefetch rings, deterministic tile prioritization, stale-view cancellation epochs, data freshness classification, tile residency accounting, a composed GeoTileStore, explicit data-layer state, validated GeoJSON point extraction, disposable Three.js point layers, GlobeApp-owned data-layer lifecycle, reference-provider rendering through the tile-store path, streaming/attribution diagnostics, model-version compatibility checks, provider snapshot compatibility checks, runtime input journals, true checkpoint restoration, deterministic scenario batch execution, and scenario outcome comparison.
 
-Dependency installation is now reproducible. GitHub Actions generated and committed the lockfile in commit e96669ccf75436d917b1556a691b76ff1863295e, after which commit 36730edfaeda7a69be9ad48c0b33b1da59a773fd restored CI to read-only repository permissions and changed both CI and Pages to `npm ci`.
+Implementation commit 9dc387f82916108c558c94f2d95d3ed7e82d0d58 initially failed strict TypeScript because `src/main.ts` referenced `import.meta.env.BASE_URL` without Vite's client ambient types in the project. Repair commit 69905d40334d7fa21cac979d2509957012de1363 replaced that dependency with `new URL('./', document.baseURI).pathname`, preserving Pages base-path behavior without changing TypeScript configuration. The full CI and Pages workflows then passed.
 
-The reference pulse exists only to prove deterministic engine composition. It is fidelity D and explicitly not a physical disaster model. Browser-level offline/service-worker behavior and the deployed same-origin reference-provider fetch are implemented but not directly observed in this workflow.
+The new reference data layer remains illustrative fidelity-D fixture data. Source, unit tests, production build, and deployment prove the integration path exists; direct visual browser observation of the rendered reference markers remains unavailable in this workflow.
 
 ## 3. Artifact Contract
 
@@ -145,6 +145,14 @@ The final product must:
 - **Evidence:** CI 37174389781 and Pages 37174389792 passed using `npm ci`.
 <!-- /operational-state:entry -->
 
+<!-- operational-state:entry
+{"id":"VER-008","title":"Geodata residency and deterministic replay uplift passes CI and Pages","state":"verified","capability":"The 69905d40334d7fa21cac979d2509957012de1363 baseline provides 20 traced improvements covering tile planning/residency, Three.js data-layer ownership, reference-provider scene integration, diagnostics, replay compatibility/journaling/restoration, deterministic batch execution, and outcome comparison.","scope":"Round-05 implementation mapped in docs/UPLIFT_ROUND_05.md","verification_method":"GitHub Actions CI run 37176072053, Deploy GitHub Pages run 37176072086, focused Vitest fixtures, strict TypeScript, production build, and remote source-presence audit","evidence":"npm ci, typecheck, all unit tests, production build, Pages artifact upload, and deploy succeeded after the bounded base-path repair.","artifact_revision":"69905d40334d7fa21cac979d2509957012de1363","last_verified":"2026-10-04T04:07:59Z","dependencies":["docs/UPLIFT_ROUND_05.md","src/geo","src/data","src/globe","src/scenario","src/sim","src/consequences","tests"],"freshness":"current implementation baseline","recheck_trigger":"Tile planning/store, layer ownership, replay/runtime, diagnostics, or mapped tests change"}
+-->
+### VER-008 — Geodata residency and deterministic replay uplift passes CI and Pages
+- **State:** verified
+- **Evidence:** CI 37176072053 and Pages 37176072086 passed after the bounded base-path repair.
+<!-- /operational-state:entry -->
+
 ## 6. Known Not Working
 
 None currently recorded.
@@ -167,6 +175,14 @@ None currently recorded.
 - **Missing proof:** Direct deployed-browser service-worker/offline and live fixture-fetch observation.
 <!-- /operational-state:entry -->
 
+<!-- operational-state:entry
+{"id":"UNV-003","title":"Rendered reference GeoJSON point layer appearance","state":"implemented-unverified","scope":"src/data/referenceDataController.ts, src/globe/geoJsonPointLayer.ts, src/globe/GlobeApp.ts, src/main.ts","evidence":"The provider-to-tile-store-to-Three.js path passes focused tests, strict TypeScript, production build, and Pages deployment. Direct visual browser observation was unavailable.","validation_method":"Open the deployed site in a real browser and confirm the two illustrative reference points render, survive globe interaction, disappear on layer replacement/removal, and do not leak renderer resources.","status":"active"}
+-->
+### UNV-003 — Rendered reference GeoJSON point layer appearance
+- **State:** implemented-unverified
+- **Missing proof:** Direct visual browser observation of the deployed layer.
+<!-- /operational-state:entry -->
+
 ## 8. Unknown or Evidence-Stale State
 
 ### UNK-001 — World_Set reference repository unavailable
@@ -187,7 +203,7 @@ None currently recorded.
 ### PND-002 — Integrate real geospatial streaming providers
 - **State:** pending
 - **Priority:** critical
-- **Progress:** Core tile addressing, SSE LOD, bounded request scheduling, retry, LRU memory budgets, provider routing, and quality-tier resource budgets now exist. Real PMTiles/MVT/terrain/building adapters and renderer integration remain pending.
+- **Progress:** Tile conversion, antimeridian coverage, prefetch, prioritization, generation cancellation, freshness, residency, composed tile-store behavior, layer ownership, and provider-to-scene integration now exist and are tested with the illustrative same-origin fixture. Real sourced PMTiles/MVT/terrain/building adapters remain pending.
 
 ### PND-003 — Implement physical hazard and consequence models
 - **State:** pending
@@ -224,6 +240,10 @@ None currently recorded.
 - Data fetch composition prefers cancellable shared requests, retry classification, circuit breaking, provider failover, content hashing/byte accounting, and attribution ledgers rather than ad hoc fetch calls.
 - The service worker is an app-shell availability mechanism, not a license to present stale scientific data as current; data freshness/provenance remains authoritative.
 - CI and Pages must use the committed package-lock.json through `npm ci`; temporary repository-write permission used to bootstrap the lockfile has been removed.
+- Geodata view changes must invalidate stale work through explicit view generations rather than allowing old requests to win races.
+- Data-layer ownership belongs to GlobeApp; layer replacement/removal must dispose owned Three.js resources.
+- Scenario runtime construction must reject model-version drift, and provider snapshots must be checked before claiming replay equivalence.
+- Checkpoint restoration must restore clock accumulator, RNG state, hazard state, queued events, consequences, emissions, and input journal together.
 
 ## 11. Validation and Evidence Matrix
 
@@ -237,15 +257,17 @@ None currently recorded.
 | VER-005 | Expanded source + Pages build/deploy | verified | CI 37168929607 + Pages 37168929613 |
 | VER-006 | Simulation/streaming foundation | verified | CI 37172047741 + Pages 37172047765 |
 | VER-007 | Composed scenario/provider pipeline + reproducible installs | verified | CI 37174389781 + Pages 37174389792 |
+| VER-008 | Round-05 geodata/replay uplift | verified | CI 37176072053 + Pages 37176072086 + docs/UPLIFT_ROUND_05.md |
+| UNV-003 | Rendered reference GeoJSON layer appearance | implemented-unverified | needs direct browser visual proof |
 | UNV-002 | Offline shell + deployed reference-provider path | implemented-unverified | needs direct browser/offline proof |
 | INV-004 | >=40 hazards | partially implemented | 100 schema-valid catalog manifests exist; physical model modules remain pending |
 | INV-005 | Wrapper shares web core | requested | wrapper not built |
 
 ## 12. Current Change Scope and Impact Radius
 
-Phase 0 dependency reproducibility is now closed, and the Phase 2/3 foundations have a tested end-to-end composition path. The immediate scope is: wire floating-origin and real tile/provider residency into Three.js rendering; replace the illustrative same-origin fixture with the first properly sourced static geospatial dataset path while preserving provenance and cancellation; validate the service worker/offline path in a real browser; then promote one genuinely modelled low-risk hazard from catalog metadata to an evidence-backed runtime module before attempting the flagship set.
+The geospatial runtime now has a tested planning/residency path from geographic bounds through tile selection, caching/failover, provider payloads, and an owned Three.js data layer. The deterministic scenario runtime now has stronger replay integrity through compatibility gates, journals, and restorable checkpoints. The immediate scope is therefore narrower and more valuable: replace the illustrative fixture with the first properly sourced production geospatial dataset; connect viewport-derived tile coverage to camera movement rather than the single world-tile bootstrap; directly observe browser layer disposal/offline behavior; and promote one evidence-backed hazard model into the runtime registry.
 
-The deterministic reference pulse must remain an engineering fixture and must never be described as a disaster solver. Scientific/data freshness rules continue to override offline cache convenience.
+Do not treat the reference points as production mapping data, and do not claim checkpoint-equivalent replay if model/provider compatibility gates fail.
 
 ## 13. Compact Revision Log
 
@@ -256,3 +278,4 @@ The deterministic reference pulse must remain an engineering fixture and must ne
 - r5 — 2026-10-04: Recorded implementation e808eb789ef9215f937ea90e71a481a4d41fef25: deeper geodesy/navigation, target selection/fly-to, view-state/history, adaptive quality/diagnostics, provider/provenance/scenario contracts, and a minimized progressive-disclosure UI. CI 37168929607 and Pages 37168929613 passed; direct rendered-browser proof and package-lock generation remain pending.
 - r6 — 2026-10-04: Added 20 engine foundations at 85ff7d55cd0c9a9093b22bf0e91ee18be5a40759: deterministic RNG/time/events/checkpoints/checksums, scenario branches, 100-entry hazard registry, consequence DAG, tile/LOD, bounded request/cache/retry/provider/resource systems, floating origin, runtime trace, and capability classification. Initial commit 2968b21 exposed one strict-TypeScript test-fixture failure; repaired in 85ff7d55cd0c9a9093b22bf0e91ee18be5a40759. CI 37172047741 and Pages 37172047765 then passed.
 - r7 — 2026-10-04: Composed the foundations into tested scenario and provider pipelines, added offline app-shell support and foundation auditing, and closed dependency reproducibility. Implementation 39fb13cf added runtime composition; e96669cc committed GitHub-generated lockfile; 36730edfaeda7a69be9ad48c0b33b1da59a773fd restored read-only CI and enforced `npm ci`. CI 37174389781 and Pages 37174389792 passed. Offline service-worker behavior and live deployed fixture fetch remain implemented-unverified.
+- r8 — 2026-10-04: Completed the 20-item Round-05 uplift mapped in docs/UPLIFT_ROUND_05.md. Commit 9dc387f8 added tile planning/residency, data-layer ownership/integration, compatibility/journal/restoration, batch, and comparison systems. That commit exposed one TypeScript base-path defect; 69905d40334d7fa21cac979d2509957012de1363 repaired it. CI 37176072053 and Pages 37176072086 then passed.
