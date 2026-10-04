@@ -7,12 +7,12 @@
   "project_name": "Doom Map",
   "project_root": "westkitty/Doom_Map",
   "artifact_path": "",
-  "state_revision": 6,
-  "last_updated": "2026-10-04T02:46:35Z",
+  "state_revision": 7,
+  "last_updated": "2026-10-04T03:33:41Z",
   "current_baseline": {
-    "identity": "commit 85ff7d55cd0c9a9093b22bf0e91ee18be5a40759",
+    "identity": "commit 36730edfaeda7a69be9ad48c0b33b1da59a773fd",
     "state": "current-baseline",
-    "last_verified": "2026-10-04T02:46:35Z"
+    "last_verified": "2026-10-04T03:33:41Z"
   },
   "scope_boundaries": [
     "Doom Map repository, web deployment, and native wrapper only",
@@ -28,17 +28,17 @@ Doom Map is a browser-first, Three.js-controlled global disaster and consequence
 
 ## 2. Current Baseline
 
-Current implementation baseline: commit 85ff7d55cd0c9a9093b22bf0e91ee18be5a40759 on main.
+Current implementation baseline: commit 36730edfaeda7a69be9ad48c0b33b1da59a773fd on main.
 
 Verified for this implementation by GitHub Actions:
-- CI run 37172047741: dependency install, strict TypeScript typecheck, full Vitest suite, and Vite production build all succeeded.
-- Deploy GitHub Pages run 37172047765: verify/build, Pages artifact upload, and deploy all succeeded.
+- CI run 37174389781: dependency installation via committed `package-lock.json` + `npm ci`, strict TypeScript typecheck, full Vitest suite, and Vite production build all succeeded.
+- Deploy GitHub Pages run 37174389792: deterministic `npm ci`, verify/build, Pages artifact upload, and deploy all succeeded.
 
-The project now has an executable simulation/streaming architecture in addition to the interactive globe foundation. New foundations include seeded deterministic randomness, fixed-step simulation time, ordered events, seek checkpoints, canonical scenario checksums, scenario branches, a machine-readable 100-entry hazard catalog and registry, consequence DAGs, Z/X/Y tile addressing, screen-space-error LOD decisions, cancellable bounded request scheduling, byte-budget LRU caching, retry policy, provider routing and health, quality-tier resource budgets, floating-origin transforms, bounded runtime traces, and runtime capability classification.
+This revision composes prior primitives into runnable pipelines. It adds an executable hazard-module contract, bounded parameter normalization, runtime hazard registration, a deterministic non-physical reference fixture, an end-to-end scenario runtime, checkpoint/replay fingerprints, tamper-evident scenario bundles, forward schema migrations, a runtime geodata-provider contract, HTTP JSON loading with retry classification, circuit breaking, provider failover, request deduplication, payload hashes/byte accounting, attribution aggregation, a same-origin GeoJSON fixture provider, network-state tracking, an app-shell service worker, and a foundation audit.
 
-These are engine foundations, not claims that the 100 catalogued hazards already have physical models. Catalog entries remain fidelity D / catalogued until dedicated modules provide stronger evidence. Actual provider adapters, streamed datasets, worker integration, scenario UI, and flagship hazard solvers remain pending.
+Dependency installation is now reproducible. GitHub Actions generated and committed the lockfile in commit e96669ccf75436d917b1556a691b76ff1863295e, after which commit 36730edfaeda7a69be9ad48c0b33b1da59a773fd restored CI to read-only repository permissions and changed both CI and Pages to `npm ci`.
 
-A first implementation commit (2968b21e21272bd8a0c777859a5683e93ceaffbd) exposed a strict-TypeScript test-fixture resolver typing failure in CI. Commit 85ff7d55cd0c9a9093b22bf0e91ee18be5a40759 repaired that bounded defect; the full verification and Pages deployment then passed.
+The reference pulse exists only to prove deterministic engine composition. It is fidelity D and explicitly not a physical disaster model. Browser-level offline/service-worker behavior and the deployed same-origin reference-provider fetch are implemented but not directly observed in this workflow.
 
 ## 3. Artifact Contract
 
@@ -137,6 +137,14 @@ The final product must:
 - **Evidence:** CI run 37172047741 and Pages run 37172047765 completed successfully after the bounded test-fixture repair.
 <!-- /operational-state:entry -->
 
+<!-- operational-state:entry
+{"id":"VER-007","title":"Composed scenario/provider pipelines and reproducible npm installs pass CI and Pages","state":"verified","capability":"The 36730edfaeda7a69be9ad48c0b33b1da59a773fd baseline composes deterministic scenario execution, hazard module registration and validation, replay/bundle integrity, provider retry/failover/deduplication/metadata, foundation auditing, and committed lockfile-based installs.","scope":"Scenario/data runtime foundations, tests, package-lock.json, CI and Pages workflows","verification_method":"GitHub Actions CI run 37174389781 and Deploy GitHub Pages run 37174389792","evidence":"Both workflows installed with npm ci from the committed lockfile; strict TypeScript, full Vitest suite, production build, Pages artifact upload, and deploy succeeded.","artifact_revision":"36730edfaeda7a69be9ad48c0b33b1da59a773fd","last_verified":"2026-10-04T03:33:41Z","dependencies":["package-lock.json","src/scenario","src/hazards","src/data","src/core/foundationAudit.ts","tests",".github/workflows/ci.yml",".github/workflows/deploy-pages.yml"],"freshness":"current implementation baseline","recheck_trigger":"Dependencies, lockfile, scenario/provider runtime, tests, or workflows change"}
+-->
+### VER-007 — Composed scenario/provider pipelines and reproducible npm installs pass CI and Pages
+- **State:** verified
+- **Evidence:** CI 37174389781 and Pages 37174389792 passed using `npm ci`.
+<!-- /operational-state:entry -->
+
 ## 6. Known Not Working
 
 None currently recorded.
@@ -149,6 +157,14 @@ None currently recorded.
 ### UNV-001 — Interactive globe navigation and minimized command UI
 - **State:** implemented-unverified
 - **Missing proof:** Direct real-browser visual and interaction observation on desktop and touch-sized layouts.
+<!-- /operational-state:entry -->
+
+<!-- operational-state:entry
+{"id":"UNV-002","title":"Offline app shell and live same-origin reference provider path","state":"implemented-unverified","scope":"public/sw.js, src/offline/registerServiceWorker.ts, public/data/reference-regions.geojson, src/data/staticGeoJsonProvider.ts, src/main.ts","evidence":"Source and mocked provider-path tests pass; production build and Pages deployment succeed. Direct browser service-worker registration/cache/offline navigation and deployed fixture fetch were not observed in this workflow.","validation_method":"In a real browser on the deployed Pages site, confirm service-worker registration, reload/offline app-shell fallback, cache version cleanup, network transition messaging, and successful same-origin fetch of data/reference-regions.geojson.","status":"active"}
+-->
+### UNV-002 — Offline app shell and live same-origin reference provider path
+- **State:** implemented-unverified
+- **Missing proof:** Direct deployed-browser service-worker/offline and live fixture-fetch observation.
 <!-- /operational-state:entry -->
 
 ## 8. Unknown or Evidence-Stale State
@@ -183,9 +199,8 @@ None currently recorded.
 - **Priority:** high
 
 ### PND-005 — Generate and commit package lockfile
-- **State:** pending
-- **Priority:** critical for Phase 0 exit
-- **Reason:** Current CI deliberately uses npm install because no locally generated package-lock.json exists yet. Switch CI/Pages to `npm ci` only after a real lockfile is generated and validated.
+- **State:** superseded by VER-007
+- **Resolution:** GitHub Actions generated the lockfile, commit e96669ccf75436d917b1556a691b76ff1863295e recorded it, and commit 36730edfaeda7a69be9ad48c0b33b1da59a773fd moved CI and Pages to verified `npm ci` installs.
 
 ## 10. Active Decisions, Defaults, and Prohibitions
 
@@ -204,6 +219,11 @@ None currently recorded.
 - The 100-entry hazard catalog is a registry and planning/runtime contract, not evidence that 100 scientific models exist; catalogued entries remain fidelity D until promoted by model evidence.
 - Streaming must use bounded concurrency, cancellation, retry/backoff, LRU byte budgets, provider-health routing, quality-tier budgets, and SSE-based LOD decisions.
 - Floating-origin transforms preserve authoritative ECEF coordinates while allowing later GPU-local rendering; renderer integration is still pending.
+- Executable hazard modules are separate from catalog manifests. A hazard becomes runnable only through a registered runtime module with validated parameters and an explicit model version.
+- Portable scenario bundles are checksum-verified before import; future schema changes must move forward through explicit migration steps.
+- Data fetch composition prefers cancellable shared requests, retry classification, circuit breaking, provider failover, content hashing/byte accounting, and attribution ledgers rather than ad hoc fetch calls.
+- The service worker is an app-shell availability mechanism, not a license to present stale scientific data as current; data freshness/provenance remains authoritative.
+- CI and Pages must use the committed package-lock.json through `npm ci`; temporary repository-write permission used to bootstrap the lockfile has been removed.
 
 ## 11. Validation and Evidence Matrix
 
@@ -216,14 +236,16 @@ None currently recorded.
 | VER-004 | Public Pages delivery | verified | Pages workflow run 36448035612 + prior live HTTP 200 probe |
 | VER-005 | Expanded source + Pages build/deploy | verified | CI 37168929607 + Pages 37168929613 |
 | VER-006 | Simulation/streaming foundation | verified | CI 37172047741 + Pages 37172047765 |
+| VER-007 | Composed scenario/provider pipeline + reproducible installs | verified | CI 37174389781 + Pages 37174389792 |
+| UNV-002 | Offline shell + deployed reference-provider path | implemented-unverified | needs direct browser/offline proof |
 | INV-004 | >=40 hazards | partially implemented | 100 schema-valid catalog manifests exist; physical model modules remain pending |
 | INV-005 | Wrapper shares web core | requested | wrapper not built |
 
 ## 12. Current Change Scope and Impact Radius
 
-Phase 0, the interactive Phase 1 globe foundation, and substantial Phase 2/3 primitives now exist. The immediate scope is: connect floating-origin and LOD/request/cache primitives to the renderer; implement one real static geospatial provider path (preferably PMTiles/MVT or equivalent static-host-friendly data) with cancellation and provenance; generate and validate the package lockfile so CI can move to reproducible `npm ci`; then wire the deterministic scenario clock/event/checkpoint core into one harmless reference hazard fixture before expanding flagship models. Direct browser acceptance and representative device performance proof remain required.
+Phase 0 dependency reproducibility is now closed, and the Phase 2/3 foundations have a tested end-to-end composition path. The immediate scope is: wire floating-origin and real tile/provider residency into Three.js rendering; replace the illustrative same-origin fixture with the first properly sourced static geospatial dataset path while preserving provenance and cancellation; validate the service worker/offline path in a real browser; then promote one genuinely modelled low-risk hazard from catalog metadata to an evidence-backed runtime module before attempting the flagship set.
 
-Do not interpret the 100-entry hazard registry as 100 completed solvers, and do not bypass source fidelity/provenance when promoting catalog entries.
+The deterministic reference pulse must remain an engineering fixture and must never be described as a disaster solver. Scientific/data freshness rules continue to override offline cache convenience.
 
 ## 13. Compact Revision Log
 
@@ -233,3 +255,4 @@ Do not interpret the 100-entry hazard registry as 100 completed solvers, and do 
 - r4 — 2026-09-28: Reconciled stale deployment/traceability/README state with the verified live Pages deployment; browser interaction proof and deterministic-install work remain pending.
 - r5 — 2026-10-04: Recorded implementation e808eb789ef9215f937ea90e71a481a4d41fef25: deeper geodesy/navigation, target selection/fly-to, view-state/history, adaptive quality/diagnostics, provider/provenance/scenario contracts, and a minimized progressive-disclosure UI. CI 37168929607 and Pages 37168929613 passed; direct rendered-browser proof and package-lock generation remain pending.
 - r6 — 2026-10-04: Added 20 engine foundations at 85ff7d55cd0c9a9093b22bf0e91ee18be5a40759: deterministic RNG/time/events/checkpoints/checksums, scenario branches, 100-entry hazard registry, consequence DAG, tile/LOD, bounded request/cache/retry/provider/resource systems, floating origin, runtime trace, and capability classification. Initial commit 2968b21 exposed one strict-TypeScript test-fixture failure; repaired in 85ff7d55cd0c9a9093b22bf0e91ee18be5a40759. CI 37172047741 and Pages 37172047765 then passed.
+- r7 — 2026-10-04: Composed the foundations into tested scenario and provider pipelines, added offline app-shell support and foundation auditing, and closed dependency reproducibility. Implementation 39fb13cf added runtime composition; e96669cc committed GitHub-generated lockfile; 36730edfaeda7a69be9ad48c0b33b1da59a773fd restored read-only CI and enforced `npm ci`. CI 37174389781 and Pages 37174389792 passed. Offline service-worker behavior and live deployed fixture fetch remain implemented-unverified.
