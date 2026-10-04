@@ -1,0 +1,1580 @@
+{
+  "schemaVersion": 1,
+  "tileId": "1874-2636",
+  "bounds": {
+    "west": -86.3,
+    "south": 41.8,
+    "east": -86.25,
+    "north": 41.85
+  },
+  "buildings": [
+    {
+      "id": "niles-main-1",
+      "name": "Niles City Hall",
+      "use": "commercial",
+      "footprint": [
+        [
+          -86.2587,
+          41.8253
+        ],
+        [
+          -86.25726,
+          41.8253
+        ],
+        [
+          -86.25726,
+          41.8265
+        ],
+        [
+          -86.2587,
+          41.8265
+        ]
+      ],
+      "heightM": 6.4,
+      "heightSource": "observed",
+      "storeys": 2,
+      "confidence": 0.95,
+      "timestamp": "2026-09-28T00:00:00Z"
+    },
+    {
+      "id": "niles-main-2",
+      "name": "Main Street Commercial",
+      "use": "residential",
+      "footprint": [
+        [
+          -86.2569,
+          41.8253
+        ],
+        [
+          -86.25546,
+          41.8253
+        ],
+        [
+          -86.25546,
+          41.8265
+        ],
+        [
+          -86.2569,
+          41.8265
+        ]
+      ],
+      "heightM": 12,
+      "heightSource": "inferred",
+      "storeys": 4,
+      "confidence": 0.82,
+      "timestamp": "2026-09-28T00:00:00Z"
+    },
+    {
+      "id": "niles-main-3",
+      "name": "St. Joseph Riverfront Lofts",
+      "use": "civic",
+      "footprint": [
+        [
+          -86.2551,
+          41.8253
+        ],
+        [
+          -86.25366,
+          41.8253
+        ],
+        [
+          -86.25366,
+          41.8265
+        ],
+        [
+          -86.2551,
+          41.8265
+        ]
+      ],
+      "heightM": 19.2,
+      "heightSource": "observed",
+      "storeys": 6,
+      "confidence": 0.95,
+      "timestamp": "2026-09-28T00:00:00Z"
+    },
+    {
+      "id": "niles-main-4",
+      "name": "Community Library",
+      "use": "residential",
+      "footprint": [
+        [
+          -86.2533,
+          41.8253
+        ],
+        [
+          -86.25186,
+          41.8253
+        ],
+        [
+          -86.25186,
+          41.8265
+        ],
+        [
+          -86.2533,
+          41.8265
+        ]
+      ],
+      "heightM": 9,
+      "heightSource": "inferred",
+      "storeys": 3,
+      "confidence": 0.82,
+      "timestamp": "2026-09-28T00:00:00Z"
+    },
+    {
+      "id": "niles-main-5",
+      "name": "Niles Civic/Commercial Facility 5",
+      "use": "commercial",
+      "footprint": [
+        [
+          -86.2515,
+          41.8253
+        ],
+        [
+          -86.25006,
+          41.8253
+        ],
+        [
+          -86.25006,
+          41.8265
+        ],
+        [
+          -86.2515,
+          41.8265
+        ]
+      ],
+      "heightM": 16,
+      "heightSource": "observed",
+      "storeys": 5,
+      "confidence": 0.95,
+      "timestamp": "2026-09-28T00:00:00Z"
+    },
+    {
+      "id": "niles-main-6",
+      "name": "Niles Civic/Commercial Facility 6",
+      "use": "residential",
+      "footprint": [
+        [
+          -86.2497,
+          41.8253
+        ],
+        [
+          -86.24826,
+          41.8253
+        ],
+        [
+          -86.24826,
+          41.8265
+        ],
+        [
+          -86.2497,
+          41.8265
+        ]
+      ],
+      "heightM": 6,
+      "heightSource": "inferred",
+      "storeys": 2,
+      "confidence": 0.82,
+      "timestamp": "2026-09-28T00:00:00Z"
+    },
+    {
+      "id": "niles-main-7",
+      "name": "Niles Civic/Commercial Facility 7",
+      "use": "residential",
+      "footprint": [
+        [
+          -86.2587,
+          41.8271
+        ],
+        [
+          -86.25726,
+          41.8271
+        ],
+        [
+          -86.25726,
+          41.8283
+        ],
+        [
+          -86.2587,
+          41.8283
+        ]
+      ],
+      "heightM": 15,
+      "heightSource": "inferred",
+      "storeys": 5,
+      "confidence": 0.82,
+      "timestamp": "2026-09-28T00:00:00Z"
+    },
+    {
+      "id": "niles-main-8",
+      "name": "Niles Civic/Commercial Facility 8",
+      "use": "civic",
+      "footprint": [
+        [
+          -86.2569,
+          41.8271
+        ],
+        [
+          -86.25546,
+          41.8271
+        ],
+        [
+          -86.25546,
+          41.8283
+        ],
+        [
+          -86.2569,
+          41.8283
+        ]
+      ],
+      "heightM": 7.9,
+      "heightSource": "observed",
+      "storeys": 2,
+      "confidence": 0.95,
+      "timestamp": "2026-09-28T00:00:00Z"
+    },
+    {
+      "id": "niles-main-9",
+      "name": "Niles Civic/Commercial Facility 9",
+      "use": "residential",
+      "footprint": [
+        [
+          -86.2551,
+          41.8271
+        ],
+        [
+          -86.25366,
+          41.8271
+        ],
+        [
+          -86.25366,
+          41.8283
+        ],
+        [
+          -86.2551,
+          41.8283
+        ]
+      ],
+      "heightM": 12,
+      "heightSource": "inferred",
+      "storeys": 4,
+      "confidence": 0.82,
+      "timestamp": "2026-09-28T00:00:00Z"
+    },
+    {
+      "id": "niles-main-10",
+      "name": "Niles Civic/Commercial Facility 10",
+      "use": "commercial",
+      "footprint": [
+        [
+          -86.2533,
+          41.8271
+        ],
+        [
+          -86.25186,
+          41.8271
+        ],
+        [
+          -86.25186,
+          41.8283
+        ],
+        [
+          -86.2533,
+          41.8283
+        ]
+      ],
+      "heightM": 20.7,
+      "heightSource": "observed",
+      "storeys": 6,
+      "confidence": 0.95,
+      "timestamp": "2026-09-28T00:00:00Z"
+    },
+    {
+      "id": "niles-main-11",
+      "name": "Niles Civic/Commercial Facility 11",
+      "use": "residential",
+      "footprint": [
+        [
+          -86.2515,
+          41.8271
+        ],
+        [
+          -86.25006,
+          41.8271
+        ],
+        [
+          -86.25006,
+          41.8283
+        ],
+        [
+          -86.2515,
+          41.8283
+        ]
+      ],
+      "heightM": 9,
+      "heightSource": "inferred",
+      "storeys": 3,
+      "confidence": 0.82,
+      "timestamp": "2026-09-28T00:00:00Z"
+    },
+    {
+      "id": "niles-main-12",
+      "name": "Niles Civic/Commercial Facility 12",
+      "use": "civic",
+      "footprint": [
+        [
+          -86.2497,
+          41.8271
+        ],
+        [
+          -86.24826,
+          41.8271
+        ],
+        [
+          -86.24826,
+          41.8283
+        ],
+        [
+          -86.2497,
+          41.8283
+        ]
+      ],
+      "heightM": 17.5,
+      "heightSource": "observed",
+      "storeys": 5,
+      "confidence": 0.95,
+      "timestamp": "2026-09-28T00:00:00Z"
+    },
+    {
+      "id": "niles-main-13",
+      "name": "Niles Civic/Commercial Facility 13",
+      "use": "civic",
+      "footprint": [
+        [
+          -86.2587,
+          41.8289
+        ],
+        [
+          -86.25726,
+          41.8289
+        ],
+        [
+          -86.25726,
+          41.8301
+        ],
+        [
+          -86.2587,
+          41.8301
+        ]
+      ],
+      "heightM": 12.6,
+      "heightSource": "observed",
+      "storeys": 3,
+      "confidence": 0.95,
+      "timestamp": "2026-09-28T00:00:00Z"
+    },
+    {
+      "id": "niles-main-14",
+      "name": "Niles Civic/Commercial Facility 14",
+      "use": "residential",
+      "footprint": [
+        [
+          -86.2569,
+          41.8289
+        ],
+        [
+          -86.25546,
+          41.8289
+        ],
+        [
+          -86.25546,
+          41.8301
+        ],
+        [
+          -86.2569,
+          41.8301
+        ]
+      ],
+      "heightM": 15,
+      "heightSource": "inferred",
+      "storeys": 5,
+      "confidence": 0.82,
+      "timestamp": "2026-09-28T00:00:00Z"
+    },
+    {
+      "id": "niles-main-15",
+      "name": "Niles Civic/Commercial Facility 15",
+      "use": "commercial",
+      "footprint": [
+        [
+          -86.2551,
+          41.8289
+        ],
+        [
+          -86.25366,
+          41.8289
+        ],
+        [
+          -86.25366,
+          41.8301
+        ],
+        [
+          -86.2551,
+          41.8301
+        ]
+      ],
+      "heightM": 9.4,
+      "heightSource": "observed",
+      "storeys": 2,
+      "confidence": 0.95,
+      "timestamp": "2026-09-28T00:00:00Z"
+    },
+    {
+      "id": "niles-main-16",
+      "name": "Niles Civic/Commercial Facility 16",
+      "use": "residential",
+      "footprint": [
+        [
+          -86.2533,
+          41.8289
+        ],
+        [
+          -86.25186,
+          41.8289
+        ],
+        [
+          -86.25186,
+          41.8301
+        ],
+        [
+          -86.2533,
+          41.8301
+        ]
+      ],
+      "heightM": 12,
+      "heightSource": "inferred",
+      "storeys": 4,
+      "confidence": 0.82,
+      "timestamp": "2026-09-28T00:00:00Z"
+    },
+    {
+      "id": "niles-main-17",
+      "name": "Niles Civic/Commercial Facility 17",
+      "use": "civic",
+      "footprint": [
+        [
+          -86.2515,
+          41.8289
+        ],
+        [
+          -86.25006,
+          41.8289
+        ],
+        [
+          -86.25006,
+          41.8301
+        ],
+        [
+          -86.2515,
+          41.8301
+        ]
+      ],
+      "heightM": 22.2,
+      "heightSource": "observed",
+      "storeys": 6,
+      "confidence": 0.95,
+      "timestamp": "2026-09-28T00:00:00Z"
+    },
+    {
+      "id": "niles-main-18",
+      "name": "Niles Civic/Commercial Facility 18",
+      "use": "residential",
+      "footprint": [
+        [
+          -86.2497,
+          41.8289
+        ],
+        [
+          -86.24826,
+          41.8289
+        ],
+        [
+          -86.24826,
+          41.8301
+        ],
+        [
+          -86.2497,
+          41.8301
+        ]
+      ],
+      "heightM": 9,
+      "heightSource": "inferred",
+      "storeys": 3,
+      "confidence": 0.82,
+      "timestamp": "2026-09-28T00:00:00Z"
+    },
+    {
+      "id": "niles-main-19",
+      "name": "Niles Civic/Commercial Facility 19",
+      "use": "residential",
+      "footprint": [
+        [
+          -86.2587,
+          41.8307
+        ],
+        [
+          -86.25726,
+          41.8307
+        ],
+        [
+          -86.25726,
+          41.8319
+        ],
+        [
+          -86.2587,
+          41.8319
+        ]
+      ],
+      "heightM": 18,
+      "heightSource": "inferred",
+      "storeys": 6,
+      "confidence": 0.82,
+      "timestamp": "2026-09-28T00:00:00Z"
+    },
+    {
+      "id": "niles-main-20",
+      "name": "Niles Civic/Commercial Facility 20",
+      "use": "commercial",
+      "footprint": [
+        [
+          -86.2569,
+          41.8307
+        ],
+        [
+          -86.25546,
+          41.8307
+        ],
+        [
+          -86.25546,
+          41.8319
+        ],
+        [
+          -86.2569,
+          41.8319
+        ]
+      ],
+      "heightM": 9.6,
+      "heightSource": "observed",
+      "storeys": 3,
+      "confidence": 0.95,
+      "timestamp": "2026-09-28T00:00:00Z"
+    },
+    {
+      "id": "niles-main-21",
+      "name": "Niles Civic/Commercial Facility 21",
+      "use": "residential",
+      "footprint": [
+        [
+          -86.2551,
+          41.8307
+        ],
+        [
+          -86.25366,
+          41.8307
+        ],
+        [
+          -86.25366,
+          41.8319
+        ],
+        [
+          -86.2551,
+          41.8319
+        ]
+      ],
+      "heightM": 15,
+      "heightSource": "inferred",
+      "storeys": 5,
+      "confidence": 0.82,
+      "timestamp": "2026-09-28T00:00:00Z"
+    },
+    {
+      "id": "niles-main-22",
+      "name": "Niles Civic/Commercial Facility 22",
+      "use": "civic",
+      "footprint": [
+        [
+          -86.2533,
+          41.8307
+        ],
+        [
+          -86.25186,
+          41.8307
+        ],
+        [
+          -86.25186,
+          41.8319
+        ],
+        [
+          -86.2533,
+          41.8319
+        ]
+      ],
+      "heightM": 6.4,
+      "heightSource": "observed",
+      "storeys": 2,
+      "confidence": 0.95,
+      "timestamp": "2026-09-28T00:00:00Z"
+    },
+    {
+      "id": "niles-main-23",
+      "name": "Niles Civic/Commercial Facility 23",
+      "use": "residential",
+      "footprint": [
+        [
+          -86.2515,
+          41.8307
+        ],
+        [
+          -86.25006,
+          41.8307
+        ],
+        [
+          -86.25006,
+          41.8319
+        ],
+        [
+          -86.2515,
+          41.8319
+        ]
+      ],
+      "heightM": 12,
+      "heightSource": "inferred",
+      "storeys": 4,
+      "confidence": 0.82,
+      "timestamp": "2026-09-28T00:00:00Z"
+    },
+    {
+      "id": "niles-main-24",
+      "name": "Niles Civic/Commercial Facility 24",
+      "use": "commercial",
+      "footprint": [
+        [
+          -86.2497,
+          41.8307
+        ],
+        [
+          -86.24826,
+          41.8307
+        ],
+        [
+          -86.24826,
+          41.8319
+        ],
+        [
+          -86.2497,
+          41.8319
+        ]
+      ],
+      "heightM": 19.2,
+      "heightSource": "observed",
+      "storeys": 6,
+      "confidence": 0.95,
+      "timestamp": "2026-09-28T00:00:00Z"
+    },
+    {
+      "id": "niles-main-25",
+      "name": "Niles Civic/Commercial Facility 25",
+      "use": "commercial",
+      "footprint": [
+        [
+          -86.2587,
+          41.8325
+        ],
+        [
+          -86.25726,
+          41.8325
+        ],
+        [
+          -86.25726,
+          41.8337
+        ],
+        [
+          -86.2587,
+          41.8337
+        ]
+      ],
+      "heightM": 14.3,
+      "heightSource": "observed",
+      "storeys": 4,
+      "confidence": 0.95,
+      "timestamp": "2026-09-28T00:00:00Z"
+    },
+    {
+      "id": "niles-main-26",
+      "name": "Niles Civic/Commercial Facility 26",
+      "use": "residential",
+      "footprint": [
+        [
+          -86.2569,
+          41.8325
+        ],
+        [
+          -86.25546,
+          41.8325
+        ],
+        [
+          -86.25546,
+          41.8337
+        ],
+        [
+          -86.2569,
+          41.8337
+        ]
+      ],
+      "heightM": 18,
+      "heightSource": "inferred",
+      "storeys": 6,
+      "confidence": 0.82,
+      "timestamp": "2026-09-28T00:00:00Z"
+    },
+    {
+      "id": "niles-main-27",
+      "name": "Niles Civic/Commercial Facility 27",
+      "use": "civic",
+      "footprint": [
+        [
+          -86.2551,
+          41.8325
+        ],
+        [
+          -86.25366,
+          41.8325
+        ],
+        [
+          -86.25366,
+          41.8337
+        ],
+        [
+          -86.2551,
+          41.8337
+        ]
+      ],
+      "heightM": 11.1,
+      "heightSource": "observed",
+      "storeys": 3,
+      "confidence": 0.95,
+      "timestamp": "2026-09-28T00:00:00Z"
+    },
+    {
+      "id": "niles-main-28",
+      "name": "Niles Civic/Commercial Facility 28",
+      "use": "residential",
+      "footprint": [
+        [
+          -86.2533,
+          41.8325
+        ],
+        [
+          -86.25186,
+          41.8325
+        ],
+        [
+          -86.25186,
+          41.8337
+        ],
+        [
+          -86.2533,
+          41.8337
+        ]
+      ],
+      "heightM": 15,
+      "heightSource": "inferred",
+      "storeys": 5,
+      "confidence": 0.82,
+      "timestamp": "2026-09-28T00:00:00Z"
+    },
+    {
+      "id": "niles-main-29",
+      "name": "Niles Civic/Commercial Facility 29",
+      "use": "commercial",
+      "footprint": [
+        [
+          -86.2515,
+          41.8325
+        ],
+        [
+          -86.25006,
+          41.8325
+        ],
+        [
+          -86.25006,
+          41.8337
+        ],
+        [
+          -86.2515,
+          41.8337
+        ]
+      ],
+      "heightM": 7.9,
+      "heightSource": "observed",
+      "storeys": 2,
+      "confidence": 0.95,
+      "timestamp": "2026-09-28T00:00:00Z"
+    },
+    {
+      "id": "niles-main-30",
+      "name": "Niles Civic/Commercial Facility 30",
+      "use": "residential",
+      "footprint": [
+        [
+          -86.2497,
+          41.8325
+        ],
+        [
+          -86.24826,
+          41.8325
+        ],
+        [
+          -86.24826,
+          41.8337
+        ],
+        [
+          -86.2497,
+          41.8337
+        ]
+      ],
+      "heightM": 12,
+      "heightSource": "inferred",
+      "storeys": 4,
+      "confidence": 0.82,
+      "timestamp": "2026-09-28T00:00:00Z"
+    },
+    {
+      "id": "niles-main-31",
+      "name": "Niles Civic/Commercial Facility 31",
+      "use": "residential",
+      "footprint": [
+        [
+          -86.2587,
+          41.8343
+        ],
+        [
+          -86.25726,
+          41.8343
+        ],
+        [
+          -86.25726,
+          41.8355
+        ],
+        [
+          -86.2587,
+          41.8355
+        ]
+      ],
+      "heightM": 6,
+      "heightSource": "inferred",
+      "storeys": 2,
+      "confidence": 0.82,
+      "timestamp": "2026-09-28T00:00:00Z"
+    },
+    {
+      "id": "niles-main-32",
+      "name": "Niles Civic/Commercial Facility 32",
+      "use": "civic",
+      "footprint": [
+        [
+          -86.2569,
+          41.8343
+        ],
+        [
+          -86.25546,
+          41.8343
+        ],
+        [
+          -86.25546,
+          41.8355
+        ],
+        [
+          -86.2569,
+          41.8355
+        ]
+      ],
+      "heightM": 15.8,
+      "heightSource": "observed",
+      "storeys": 4,
+      "confidence": 0.95,
+      "timestamp": "2026-09-28T00:00:00Z"
+    },
+    {
+      "id": "niles-main-33",
+      "name": "Niles Civic/Commercial Facility 33",
+      "use": "residential",
+      "footprint": [
+        [
+          -86.2551,
+          41.8343
+        ],
+        [
+          -86.25366,
+          41.8343
+        ],
+        [
+          -86.25366,
+          41.8355
+        ],
+        [
+          -86.2551,
+          41.8355
+        ]
+      ],
+      "heightM": 18,
+      "heightSource": "inferred",
+      "storeys": 6,
+      "confidence": 0.82,
+      "timestamp": "2026-09-28T00:00:00Z"
+    },
+    {
+      "id": "niles-main-34",
+      "name": "Niles Civic/Commercial Facility 34",
+      "use": "commercial",
+      "footprint": [
+        [
+          -86.2533,
+          41.8343
+        ],
+        [
+          -86.25186,
+          41.8343
+        ],
+        [
+          -86.25186,
+          41.8355
+        ],
+        [
+          -86.2533,
+          41.8355
+        ]
+      ],
+      "heightM": 12.6,
+      "heightSource": "observed",
+      "storeys": 3,
+      "confidence": 0.95,
+      "timestamp": "2026-09-28T00:00:00Z"
+    },
+    {
+      "id": "niles-main-35",
+      "name": "Niles Civic/Commercial Facility 35",
+      "use": "residential",
+      "footprint": [
+        [
+          -86.2515,
+          41.8343
+        ],
+        [
+          -86.25006,
+          41.8343
+        ],
+        [
+          -86.25006,
+          41.8355
+        ],
+        [
+          -86.2515,
+          41.8355
+        ]
+      ],
+      "heightM": 15,
+      "heightSource": "inferred",
+      "storeys": 5,
+      "confidence": 0.82,
+      "timestamp": "2026-09-28T00:00:00Z"
+    },
+    {
+      "id": "niles-main-36",
+      "name": "Niles Civic/Commercial Facility 36",
+      "use": "civic",
+      "footprint": [
+        [
+          -86.2497,
+          41.8343
+        ],
+        [
+          -86.24826,
+          41.8343
+        ],
+        [
+          -86.24826,
+          41.8355
+        ],
+        [
+          -86.2497,
+          41.8355
+        ]
+      ],
+      "heightM": 9.4,
+      "heightSource": "observed",
+      "storeys": 2,
+      "confidence": 0.95,
+      "timestamp": "2026-09-28T00:00:00Z"
+    },
+    {
+      "id": "niles-ind-1",
+      "name": "Regional Logistics Hub",
+      "use": "industrial",
+      "footprint": [
+        [
+          -86.2446,
+          41.83655
+        ],
+        [
+          -86.2428,
+          41.83655
+        ],
+        [
+          -86.2428,
+          41.83805
+        ],
+        [
+          -86.2446,
+          41.83805
+        ]
+      ],
+      "heightM": 3.2,
+      "heightSource": "observed",
+      "storeys": 1,
+      "confidence": 0.95,
+      "timestamp": "2026-09-28T00:00:00Z"
+    },
+    {
+      "id": "niles-ind-2",
+      "name": "Water Treatment Station",
+      "use": "infrastructure",
+      "footprint": [
+        [
+          -86.2423,
+          41.83655
+        ],
+        [
+          -86.2405,
+          41.83655
+        ],
+        [
+          -86.2405,
+          41.83805
+        ],
+        [
+          -86.2423,
+          41.83805
+        ]
+      ],
+      "heightM": 9,
+      "heightSource": "inferred",
+      "storeys": 3,
+      "confidence": 0.82,
+      "timestamp": "2026-09-28T00:00:00Z"
+    },
+    {
+      "id": "niles-ind-3",
+      "name": "Machining & Assembly",
+      "use": "commercial",
+      "footprint": [
+        [
+          -86.24,
+          41.83655
+        ],
+        [
+          -86.2382,
+          41.83655
+        ],
+        [
+          -86.2382,
+          41.83805
+        ],
+        [
+          -86.24,
+          41.83805
+        ]
+      ],
+      "heightM": 16,
+      "heightSource": "observed",
+      "storeys": 5,
+      "confidence": 0.95,
+      "timestamp": "2026-09-28T00:00:00Z"
+    },
+    {
+      "id": "niles-ind-4",
+      "name": "Niles Industrial Park Facility 4",
+      "use": "industrial",
+      "footprint": [
+        [
+          -86.2377,
+          41.83655
+        ],
+        [
+          -86.2359,
+          41.83655
+        ],
+        [
+          -86.2359,
+          41.83805
+        ],
+        [
+          -86.2377,
+          41.83805
+        ]
+      ],
+      "heightM": 6,
+      "heightSource": "inferred",
+      "storeys": 2,
+      "confidence": 0.82,
+      "timestamp": "2026-09-28T00:00:00Z"
+    },
+    {
+      "id": "niles-ind-5",
+      "name": "Niles Industrial Park Facility 5",
+      "use": "infrastructure",
+      "footprint": [
+        [
+          -86.2354,
+          41.83655
+        ],
+        [
+          -86.2336,
+          41.83655
+        ],
+        [
+          -86.2336,
+          41.83805
+        ],
+        [
+          -86.2354,
+          41.83805
+        ]
+      ],
+      "heightM": 12.8,
+      "heightSource": "observed",
+      "storeys": 4,
+      "confidence": 0.95,
+      "timestamp": "2026-09-28T00:00:00Z"
+    },
+    {
+      "id": "niles-ind-6",
+      "name": "Niles Industrial Park Facility 6",
+      "use": "infrastructure",
+      "footprint": [
+        [
+          -86.2446,
+          41.83885
+        ],
+        [
+          -86.2428,
+          41.83885
+        ],
+        [
+          -86.2428,
+          41.84035
+        ],
+        [
+          -86.2446,
+          41.84035
+        ]
+      ],
+      "heightM": 12,
+      "heightSource": "inferred",
+      "storeys": 4,
+      "confidence": 0.82,
+      "timestamp": "2026-09-28T00:00:00Z"
+    },
+    {
+      "id": "niles-ind-7",
+      "name": "Niles Industrial Park Facility 7",
+      "use": "commercial",
+      "footprint": [
+        [
+          -86.2423,
+          41.83885
+        ],
+        [
+          -86.2405,
+          41.83885
+        ],
+        [
+          -86.2405,
+          41.84035
+        ],
+        [
+          -86.2423,
+          41.84035
+        ]
+      ],
+      "heightM": 4.7,
+      "heightSource": "observed",
+      "storeys": 1,
+      "confidence": 0.95,
+      "timestamp": "2026-09-28T00:00:00Z"
+    },
+    {
+      "id": "niles-ind-8",
+      "name": "Niles Industrial Park Facility 8",
+      "use": "industrial",
+      "footprint": [
+        [
+          -86.24,
+          41.83885
+        ],
+        [
+          -86.2382,
+          41.83885
+        ],
+        [
+          -86.2382,
+          41.84035
+        ],
+        [
+          -86.24,
+          41.84035
+        ]
+      ],
+      "heightM": 9,
+      "heightSource": "inferred",
+      "storeys": 3,
+      "confidence": 0.82,
+      "timestamp": "2026-09-28T00:00:00Z"
+    },
+    {
+      "id": "niles-ind-9",
+      "name": "Niles Industrial Park Facility 9",
+      "use": "infrastructure",
+      "footprint": [
+        [
+          -86.2377,
+          41.83885
+        ],
+        [
+          -86.2359,
+          41.83885
+        ],
+        [
+          -86.2359,
+          41.84035
+        ],
+        [
+          -86.2377,
+          41.84035
+        ]
+      ],
+      "heightM": 17.5,
+      "heightSource": "observed",
+      "storeys": 5,
+      "confidence": 0.95,
+      "timestamp": "2026-09-28T00:00:00Z"
+    },
+    {
+      "id": "niles-ind-10",
+      "name": "Niles Industrial Park Facility 10",
+      "use": "commercial",
+      "footprint": [
+        [
+          -86.2354,
+          41.83885
+        ],
+        [
+          -86.2336,
+          41.83885
+        ],
+        [
+          -86.2336,
+          41.84035
+        ],
+        [
+          -86.2354,
+          41.84035
+        ]
+      ],
+      "heightM": 6,
+      "heightSource": "inferred",
+      "storeys": 2,
+      "confidence": 0.82,
+      "timestamp": "2026-09-28T00:00:00Z"
+    },
+    {
+      "id": "niles-ind-11",
+      "name": "Niles Industrial Park Facility 11",
+      "use": "commercial",
+      "footprint": [
+        [
+          -86.2446,
+          41.84115
+        ],
+        [
+          -86.2428,
+          41.84115
+        ],
+        [
+          -86.2428,
+          41.84265
+        ],
+        [
+          -86.2446,
+          41.84265
+        ]
+      ],
+      "heightM": 9.4,
+      "heightSource": "observed",
+      "storeys": 2,
+      "confidence": 0.95,
+      "timestamp": "2026-09-28T00:00:00Z"
+    },
+    {
+      "id": "niles-ind-12",
+      "name": "Niles Industrial Park Facility 12",
+      "use": "industrial",
+      "footprint": [
+        [
+          -86.2423,
+          41.84115
+        ],
+        [
+          -86.2405,
+          41.84115
+        ],
+        [
+          -86.2405,
+          41.84265
+        ],
+        [
+          -86.2423,
+          41.84265
+        ]
+      ],
+      "heightM": 12,
+      "heightSource": "inferred",
+      "storeys": 4,
+      "confidence": 0.82,
+      "timestamp": "2026-09-28T00:00:00Z"
+    },
+    {
+      "id": "niles-ind-13",
+      "name": "Niles Industrial Park Facility 13",
+      "use": "infrastructure",
+      "footprint": [
+        [
+          -86.24,
+          41.84115
+        ],
+        [
+          -86.2382,
+          41.84115
+        ],
+        [
+          -86.2382,
+          41.84265
+        ],
+        [
+          -86.24,
+          41.84265
+        ]
+      ],
+      "heightM": 6.2,
+      "heightSource": "observed",
+      "storeys": 1,
+      "confidence": 0.95,
+      "timestamp": "2026-09-28T00:00:00Z"
+    },
+    {
+      "id": "niles-ind-14",
+      "name": "Niles Industrial Park Facility 14",
+      "use": "commercial",
+      "footprint": [
+        [
+          -86.2377,
+          41.84115
+        ],
+        [
+          -86.2359,
+          41.84115
+        ],
+        [
+          -86.2359,
+          41.84265
+        ],
+        [
+          -86.2377,
+          41.84265
+        ]
+      ],
+      "heightM": 9,
+      "heightSource": "inferred",
+      "storeys": 3,
+      "confidence": 0.82,
+      "timestamp": "2026-09-28T00:00:00Z"
+    },
+    {
+      "id": "niles-ind-15",
+      "name": "Niles Industrial Park Facility 15",
+      "use": "industrial",
+      "footprint": [
+        [
+          -86.2354,
+          41.84115
+        ],
+        [
+          -86.2336,
+          41.84115
+        ],
+        [
+          -86.2336,
+          41.84265
+        ],
+        [
+          -86.2354,
+          41.84265
+        ]
+      ],
+      "heightM": 19,
+      "heightSource": "observed",
+      "storeys": 5,
+      "confidence": 0.95,
+      "timestamp": "2026-09-28T00:00:00Z"
+    },
+    {
+      "id": "niles-ind-16",
+      "name": "Niles Industrial Park Facility 16",
+      "use": "industrial",
+      "footprint": [
+        [
+          -86.2446,
+          41.84345
+        ],
+        [
+          -86.2428,
+          41.84345
+        ],
+        [
+          -86.2428,
+          41.84495
+        ],
+        [
+          -86.2446,
+          41.84495
+        ]
+      ],
+      "heightM": 15,
+      "heightSource": "inferred",
+      "storeys": 5,
+      "confidence": 0.82,
+      "timestamp": "2026-09-28T00:00:00Z"
+    },
+    {
+      "id": "niles-ind-17",
+      "name": "Niles Industrial Park Facility 17",
+      "use": "infrastructure",
+      "footprint": [
+        [
+          -86.2423,
+          41.84345
+        ],
+        [
+          -86.2405,
+          41.84345
+        ],
+        [
+          -86.2405,
+          41.84495
+        ],
+        [
+          -86.2423,
+          41.84495
+        ]
+      ],
+      "heightM": 6.4,
+      "heightSource": "observed",
+      "storeys": 2,
+      "confidence": 0.95,
+      "timestamp": "2026-09-28T00:00:00Z"
+    },
+    {
+      "id": "niles-ind-18",
+      "name": "Niles Industrial Park Facility 18",
+      "use": "commercial",
+      "footprint": [
+        [
+          -86.24,
+          41.84345
+        ],
+        [
+          -86.2382,
+          41.84345
+        ],
+        [
+          -86.2382,
+          41.84495
+        ],
+        [
+          -86.24,
+          41.84495
+        ]
+      ],
+      "heightM": 12,
+      "heightSource": "inferred",
+      "storeys": 4,
+      "confidence": 0.82,
+      "timestamp": "2026-09-28T00:00:00Z"
+    },
+    {
+      "id": "niles-ind-19",
+      "name": "Niles Industrial Park Facility 19",
+      "use": "industrial",
+      "footprint": [
+        [
+          -86.2377,
+          41.84345
+        ],
+        [
+          -86.2359,
+          41.84345
+        ],
+        [
+          -86.2359,
+          41.84495
+        ],
+        [
+          -86.2377,
+          41.84495
+        ]
+      ],
+      "heightM": 3.2,
+      "heightSource": "observed",
+      "storeys": 1,
+      "confidence": 0.95,
+      "timestamp": "2026-09-28T00:00:00Z"
+    },
+    {
+      "id": "niles-ind-20",
+      "name": "Niles Industrial Park Facility 20",
+      "use": "infrastructure",
+      "footprint": [
+        [
+          -86.2354,
+          41.84345
+        ],
+        [
+          -86.2336,
+          41.84345
+        ],
+        [
+          -86.2336,
+          41.84495
+        ],
+        [
+          -86.2354,
+          41.84495
+        ]
+      ],
+      "heightM": 9,
+      "heightSource": "inferred",
+      "storeys": 3,
+      "confidence": 0.82,
+      "timestamp": "2026-09-28T00:00:00Z"
+    }
+  ]
+}
