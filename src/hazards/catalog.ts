@@ -59,3 +59,6 @@ export const DEFAULT_HAZARD_CATALOG: readonly HazardManifest[] = Object.freeze(
     flagship: FLAGSHIPS.has(id)
   })))
 )
+
+
+export { initHazardRegistry } from './runtimeCatalogCompat'

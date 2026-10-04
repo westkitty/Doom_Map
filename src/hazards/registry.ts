@@ -22,3 +22,24 @@ export class HazardRegistry {
   listByCategory(category: HazardCategory): HazardManifest[] { return this.list().filter((manifest) => manifest.category === category) }
   flagship(): HazardManifest[] { return this.list().filter((manifest) => manifest.flagship === true) }
 }
+
+
+import type { HazardModule as RuntimeHazardModule, HazardCategory as RuntimeHazardCategory } from './types'
+
+class RuntimeHazardRegistryCompat {
+  private readonly modules = new Map<string, RuntimeHazardModule>()
+
+  register(module: RuntimeHazardModule): void {
+    if (!this.modules.has(module.id)) this.modules.set(module.id, module)
+  }
+
+  clear(): void { this.modules.clear() }
+  get(id: string): RuntimeHazardModule | undefined { return this.modules.get(id) }
+  list(): RuntimeHazardModule[] { return [...this.modules.values()] }
+  listByCategory(category: RuntimeHazardCategory): RuntimeHazardModule[] {
+    return this.list().filter((module) => module.category === category)
+  }
+  count(): number { return this.modules.size }
+}
+
+export const globalHazardRegistry = new RuntimeHazardRegistryCompat()
