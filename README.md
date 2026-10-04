@@ -35,7 +35,7 @@ Every visible consequence must be able to answer: **where did this number/shape 
 
 ## Current state
 
-The repository is in **active phased implementation**. The Phase 1 foundation now includes validated WGS84/ENU helpers, ellipsoid target selection, coordinate navigation and fly-to, north-up orientation, view history and shareable state, adaptive quality and diagnostics, explicit provider/provenance/scenario contracts, and a minimized command-driven interface that keeps the globe visually primary. CI and GitHub Pages deployment pass for the current implementation; direct browser interaction proof and deterministic package-lock installation remain pending.
+The repository is in **active phased implementation**. In addition to the interactive Phase 1 globe foundation, the engine now has deterministic simulation primitives, canonical scenario checksums and branching, a machine-readable 100-entry hazard registry, a consequence DAG, tile/LOD calculations, bounded cancellable request scheduling, byte-budget caches, retry/provider/resource policies, floating-origin transforms, runtime traces, and capability classification. The 100 registry entries are catalog contracts—not 100 completed scientific solvers. CI and GitHub Pages deployment pass for the current implementation; real provider adapters, renderer integration, direct browser proof, flagship hazard models, and deterministic package-lock installation remain pending.
 
 Read these first:
 

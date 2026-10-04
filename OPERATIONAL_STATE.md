@@ -7,12 +7,12 @@
   "project_name": "Doom Map",
   "project_root": "westkitty/Doom_Map",
   "artifact_path": "",
-  "state_revision": 5,
-  "last_updated": "2026-10-04T01:45:15Z",
+  "state_revision": 6,
+  "last_updated": "2026-10-04T02:46:35Z",
   "current_baseline": {
-    "identity": "commit e808eb789ef9215f937ea90e71a481a4d41fef25",
+    "identity": "commit 85ff7d55cd0c9a9093b22bf0e91ee18be5a40759",
     "state": "current-baseline",
-    "last_verified": "2026-10-04T01:45:15Z"
+    "last_verified": "2026-10-04T02:46:35Z"
   },
   "scope_boundaries": [
     "Doom Map repository, web deployment, and native wrapper only",
@@ -28,15 +28,17 @@ Doom Map is a browser-first, Three.js-controlled global disaster and consequence
 
 ## 2. Current Baseline
 
-Current implementation baseline: commit e808eb789ef9215f937ea90e71a481a4d41fef25 on main.
+Current implementation baseline: commit 85ff7d55cd0c9a9093b22bf0e91ee18be5a40759 on main.
 
 Verified for this implementation by GitHub Actions:
-- CI run 37168929607: dependency install, TypeScript typecheck, full Vitest suite, and Vite production build all succeeded.
-- Deploy GitHub Pages run 37168929613: verify/build, Pages artifact upload, and deploy job all succeeded.
+- CI run 37172047741: dependency install, strict TypeScript typecheck, full Vitest suite, and Vite production build all succeeded.
+- Deploy GitHub Pages run 37172047765: verify/build, Pages artifact upload, and deploy all succeeded.
 
-The Phase 1 globe foundation is materially deeper than the September baseline. It now includes WGS84 validation and ENU local frames, ellipsoid picking, coordinate go-to, target fly-to, north-up orientation, bounded camera history, shareable view state, adaptive quality, runtime diagnostics, scale feedback, provider/provenance/scenario contracts, and a minimized progressive-disclosure command interface.
+The project now has an executable simulation/streaming architecture in addition to the interactive globe foundation. New foundations include seeded deterministic randomness, fixed-step simulation time, ordered events, seek checkpoints, canonical scenario checksums, scenario branches, a machine-readable 100-entry hazard catalog and registry, consequence DAGs, Z/X/Y tile addressing, screen-space-error LOD decisions, cancellable bounded request scheduling, byte-budget LRU caching, retry policy, provider routing and health, quality-tier resource budgets, floating-origin transforms, bounded runtime traces, and runtime capability classification.
 
-A real-browser visual/interaction observation of this revision was not available in this workflow, so rendered behavior remains implemented but not visually verified. Representative device performance also remains unknown.
+These are engine foundations, not claims that the 100 catalogued hazards already have physical models. Catalog entries remain fidelity D / catalogued until dedicated modules provide stronger evidence. Actual provider adapters, streamed datasets, worker integration, scenario UI, and flagship hazard solvers remain pending.
+
+A first implementation commit (2968b21e21272bd8a0c777859a5683e93ceaffbd) exposed a strict-TypeScript test-fixture resolver typing failure in CI. Commit 85ff7d55cd0c9a9093b22bf0e91ee18be5a40759 repaired that bounded defect; the full verification and Pages deployment then passed.
 
 ## 3. Artifact Contract
 
@@ -127,6 +129,14 @@ The final product must:
 - **Evidence:** CI run 37168929607 and Pages run 37168929613 completed successfully.
 <!-- /operational-state:entry -->
 
+<!-- operational-state:entry
+{"id":"VER-006","title":"Deterministic simulation and bounded streaming primitives pass CI and Pages deployment","state":"verified","capability":"The 85ff7d55cd0c9a9093b22bf0e91ee18be5a40759 source provides tested deterministic simulation, hazard registry, consequence graph, tile/LOD, request scheduling, cache/retry, provider routing, resource budgeting, floating-origin, trace, capability, and branch-graph primitives.","scope":"Simulation/streaming foundation source and tests","verification_method":"GitHub Actions CI run 37172047741 and Deploy GitHub Pages run 37172047765","evidence":"Strict TypeScript, full Vitest suite, production build, Pages build/artifact upload, and deploy succeeded after repairing one test-fixture typing failure.","artifact_revision":"85ff7d55cd0c9a9093b22bf0e91ee18be5a40759","last_verified":"2026-10-04T02:46:35Z","dependencies":["src/sim","src/hazards","src/consequences","src/geo","src/data","src/globe/floatingOrigin.ts","src/core/runtimeTrace.ts","src/core/capabilities.ts","src/scenario/branchGraph.ts","tests"],"freshness":"current implementation baseline","recheck_trigger":"Simulation, streaming, provider, hazard registry, consequence graph, or related test changes"}
+-->
+### VER-006 — Deterministic simulation and bounded streaming primitives pass CI and Pages deployment
+- **State:** verified
+- **Evidence:** CI run 37172047741 and Pages run 37172047765 completed successfully after the bounded test-fixture repair.
+<!-- /operational-state:entry -->
+
 ## 6. Known Not Working
 
 None currently recorded.
@@ -158,13 +168,15 @@ None currently recorded.
 - **Priority:** critical
 - **Need:** Browser smoke, visual observation, context-loss/resize verification, and later floating-origin/local-detail work.
 
-### PND-002 — Implement geospatial streaming and data-provider layer
+### PND-002 — Integrate real geospatial streaming providers
 - **State:** pending
 - **Priority:** critical
+- **Progress:** Core tile addressing, SSE LOD, bounded request scheduling, retry, LRU memory budgets, provider routing, and quality-tier resource budgets now exist. Real PMTiles/MVT/terrain/building adapters and renderer integration remain pending.
 
-### PND-003 — Implement disaster and consequence engines
+### PND-003 — Implement physical hazard and consequence models
 - **State:** pending
 - **Priority:** critical
+- **Progress:** All 100 catalog items now exist as machine-readable fidelity-D registry manifests, and the consequence DAG primitive exists. Dedicated model modules, parameter schemas, validation fixtures, exposure queries, and recovery logic remain pending.
 
 ### PND-004 — Implement and validate native wrapper
 - **State:** pending
@@ -187,7 +199,11 @@ None currently recorded.
 - Current single-bundle architecture is acceptable only as a bootstrap. Introduce code splitting as geospatial/hazard modules arrive instead of allowing one monolith to grow.
 - Default interface policy: the globe remains visually primary; advanced controls use progressive disclosure through the command surface, contextual target chip, and optional inspector.
 - Default quality policy: adaptive auto mode may step among High/Balanced/Low/Safe using sustained frame-time evidence; manual tiers remain available.
-- Provider, provenance, and scenario envelopes are now explicit source-level contracts; future data/hazard work should extend them rather than invent parallel metadata systems.
+- Provider, provenance, and scenario envelopes are explicit source-level contracts; future data/hazard work should extend them rather than invent parallel metadata systems.
+- Simulation determinism is built from fixed-step time, seeded randomness, ordered events, canonical checksums, bounded checkpoints, and explicit scenario branches.
+- The 100-entry hazard catalog is a registry and planning/runtime contract, not evidence that 100 scientific models exist; catalogued entries remain fidelity D until promoted by model evidence.
+- Streaming must use bounded concurrency, cancellation, retry/backoff, LRU byte budgets, provider-health routing, quality-tier budgets, and SSE-based LOD decisions.
+- Floating-origin transforms preserve authoritative ECEF coordinates while allowing later GPU-local rendering; renderer integration is still pending.
 
 ## 11. Validation and Evidence Matrix
 
@@ -199,12 +215,15 @@ None currently recorded.
 | UNV-001 | Interactive globe + minimized command UI | implemented-unverified | needs direct real-browser smoke |
 | VER-004 | Public Pages delivery | verified | Pages workflow run 36448035612 + prior live HTTP 200 probe |
 | VER-005 | Expanded source + Pages build/deploy | verified | CI 37168929607 + Pages 37168929613 |
-| INV-004 | >=40 hazards | requested | catalog exists; runtime not built |
+| VER-006 | Simulation/streaming foundation | verified | CI 37172047741 + Pages 37172047765 |
+| INV-004 | >=40 hazards | partially implemented | 100 schema-valid catalog manifests exist; physical model modules remain pending |
 | INV-005 | Wrapper shares web core | requested | wrapper not built |
 
 ## 12. Current Change Scope and Impact Radius
 
-Phase 0 and a substantial Phase 1 navigation/runtime foundation now exist. The immediate scope is: direct browser acceptance proof for the new interaction paths, generate and validate the package lockfile so CI can move to reproducible `npm ci`, then implement the geospatial streaming/data-provider layer against the new provider/provenance contracts. Floating-origin/local-detail work remains required before claiming building-scale numerical stability. Do not jump directly to deep hazard implementations before data/time foundations and runtime browser proof are established.
+Phase 0, the interactive Phase 1 globe foundation, and substantial Phase 2/3 primitives now exist. The immediate scope is: connect floating-origin and LOD/request/cache primitives to the renderer; implement one real static geospatial provider path (preferably PMTiles/MVT or equivalent static-host-friendly data) with cancellation and provenance; generate and validate the package lockfile so CI can move to reproducible `npm ci`; then wire the deterministic scenario clock/event/checkpoint core into one harmless reference hazard fixture before expanding flagship models. Direct browser acceptance and representative device performance proof remain required.
+
+Do not interpret the 100-entry hazard registry as 100 completed solvers, and do not bypass source fidelity/provenance when promoting catalog entries.
 
 ## 13. Compact Revision Log
 
@@ -213,3 +232,4 @@ Phase 0 and a substantial Phase 1 navigation/runtime foundation now exist. The i
 - r3 — 2026-09-28: Verified Pages enabled in workflow mode, reran deployment successfully, and confirmed the public Doom Map URL returns HTTP 200.
 - r4 — 2026-09-28: Reconciled stale deployment/traceability/README state with the verified live Pages deployment; browser interaction proof and deterministic-install work remain pending.
 - r5 — 2026-10-04: Recorded implementation e808eb789ef9215f937ea90e71a481a4d41fef25: deeper geodesy/navigation, target selection/fly-to, view-state/history, adaptive quality/diagnostics, provider/provenance/scenario contracts, and a minimized progressive-disclosure UI. CI 37168929607 and Pages 37168929613 passed; direct rendered-browser proof and package-lock generation remain pending.
+- r6 — 2026-10-04: Added 20 engine foundations at 85ff7d55cd0c9a9093b22bf0e91ee18be5a40759: deterministic RNG/time/events/checkpoints/checksums, scenario branches, 100-entry hazard registry, consequence DAG, tile/LOD, bounded request/cache/retry/provider/resource systems, floating origin, runtime trace, and capability classification. Initial commit 2968b21 exposed one strict-TypeScript test-fixture failure; repaired in 85ff7d55cd0c9a9093b22bf0e91ee18be5a40759. CI 37172047741 and Pages 37172047765 then passed.
