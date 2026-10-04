@@ -7,12 +7,12 @@
   "project_name": "Doom Map",
   "project_root": "westkitty/Doom_Map",
   "artifact_path": "",
-  "state_revision": 8,
-  "last_updated": "2026-10-04T04:07:59Z",
+  "state_revision": 9,
+  "last_updated": "2026-10-04T04:39:56Z",
   "current_baseline": {
-    "identity": "commit 69905d40334d7fa21cac979d2509957012de1363",
+    "identity": "commit 43b422498678aa89dfe3f4dedb2384f5804a93a3",
     "state": "current-baseline",
-    "last_verified": "2026-10-04T04:07:59Z"
+    "last_verified": "2026-10-04T04:39:56Z"
   },
   "scope_boundaries": [
     "Doom Map repository, web deployment, and native wrapper only",
@@ -28,17 +28,17 @@ Doom Map is a browser-first, Three.js-controlled global disaster and consequence
 
 ## 2. Current Baseline
 
-Current implementation baseline: commit 69905d40334d7fa21cac979d2509957012de1363 on main.
+Current implementation baseline: commit 43b422498678aa89dfe3f4dedb2384f5804a93a3 on main.
 
 Verified for this implementation by GitHub Actions:
-- CI run 37176072053: committed-lockfile `npm ci`, strict TypeScript typecheck, the complete Vitest suite, and Vite production build all succeeded.
-- Deploy GitHub Pages run 37176072086: deterministic `npm ci`, verify/build, Pages artifact upload, and deploy all succeeded.
+- CI run 37177621038: committed-lockfile `npm ci`, strict TypeScript typecheck, the combined 31-file / 137-test Vitest suite, and Vite production build all succeeded.
+- Deploy GitHub Pages run 37177621044: deterministic `npm ci`, verify/build, Pages artifact upload, and deploy all succeeded. The workflow run records `head_sha=43b422498678aa89dfe3f4dedb2384f5804a93a3`.
 
-This round connects the existing geospatial and replay foundations more directly to runtime use. It adds Web Mercator tile conversion, antimeridian-safe viewport coverage, prefetch rings, deterministic tile prioritization, stale-view cancellation epochs, data freshness classification, tile residency accounting, a composed GeoTileStore, explicit data-layer state, validated GeoJSON point extraction, disposable Three.js point layers, GlobeApp-owned data-layer lifecycle, reference-provider rendering through the tile-store path, streaming/attribution diagnostics, model-version compatibility checks, provider snapshot compatibility checks, runtime input journals, true checkpoint restoration, deterministic scenario batch execution, and scenario outcome comparison.
+The previously divergent `arena/01a0e93e-doom-map` line is now genuinely merged into main. PR #1 is closed as merged through two-parent merge commit `a9e3a1d96df2f5aec1bb87661f516326ce148a45`. The merge retained the newer main implementations for the 15 overlapping control/UI/runtime files and imported the arena branch's 140 non-conflicting Phase 0–11 files plus its matching package dependency/lock pair.
 
-Implementation commit 9dc387f82916108c558c94f2d95d3ed7e82d0d58 initially failed strict TypeScript because `src/main.ts` referenced `import.meta.env.BASE_URL` without Vite's client ambient types in the project. Repair commit 69905d40334d7fa21cac979d2509957012de1363 replaced that dependency with `new URL('./', document.baseURI).pathname`, preserving Pages base-path behavior without changing TypeScript configuration. The full CI and Pages workflows then passed.
+The first combined build exposed legacy API expectations from the arena line. Commit `344b44295abba01000978f62d3f8b329fed749a7` added bounded compatibility seams for ENU frames/render-relative coordinates/ellipsoid picking and the runnable hazard registry/catalog without replacing the newer main architecture. The next combined run passed typecheck but exposed one high-altitude WGS84 precision failure; commit 43b422498678aa89dfe3f4dedb2384f5804a93a3 adopted iterative Bowring refinement and the robust height solution. The full combined unit suite and Pages deployment then passed.
 
-The new reference data layer remains illustrative fidelity-D fixture data. Source, unit tests, production build, and deployment prove the integration path exists; direct visual browser observation of the rendered reference markers remains unavailable in this workflow.
+Merged arena source now includes Natural Earth/building assets and providers, persistent-cache modules, consequence/lifeline engines, eight specialist hazard solvers, a 100-module runnable compatibility catalog, scenario vault/comparison/time modules, hazard VFX/building/regional-geography modules, Tauri wrapper source, and Playwright browser specifications. Source presence does not mean every arena-era UI integration is active: the newer minimized progressive-disclosure main UI remains controlling, and the arena browser specs target several superseded DOM/runtime contracts.
 
 ## 3. Artifact Contract
 
@@ -153,6 +153,14 @@ The final product must:
 - **Evidence:** CI 37176072053 and Pages 37176072086 passed after the bounded base-path repair.
 <!-- /operational-state:entry -->
 
+<!-- operational-state:entry
+{"id":"VER-009","title":"Divergent arena Phase 0-11 branch is merged and combined main passes CI and Pages","state":"verified","capability":"PR #1 and arena/01a0e93e-doom-map are incorporated into main history; the reconciled tree preserves the newer main authority for conflicting UI/runtime files while retaining arena-only modules/assets/tests/wrapper source. The combined source passes strict typecheck, 137/137 unit tests, production build, and Pages deployment.","scope":"Repository merge, compatibility seams, combined dependency graph, unit/build validation, and Pages delivery","verification_method":"GitHub PR merge state; merge commit a9e3a1d96df2f5aec1bb87661f516326ce148a45; compatibility commits 344b44295abba01000978f62d3f8b329fed749a7 and 43b422498678aa89dfe3f4dedb2384f5804a93a3; CI run 37177621038; Pages run 37177621044","evidence":"PR #1 reports merged=true. CI and Pages both completed successfully on 43b422498678aa89dfe3f4dedb2384f5804a93a3; Pages workflow head_sha exactly matches 43b422498678aa89dfe3f4dedb2384f5804a93a3.","artifact_revision":"43b422498678aa89dfe3f4dedb2384f5804a93a3","last_verified":"2026-10-04T04:39:56Z","dependencies":["main","arena/01a0e93e-doom-map","package.json","package-lock.json","src","tests","public","src-tauri",".github/workflows/deploy-pages.yml"],"freshness":"current implementation and deployed baseline","recheck_trigger":"Any main commit, Pages workflow/deployment change, dependency change, or reconciliation of arena-era UI/browser acceptance"}
+-->
+### VER-009 — Divergent arena Phase 0–11 branch is merged and combined main passes CI and Pages
+- **State:** verified
+- **Evidence:** PR #1 merged; CI 37177621038 passed 137/137 unit tests and production build; Pages 37177621044 deployed commit 43b422498678aa89dfe3f4dedb2384f5804a93a3.
+<!-- /operational-state:entry -->
+
 ## 6. Known Not Working
 
 None currently recorded.
@@ -193,6 +201,11 @@ None currently recorded.
 - **State:** unknown
 - **Evidence:** No physical desktop/tablet/mobile runtime profiling has been performed.
 
+### UNK-003 — Arena-era Playwright user journeys against the minimized current UI
+- **State:** evidence-stale
+- **Evidence:** The merged Playwright specs were authored for arena-era DOM/runtime contracts such as always-visible navigation/science/simulation surfaces and arena-specific `data-runtime` fields. The current main deliberately preserves the later minimized progressive-disclosure UI, so those specs are not enabled unchanged as current acceptance gates.
+- **Need:** Adapt browser acceptance to the current UI and explicitly wire whichever arena runtime capabilities should be user-facing before promoting those journeys to verified.
+
 ## 9. Pending Work
 
 ### PND-001 — Complete Phase 1 globe runtime verification
@@ -203,16 +216,17 @@ None currently recorded.
 ### PND-002 — Integrate real geospatial streaming providers
 - **State:** pending
 - **Priority:** critical
-- **Progress:** Tile conversion, antimeridian coverage, prefetch, prioritization, generation cancellation, freshness, residency, composed tile-store behavior, layer ownership, and provider-to-scene integration now exist and are tested with the illustrative same-origin fixture. Real sourced PMTiles/MVT/terrain/building adapters remain pending.
+- **Progress:** Main's tile planning/residency/provider-to-scene path remains verified with the illustrative fixture. The merged arena line additionally supplies Natural Earth regional data, building datasets, provider modules, a tile scheduler, and persistent IndexedDB cache source. These modules pass the combined unit/type/build suite but are not yet wired into the current minimized main runtime path as authoritative production providers.
 
-### PND-003 — Implement physical hazard and consequence models
+### PND-003 — Integrate and validate physical hazard/consequence models in the current runtime
 - **State:** pending
 - **Priority:** critical
-- **Progress:** All 100 catalog items now exist as machine-readable fidelity-D registry manifests, and the consequence DAG primitive exists. Dedicated model modules, parameter schemas, validation fixtures, exposure queries, and recovery logic remain pending.
+- **Progress:** The merged arena line contributes eight specialist solver modules, consequence/lifeline engines, and a 100-module runnable compatibility registry; the combined unit suite exercises these successfully. Main's newer metadata catalog and deterministic scenario runtime remain authoritative. The remaining work is to reconcile model/provenance contracts and expose selected models through the current minimized runtime without overstating scientific fidelity.
 
-### PND-004 — Implement and validate native wrapper
+### PND-004 — Validate native wrapper
 - **State:** pending
 - **Priority:** high
+- **Progress:** Tauri 2 wrapper source is now merged under `src-tauri/`; no Tauri/Rust build or packaged-wrapper runtime proof was performed in this merge workflow.
 
 ### PND-005 — Generate and commit package lockfile
 - **State:** superseded by VER-007
@@ -244,6 +258,10 @@ None currently recorded.
 - Data-layer ownership belongs to GlobeApp; layer replacement/removal must dispose owned Three.js resources.
 - Scenario runtime construction must reject model-version drift, and provider snapshots must be checked before claiming replay equivalence.
 - Checkpoint restoration must restore clock accumulator, RNG state, hazard state, queued events, consequences, emissions, and input journal together.
+- The minimized progressive-disclosure interface remains authoritative after the arena merge; merged arena-era panels/selectors do not automatically supersede the later UI contract.
+- Arena-only modules may coexist as compatible subsystems, but source presence is not proof that they are connected to the active main user journey.
+- The arena Playwright suite is reference evidence until adapted to the current minimized DOM/runtime contract; do not enable it unchanged merely to recreate obsolete UI.
+- WGS84 conversion must preserve both main's validation guarantees and the merged suite's high-altitude/orbital round-trip precision.
 
 ## 11. Validation and Evidence Matrix
 
@@ -258,16 +276,17 @@ None currently recorded.
 | VER-006 | Simulation/streaming foundation | verified | CI 37172047741 + Pages 37172047765 |
 | VER-007 | Composed scenario/provider pipeline + reproducible installs | verified | CI 37174389781 + Pages 37174389792 |
 | VER-008 | Round-05 geodata/replay uplift | verified | CI 37176072053 + Pages 37176072086 + docs/UPLIFT_ROUND_05.md |
+| VER-009 | Arena Phase 0–11 merge + combined baseline | verified | PR #1 merged; CI 37177621038; Pages 37177621044 on 43b422498678aa89dfe3f4dedb2384f5804a93a3 |
 | UNV-003 | Rendered reference GeoJSON layer appearance | implemented-unverified | needs direct browser visual proof |
 | UNV-002 | Offline shell + deployed reference-provider path | implemented-unverified | needs direct browser/offline proof |
-| INV-004 | >=40 hazards | partially implemented | 100 schema-valid catalog manifests exist; physical model modules remain pending |
-| INV-005 | Wrapper shares web core | requested | wrapper not built |
+| INV-004 | >=40 hazards | partially verified | 100 metadata manifests plus merged 100-module runnable compatibility registry; current minimized user journey integration remains pending |
+| INV-005 | Wrapper shares web core | partially implemented | Tauri source merged; wrapper build/runtime unverified |
 
 ## 12. Current Change Scope and Impact Radius
 
-The geospatial runtime now has a tested planning/residency path from geographic bounds through tile selection, caching/failover, provider payloads, and an owned Three.js data layer. The deterministic scenario runtime now has stronger replay integrity through compatibility gates, journals, and restorable checkpoints. The immediate scope is therefore narrower and more valuable: replace the illustrative fixture with the first properly sourced production geospatial dataset; connect viewport-derived tile coverage to camera movement rather than the single world-tile bootstrap; directly observe browser layer disposal/offline behavior; and promote one evidence-backed hazard model into the runtime registry.
+All known GitHub branch work is now merged into main history. The current baseline combines the newer minimized main architecture with the arena branch's Phase 0–11 source, datasets, models, tests, and Tauri wrapper. The immediate work is no longer branch consolidation; it is selective runtime integration and browser-level proof. Preserve the minimized interface while connecting useful arena geospatial/building/cache/hazard capabilities through current main contracts, then replace stale arena-era browser selectors with acceptance journeys for the current UI.
 
-Do not treat the reference points as production mapping data, and do not claim checkpoint-equivalent replay if model/provider compatibility gates fail.
+Pages deployment must always be checked against the exact current main SHA after any follow-up commit. Do not infer that an arena module is live merely because its source is now on main.
 
 ## 13. Compact Revision Log
 
@@ -279,3 +298,4 @@ Do not treat the reference points as production mapping data, and do not claim c
 - r6 — 2026-10-04: Added 20 engine foundations at 85ff7d55cd0c9a9093b22bf0e91ee18be5a40759: deterministic RNG/time/events/checkpoints/checksums, scenario branches, 100-entry hazard registry, consequence DAG, tile/LOD, bounded request/cache/retry/provider/resource systems, floating origin, runtime trace, and capability classification. Initial commit 2968b21 exposed one strict-TypeScript test-fixture failure; repaired in 85ff7d55cd0c9a9093b22bf0e91ee18be5a40759. CI 37172047741 and Pages 37172047765 then passed.
 - r7 — 2026-10-04: Composed the foundations into tested scenario and provider pipelines, added offline app-shell support and foundation auditing, and closed dependency reproducibility. Implementation 39fb13cf added runtime composition; e96669cc committed GitHub-generated lockfile; 36730edfaeda7a69be9ad48c0b33b1da59a773fd restored read-only CI and enforced `npm ci`. CI 37174389781 and Pages 37174389792 passed. Offline service-worker behavior and live deployed fixture fetch remain implemented-unverified.
 - r8 — 2026-10-04: Completed the 20-item Round-05 uplift mapped in docs/UPLIFT_ROUND_05.md. Commit 9dc387f8 added tile planning/residency, data-layer ownership/integration, compatibility/journal/restoration, batch, and comparison systems. That commit exposed one TypeScript base-path defect; 69905d40334d7fa21cac979d2509957012de1363 repaired it. CI 37176072053 and Pages 37176072086 then passed.
+- r9 — 2026-10-04: Merged divergent arena/01a0e93e-doom-map through true two-parent merge a9e3a1d9, closing PR #1 as merged. Preserved newer main authority for 15 conflicting UI/runtime/control files while importing 140 non-conflicting arena files plus matching dependency lock. Compatibility bridge 344b4429 restored legacy spatial/hazard APIs; 43b422498678aa89dfe3f4dedb2384f5804a93a3 repaired orbital WGS84 precision. Combined baseline passed strict typecheck, 137/137 unit tests, production build, and Pages deploy in CI 37177621038 / Pages 37177621044. Arena-era browser specs remain evidence-stale against the minimized current UI.
