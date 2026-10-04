@@ -35,7 +35,7 @@ Every visible consequence must be able to answer: **where did this number/shape 
 
 ## Current state
 
-The repository is in **active phased implementation**. The initial Three.js globe foundation builds and GitHub Pages is live; browser-level interaction proof and the remaining Phase 0/1 foundation are still in progress.
+The repository is in **active phased implementation**. The Phase 1 foundation now includes validated WGS84/ENU helpers, ellipsoid target selection, coordinate navigation and fly-to, north-up orientation, view history and shareable state, adaptive quality and diagnostics, explicit provider/provenance/scenario contracts, and a minimized command-driven interface that keeps the globe visually primary. CI and GitHub Pages deployment pass for the current implementation; direct browser interaction proof and deterministic package-lock installation remain pending.
 
 Read these first:
 
