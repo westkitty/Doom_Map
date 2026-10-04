@@ -3,6 +3,7 @@ export interface ClockState {
   speed: number
   paused: boolean
   fixedStepMs: number
+  accumulatorMs: number
 }
 
 export class SimulationClock {
@@ -31,6 +32,16 @@ export class SimulationClock {
     this.accumulatorMs = 0
   }
 
+  restore(state: ClockState): void {
+    if (![state.timeMs, state.speed, state.fixedStepMs, state.accumulatorMs].every(Number.isFinite)) throw new RangeError('Clock state must be finite.')
+    if (state.speed <= 0 || state.fixedStepMs <= 0 || state.accumulatorMs < 0 || state.accumulatorMs >= state.fixedStepMs) throw new RangeError('Clock state is outside valid bounds.')
+    if (Math.abs(state.fixedStepMs - this.fixedStepMs) > 1e-9) throw new Error('Checkpoint fixed-step does not match runtime fixed-step.')
+    this.timeMs = state.timeMs
+    this.speed = state.speed
+    this.paused = state.paused
+    this.accumulatorMs = state.accumulatorMs
+  }
+
   advance(realDeltaMs: number): number[] {
     if (!Number.isFinite(realDeltaMs) || realDeltaMs < 0) throw new RangeError('Delta must be non-negative and finite.')
     if (this.paused || realDeltaMs === 0) return []
@@ -46,6 +57,12 @@ export class SimulationClock {
   }
 
   snapshot(): ClockState {
-    return { timeMs: this.timeMs, speed: this.speed, paused: this.paused, fixedStepMs: this.fixedStepMs }
+    return {
+      timeMs: this.timeMs,
+      speed: this.speed,
+      paused: this.paused,
+      fixedStepMs: this.fixedStepMs,
+      accumulatorMs: this.accumulatorMs
+    }
   }
 }

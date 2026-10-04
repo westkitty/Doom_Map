@@ -24,9 +24,7 @@ export class SeededRandom {
     return this.state
   }
 
-  next(): number {
-    return this.nextUint32() / 0x1_0000_0000
-  }
+  next(): number { return this.nextUint32() / 0x1_0000_0000 }
 
   nextRange(min: number, max: number): number {
     if (!Number.isFinite(min) || !Number.isFinite(max) || max < min) throw new RangeError('Invalid random range.')
@@ -37,7 +35,10 @@ export class SeededRandom {
     return new SeededRandom((this.state ^ hashStringToSeed(label)) >>> 0)
   }
 
-  snapshot(): number {
-    return this.state >>> 0
+  snapshot(): number { return this.state >>> 0 }
+
+  restore(state: number): void {
+    if (!Number.isSafeInteger(state) || state < 0 || state > 0xffff_ffff) throw new RangeError('Random state must be a uint32 value.')
+    this.state = state >>> 0
   }
 }

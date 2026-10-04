@@ -10,6 +10,7 @@ import {
 import { intersectWgs84Ellipsoid, localBasisAtGeodetic } from '../core/ellipsoid'
 import { QUALITY_PROFILES, type QualityTier } from '../core/quality'
 import { chooseScaleBar, type ScaleBarResult } from '../core/scale'
+import type { GlobeDataLayer } from './geoJsonPointLayer'
 
 const EARTH_A = WGS84.semiMajorAxis
 const EARTH_B = WGS84.semiMinorAxis
@@ -59,6 +60,7 @@ export interface GlobeDiagnostics {
   camera: CameraBookmark
   selection: GeodeticPoint | null
   contextLost: boolean
+  dataLayers: string[]
   canvas: { width: number; height: number; pixelRatio: number }
   renderer: {
     webglVersion: 1 | 2
@@ -124,6 +126,7 @@ export class GlobeApp {
   private readonly homeTarget = new THREE.Vector3()
   private readonly selectionMarker: THREE.Points
   private readonly resizeObserver: ResizeObserver | null
+  private readonly dataLayers = new Map<string, GlobeDataLayer>()
   private earth = new THREE.Group()
   private selectedGeodetic: GeodeticPoint | null = null
   private started = false
@@ -243,6 +246,7 @@ export class GlobeApp {
     this.controls.removeEventListener('end', this.onControlsEnd)
     this.controls.stopListenToKeyEvents()
     this.controls.dispose()
+    this.clearDataLayers()
     this.disposeHierarchy(this.scene)
     this.renderer.dispose()
   }
@@ -369,6 +373,30 @@ export class GlobeApp {
     this.resize()
   }
 
+  setDataLayer(id: string, layer: GlobeDataLayer): void {
+    if (!id.trim()) throw new Error('Data layer id is required.')
+    this.removeDataLayer(id)
+    this.dataLayers.set(id, layer)
+    this.scene.add(layer.object3d)
+  }
+
+  removeDataLayer(id: string): boolean {
+    const layer = this.dataLayers.get(id)
+    if (!layer) return false
+    this.scene.remove(layer.object3d)
+    layer.dispose()
+    this.dataLayers.delete(id)
+    return true
+  }
+
+  clearDataLayers(): void {
+    for (const id of [...this.dataLayers.keys()]) this.removeDataLayer(id)
+  }
+
+  dataLayerIds(): string[] {
+    return [...this.dataLayers.keys()].sort()
+  }
+
   getDiagnostics(): GlobeDiagnostics {
     const gl = this.renderer.getContext()
     const webglVersion: 1 | 2 = typeof WebGL2RenderingContext !== 'undefined' && gl instanceof WebGL2RenderingContext ? 2 : 1
@@ -377,6 +405,7 @@ export class GlobeApp {
       camera: this.getCameraBookmark(),
       selection: this.getSelection(),
       contextLost: this.contextLost,
+      dataLayers: this.dataLayerIds(),
       canvas: {
         width: this.renderer.domElement.width,
         height: this.renderer.domElement.height,

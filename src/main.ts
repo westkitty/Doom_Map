@@ -5,6 +5,8 @@ import { parseCoordinateInput } from './core/coordinateInput'
 import { chooseInitialQuality, type QualityTier } from './core/quality'
 import { auditFoundation } from './core/foundationAudit'
 import { NetworkState } from './data/networkState'
+import { ReferenceDataController } from './data/referenceDataController'
+import { resourceBudgetFor } from './data/resourceBudget'
 import { registerOfflineShell } from './offline/registerServiceWorker'
 import { SnapshotHistory } from './core/viewHistory'
 import { parseViewState, serializeViewState, type QualityMode, type ShareableViewState } from './core/viewState'
@@ -168,6 +170,7 @@ const autoQuality = new AutoQualityGovernor()
 const viewHistory = new SnapshotHistory<CameraBookmark>(48)
 let suppressHistory = false
 let app: GlobeApp | null = null
+let referenceData: ReferenceDataController | null = null
 let lastPerformance: PerformanceTelemetry | null = null
 let uiHidden = false
 let telemetryVisible = false
@@ -420,7 +423,8 @@ async function executeCommand(command: string): Promise<void> {
         performance: lastPerformance,
         globe: app.getDiagnostics(),
         connectivity: networkState.snapshot(),
-        foundation: auditFoundation()
+        foundation: auditFoundation(),
+        streaming: referenceData?.diagnostics() ?? null
       }, null, 2)
       showToast(await copyText(diagnostics) ? 'Diagnostics copied.' : 'Clipboard unavailable.')
       break
@@ -466,6 +470,18 @@ try {
   updateQualityReadout()
   app.start()
   recordBookmark(app.getCameraBookmark())
+
+  referenceData = new ReferenceDataController(import.meta.env.BASE_URL, resourceBudgetFor(app.getQualityTier()))
+  void referenceData.load().then((layer) => {
+    if (!app) {
+      layer.dispose()
+      return
+    }
+    app.setDataLayer('reference-regions', layer)
+  }).catch((error: unknown) => {
+    if (error instanceof DOMException && error.name === 'AbortError') return
+    console.warn('Reference geodata layer failed to load.', error)
+  })
   const initialState = parseViewState(window.location.hash)
   if (initialState && !applyShareState(initialState)) showToast('The shared view state was invalid.')
   updateTargetUi()
@@ -556,7 +572,7 @@ window.addEventListener('focusin', markUiActive)
 canvas.addEventListener('pointerdown', () => { document.body.dataset.interacting = 'true' })
 window.addEventListener('pointerup', () => { delete document.body.dataset.interacting; markUiActive() }, { passive: true })
 window.addEventListener('pointercancel', () => { delete document.body.dataset.interacting; markUiActive() }, { passive: true })
-window.addEventListener('pagehide', () => app?.dispose(), { once: true })
+window.addEventListener('pagehide', () => { referenceData?.dispose(); app?.dispose() }, { once: true })
 
 for (const dialog of [commandDialog, helpDialog, aboutDialog]) {
   dialog.addEventListener('close', markUiActive)

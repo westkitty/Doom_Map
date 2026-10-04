@@ -22,10 +22,22 @@ export class ConsequenceGraph<T = unknown> {
     for (const parentId of node.parentIds) {
       if (!this.nodes.has(parentId)) throw new Error(`Missing consequence parent: ${parentId}`)
     }
-    this.nodes.set(node.id, node)
+    this.nodes.set(node.id, structuredClone(node))
   }
 
-  get(id: string): ConsequenceNode<T> | null { return this.nodes.get(id) ?? null }
+  get(id: string): ConsequenceNode<T> | null {
+    const value = this.nodes.get(id)
+    return value ? structuredClone(value) : null
+  }
+
+  clear(): void { this.nodes.clear() }
+
+  snapshot(): ConsequenceNode<T>[] { return structuredClone(this.topologicalOrder()) }
+
+  restore(nodes: readonly ConsequenceNode<T>[]): void {
+    this.clear()
+    for (const node of nodes) this.add(node)
+  }
 
   topologicalOrder(): ConsequenceNode<T>[] {
     const indegree = new Map<string, number>()
@@ -51,7 +63,7 @@ export class ConsequenceGraph<T = unknown> {
       ready.sort((a, b) => a.startTimeMs - b.startTimeMs || a.id.localeCompare(b.id))
     }
     if (ordered.length !== this.nodes.size) throw new Error('Consequence graph contains a cycle.')
-    return ordered
+    return structuredClone(ordered)
   }
 
   descendants(id: string): ConsequenceNode<T>[] {
@@ -68,6 +80,6 @@ export class ConsequenceGraph<T = unknown> {
         result.push(node)
       }
     }
-    return result
+    return structuredClone(result)
   }
 }

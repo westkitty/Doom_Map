@@ -17,7 +17,7 @@ export class EventQueue<T = unknown> {
     if (this.events.some((item) => item.id === event.id)) throw new Error(`Duplicate event id: ${event.id}`)
     const scheduled = { ...event, sequence: this.sequence++ }
     this.events.push(scheduled)
-    this.events.sort((a, b) => a.timeMs - b.timeMs || a.sequence - b.sequence)
+    this.sort()
     return scheduled
   }
 
@@ -35,9 +35,25 @@ export class EventQueue<T = unknown> {
     return this.events.splice(0, count)
   }
 
-  peek(): ScheduledEvent<T> | null {
-    return this.events[0] ?? null
+  peek(): ScheduledEvent<T> | null { return this.events[0] ?? null }
+  size(): number { return this.events.length }
+  snapshot(): ScheduledEvent<T>[] { return structuredClone(this.events) }
+
+  restore(events: readonly ScheduledEvent<T>[]): void {
+    const ids = new Set<string>()
+    for (const event of events) {
+      if (!event.id.trim() || !event.type.trim() || !Number.isFinite(event.timeMs) || !Number.isSafeInteger(event.sequence) || event.sequence < 0) {
+        throw new Error('Invalid scheduled event checkpoint.')
+      }
+      if (ids.has(event.id)) throw new Error(`Duplicate event id in checkpoint: ${event.id}`)
+      ids.add(event.id)
+    }
+    this.events.splice(0, this.events.length, ...structuredClone([...events]))
+    this.sort()
+    this.sequence = this.events.reduce((max, event) => Math.max(max, event.sequence + 1), 0)
   }
 
-  size(): number { return this.events.length }
+  private sort(): void {
+    this.events.sort((a, b) => a.timeMs - b.timeMs || a.sequence - b.sequence)
+  }
 }
