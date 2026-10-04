@@ -3,6 +3,9 @@ import { AutoQualityGovernor } from './core/autoQuality'
 import { filterCommands, type SearchableCommand } from './core/commandSearch'
 import { parseCoordinateInput } from './core/coordinateInput'
 import { chooseInitialQuality, type QualityTier } from './core/quality'
+import { auditFoundation } from './core/foundationAudit'
+import { NetworkState } from './data/networkState'
+import { registerOfflineShell } from './offline/registerServiceWorker'
 import { SnapshotHistory } from './core/viewHistory'
 import { parseViewState, serializeViewState, type QualityMode, type ShareableViewState } from './core/viewState'
 import { GlobeApp, type CameraBookmark, type PerformanceTelemetry, type RuntimeState } from './globe/GlobeApp'
@@ -169,6 +172,7 @@ let lastPerformance: PerformanceTelemetry | null = null
 let uiHidden = false
 let telemetryVisible = false
 let idleTimer = 0
+const networkState = new NetworkState(navigator.onLine, performance.now())
 
 function bookmarkKey(bookmark: CameraBookmark): string {
   const compact = [...bookmark.camera, ...bookmark.target, ...(bookmark.up ?? [0, 0, 1])]
@@ -414,7 +418,9 @@ async function executeCommand(command: string): Promise<void> {
         capturedAt: new Date().toISOString(),
         qualityMode,
         performance: lastPerformance,
-        globe: app.getDiagnostics()
+        globe: app.getDiagnostics(),
+        connectivity: networkState.snapshot(),
+        foundation: auditFoundation()
       }, null, 2)
       showToast(await copyText(diagnostics) ? 'Diagnostics copied.' : 'Clipboard unavailable.')
       break
@@ -533,6 +539,16 @@ window.addEventListener('hashchange', () => {
 
 window.addEventListener('resize', () => app?.refreshDisplayScale(), { passive: true })
 window.addEventListener('storage', syncCommandAvailability)
+window.addEventListener('online', () => {
+  const before = networkState.snapshot().state
+  const after = networkState.observe(true, performance.now())
+  if (before !== after.state) showToast('Network connection restored.')
+})
+window.addEventListener('offline', () => {
+  const before = networkState.snapshot().state
+  const after = networkState.observe(false, performance.now())
+  if (before !== after.state) showToast('Offline mode · cached shell remains available.')
+})
 window.addEventListener('pointermove', markUiActive, { passive: true })
 window.addEventListener('touchstart', markUiActive, { passive: true })
 window.addEventListener('keydown', markUiActive, { passive: true })
@@ -552,3 +568,5 @@ for (const dialog of [commandDialog, helpDialog, aboutDialog]) {
 syncCommandAvailability()
 updateQualityReadout()
 markUiActive()
+
+void registerOfflineShell()

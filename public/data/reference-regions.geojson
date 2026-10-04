@@ -1,0 +1,17 @@
+{
+  "type": "FeatureCollection",
+  "name": "doom-map-reference-regions",
+  "description": "Illustrative engineering fixture only. Not authoritative geographic data.",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": { "id": "great-lakes-reference", "fidelity": "D", "purpose": "provider-pipeline-smoke" },
+      "geometry": { "type": "Point", "coordinates": [-86.2542, 41.8298] }
+    },
+    {
+      "type": "Feature",
+      "properties": { "id": "equator-reference", "fidelity": "D", "purpose": "provider-pipeline-smoke" },
+      "geometry": { "type": "Point", "coordinates": [0, 0] }
+    }
+  ]
+}
