@@ -471,7 +471,7 @@ try {
   app.start()
   recordBookmark(app.getCameraBookmark())
 
-  referenceData = new ReferenceDataController(import.meta.env.BASE_URL, resourceBudgetFor(app.getQualityTier()))
+  referenceData = new ReferenceDataController(new URL('./', document.baseURI).pathname, resourceBudgetFor(app.getQualityTier()))
   void referenceData.load().then((layer) => {
     if (!app) {
       layer.dispose()
