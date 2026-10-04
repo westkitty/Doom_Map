@@ -109,14 +109,19 @@ export function ecefToGeodetic(point: Cartesian3): GeodeticPoint {
   const theta = Math.atan2(point.z * a, p * b)
   const sinTheta = Math.sin(theta)
   const cosTheta = Math.cos(theta)
-  const lat = Math.atan2(
+  let lat = Math.atan2(
     point.z + ep2 * b * sinTheta * sinTheta * sinTheta,
     p - e2 * a * cosTheta * cosTheta * cosTheta
   )
+  for (let index = 0; index < 6; index += 1) {
+    const nEstimate = a / Math.sqrt(1 - e2 * Math.sin(lat) ** 2)
+    lat = Math.atan2(point.z + e2 * nEstimate * Math.sin(lat), p)
+  }
   const lon = Math.atan2(point.y, point.x)
   const sinLat = Math.sin(lat)
+  const cosLat = Math.cos(lat)
   const n = a / Math.sqrt(1 - e2 * sinLat * sinLat)
-  const height = p / Math.cos(lat) - n
+  const height = p * cosLat + point.z * sinLat - n * (1 - e2 * sinLat * sinLat)
 
   return {
     latitudeDeg: lat * RAD_TO_DEG,
