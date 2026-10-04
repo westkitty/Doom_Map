@@ -3,29 +3,148 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-    <meta name="theme-color" content="#06090d" />
-    <meta name="description" content="Doom Map — an interactive global disaster and consequence simulator." />
+    <meta name="theme-color" content="#020407" />
+    <meta name="description" content="Doom Map - an interactive global disaster and consequence simulator." />
     <title>Doom Map</title>
   </head>
   <body>
     <main id="app" aria-label="Doom Map globe">
-      <canvas id="globe" aria-label="Interactive three-dimensional Earth"></canvas>
-      <section class="hud" aria-live="polite">
-        <div>
-          <p class="eyebrow">DOOM MAP / FOUNDATION</p>
-          <h1>Earth is the interface.</h1>
-          <p id="status">Three.js globe foundation · model systems pending</p>
-        </div>
-        <div class="telemetry" aria-label="Globe telemetry">
-          <span id="lat">LAT 0.000°</span>
-          <span id="lon">LON 0.000°</span>
-          <span id="alt">ALT —</span>
-        </div>
+      <canvas
+        id="globe"
+        tabindex="0"
+        aria-label="Interactive three-dimensional Earth"
+        aria-describedby="control-help"
+      ></canvas>
+
+      <p id="control-help" class="visually-hidden">
+        Drag to orbit, wheel or pinch to zoom, and click or tap Earth to select a point.
+        Press Control or Command K for commands, slash to search, Home to reset, N for north up,
+        Enter to focus a selected target, H for immersive mode, and question mark for help.
+      </p>
+
+      <header id="chrome" class="chrome" aria-label="Doom Map controls">
+        <button id="brand-button" class="brand-pill" type="button" aria-label="Open Doom Map commands">
+          <span id="status-dot" class="status-dot" aria-hidden="true"></span>
+          <span>DOOM MAP</span>
+          <span id="status" class="visually-hidden" aria-live="polite">Starting globe</span>
+        </button>
+
+        <section id="target-chip" class="target-chip" aria-label="Selected target" hidden>
+          <span id="target-summary">TARGET --</span>
+          <button id="target-focus" type="button">Focus</button>
+          <button id="target-copy" type="button">Copy</button>
+          <button id="target-clear" type="button" aria-label="Clear selected target">×</button>
+        </section>
+
+        <button id="command-button" class="command-button" type="button" aria-keyshortcuts="Control+K Meta+K /">
+          <span class="command-glyph">⌘K</span>
+          <span class="command-label">Commands</span>
+        </button>
+      </header>
+
+      <section id="telemetry-panel" class="telemetry-panel" aria-label="Globe telemetry" hidden>
+        <div><span>Camera</span><strong id="lat">LAT --</strong><strong id="lon">LON --</strong><strong id="alt">ALT --</strong></div>
+        <div><span>View</span><strong id="orientation">AZ / TILT --</strong><strong id="quality-readout">QUALITY --</strong></div>
+        <div><span>Runtime</span><strong id="performance">PERF --</strong></div>
       </section>
-      <aside class="source-note">
-        <strong>FOUNDATION BUILD</strong>
-        <span>No disaster model is active. Scientific outputs are not yet implemented.</span>
-      </aside>
+
+      <div id="scale-meter" class="scale-meter" aria-label="Approximate view scale" hidden>
+        <span id="scale-line" class="scale-line"></span>
+        <span id="scale-label">--</span>
+      </div>
+
+      <button id="show-ui" class="show-ui" type="button" hidden>DOOM MAP</button>
+      <div id="toast" class="toast" role="status" aria-live="polite" aria-atomic="true" hidden></div>
+
+      <section id="fatal-panel" class="fatal-panel" role="alert" hidden>
+        <p class="eyebrow">RENDERER UNAVAILABLE</p>
+        <h1>Doom Map could not start WebGL.</h1>
+        <p id="fatal-message">The renderer failed to initialize.</p>
+        <p>Use a current browser with WebGL enabled, then reload the page.</p>
+      </section>
+
+      <dialog id="command-dialog" class="command-dialog" aria-labelledby="command-title">
+        <div class="dialog-head">
+          <div>
+            <p class="eyebrow">DOOM MAP</p>
+            <h2 id="command-title">Command</h2>
+          </div>
+          <button id="close-command" class="icon-button" type="button" aria-label="Close commands">×</button>
+        </div>
+
+        <label class="command-search-wrap" for="command-search">
+          <span class="visually-hidden">Search commands or enter coordinates</span>
+          <input
+            id="command-search"
+            type="text"
+            autocomplete="off"
+            spellcheck="false"
+            placeholder="Search commands or enter coordinates…"
+          />
+        </label>
+
+        <div id="coordinate-action" class="coordinate-action" hidden>
+          <button id="coordinate-go" type="button">Go to coordinates</button>
+          <span id="coordinate-preview"></span>
+        </div>
+
+        <div id="command-list" class="command-list" role="list">
+          <button data-command="home" data-keywords="reset earth global camera" type="button"><span>Home view</span><kbd>Home</kbd></button>
+          <button data-command="focus-target" data-keywords="selected target fly zoom" type="button"><span>Focus selected target</span><kbd>Enter</kbd></button>
+          <button data-command="north-up" data-keywords="orientation heading camera" type="button"><span>North up</span><kbd>N</kbd></button>
+          <button data-command="history-back" data-keywords="previous camera view undo" type="button"><span>Previous view</span><kbd>[</kbd></button>
+          <button data-command="history-forward" data-keywords="next camera view redo" type="button"><span>Next view</span><kbd>]</kbd></button>
+          <button data-command="save-view" data-keywords="bookmark camera local" type="button"><span>Save current view</span></button>
+          <button data-command="restore-view" data-keywords="bookmark camera local" type="button"><span>Restore saved view</span></button>
+          <button data-command="copy-target" data-keywords="selected coordinates clipboard" type="button"><span>Copy selected coordinates</span></button>
+          <button data-command="share-view" data-keywords="url link state clipboard" type="button"><span>Copy share link</span></button>
+          <button data-command="toggle-telemetry" data-keywords="inspector coordinates performance" type="button"><span>Toggle inspector</span><kbd>I</kbd></button>
+          <button data-command="quality-auto" data-keywords="performance adaptive quality" type="button"><span>Quality · Auto</span></button>
+          <button data-command="quality-high" data-keywords="performance resolution quality" type="button"><span>Quality · High</span></button>
+          <button data-command="quality-balanced" data-keywords="performance resolution quality" type="button"><span>Quality · Balanced</span></button>
+          <button data-command="quality-low" data-keywords="performance resolution quality" type="button"><span>Quality · Low</span></button>
+          <button data-command="quality-safe" data-keywords="performance resolution quality" type="button"><span>Quality · Safe</span></button>
+          <button data-command="fullscreen" data-keywords="immersive display screen" type="button"><span>Toggle fullscreen</span></button>
+          <button data-command="hide-ui" data-keywords="immersive interface clean" type="button"><span>Hide interface</span><kbd>H</kbd></button>
+          <button data-command="copy-diagnostics" data-keywords="renderer performance debug webgl" type="button"><span>Copy diagnostics</span></button>
+          <button data-command="help" data-keywords="keyboard shortcuts controls" type="button"><span>Keyboard help</span><kbd>?</kbd></button>
+          <button data-command="about" data-keywords="science provenance foundation project" type="button"><span>About this build</span></button>
+        </div>
+
+        <p class="dialog-hint">Type coordinates directly, for example <code>41.8298, -86.2542</code>.</p>
+      </dialog>
+
+      <dialog id="help-dialog" class="info-dialog" aria-labelledby="help-title">
+        <div class="dialog-head">
+          <div><p class="eyebrow">CONTROL REFERENCE</p><h2 id="help-title">Globe shortcuts</h2></div>
+          <button id="close-help" class="icon-button" type="button" aria-label="Close help">×</button>
+        </div>
+        <dl class="shortcut-grid">
+          <div><dt>Drag</dt><dd>Orbit Earth</dd></div>
+          <div><dt>Wheel / pinch</dt><dd>Zoom toward pointer</dd></div>
+          <div><dt>Click / tap</dt><dd>Select a target</dd></div>
+          <div><dt>Double-click</dt><dd>Select and focus</dd></div>
+          <div><dt>Arrow keys</dt><dd>Pan focused globe</dd></div>
+          <div><dt>+ / −</dt><dd>Zoom in / out</dd></div>
+          <div><dt>Home</dt><dd>Whole-Earth view</dd></div>
+          <div><dt>N</dt><dd>North-up local view</dd></div>
+          <div><dt>Enter</dt><dd>Focus selected target</dd></div>
+          <div><dt>Escape</dt><dd>Clear target / close dialog</dd></div>
+          <div><dt>⌘/Ctrl K or /</dt><dd>Open commands</dd></div>
+          <div><dt>[ / ]</dt><dd>Previous / next view</dd></div>
+          <div><dt>I</dt><dd>Toggle inspector</dd></div>
+          <div><dt>H</dt><dd>Hide / show interface</dd></div>
+        </dl>
+      </dialog>
+
+      <dialog id="about-dialog" class="info-dialog" aria-labelledby="about-title">
+        <div class="dialog-head">
+          <div><p class="eyebrow">FOUNDATION BUILD</p><h2 id="about-title">Scientific honesty first.</h2></div>
+          <button id="close-about" class="icon-button" type="button" aria-label="Close about">×</button>
+        </div>
+        <p>No disaster model is active yet. This build establishes trustworthy globe navigation, geodesy, performance adaptation, provenance contracts, and shareable view state.</p>
+        <p>Future outputs must expose their source, timestamp or version, fidelity class, assumptions, limitations, and uncertainty. Building-level detail means best available data, not universal survey-grade truth.</p>
+      </dialog>
     </main>
     <script type="module" src="/src/main.ts"></script>
   </body>
