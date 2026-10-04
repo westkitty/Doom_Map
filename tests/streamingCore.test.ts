@@ -59,7 +59,7 @@ describe('bounded geospatial streaming primitives', () => {
 
   it('bounds concurrency and supports cancellation', async () => {
     const scheduler = new RequestScheduler(1)
-    let release: (() => void) | null = null
+    let release = (): void => { throw new Error('release callback was not initialized') }
     const first = scheduler.enqueue({ id: 'first', priority: 1, run: () => new Promise<void>((resolve) => { release = resolve }) })
     const secondRun = vi.fn(async () => 'second')
     const second = scheduler.enqueue({ id: 'second', priority: 10, run: secondRun })
@@ -68,6 +68,6 @@ describe('bounded geospatial streaming primitives', () => {
     expect(scheduler.cancel('second')).toBe(true)
     await expect(second).rejects.toMatchObject({ name: 'AbortError' })
     expect(secondRun).not.toHaveBeenCalled()
-    release?.(); await first
+    release(); await first
   })
 })
